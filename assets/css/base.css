@@ -1,0 +1,15 @@
+:root{
+    --textColor: #353535;
+    --subTextColor: #ccc;
+}
+
+body{
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 18px;
+
+    /* add font roboto, trong truong hop roboto k dc ap dung 
+    thi se ap dung kieu font sans-serif la kieu khong chan */
+    font-family: 'Roboto', sans-serif;
+}
