@@ -9,8 +9,12 @@
     --headerNav_height: calc(var(--header_height) - var(--headerMain_height));
 }
 
-body{
-    margin: 0;
+*{   
+    /* ke thua box-sizing tu the html */
+    box-sizing: inherit;
+}
+
+html{
     box-sizing: border-box;
     font-size: 16px;
     line-height: 16px;
@@ -18,6 +22,11 @@ body{
     /* add font roboto, trong truong hop roboto k dc ap dung 
     thi se ap dung kieu font sans-serif la kieu khong chan */
     font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
 }
 
 /* dau gach phan cach */
@@ -29,6 +38,14 @@ body{
 }
 
 /* Animation */
+@keyframes fadeOut__nav{
+    from {
+        opacity: 1;
+    }to{
+        opacity: 75%;
+    }
+}
+
 @keyframes growth {
     from{
         transform: scale(0);
