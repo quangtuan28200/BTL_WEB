@@ -368,10 +368,10 @@
 
 .cart__notice{
     position: absolute;
-    padding: 5px;
-    top: -14px;
-    right: -14px;
-    background-color: #5ccfe0;
+    padding: 3px;
+    top: -12px;
+    right: -12px;
+    background-color: var(--red);
     border-radius: 50%;
     border: 2px solid white;
     font-size: 14px;
@@ -380,6 +380,7 @@
     width: 14px;
     color: white;
     text-align: center;
+    display: none;
 }
 
 /* common */
@@ -399,10 +400,14 @@
     display: none;
 }
 
-.active .have__product{
+.active__cartList .have__product{
     display: block;
 }
 
-.active .no__cart{
+.active__cartList .no__cart{
     display: none;
+}
+
+.active__cartNotice{
+    display: block;
 }

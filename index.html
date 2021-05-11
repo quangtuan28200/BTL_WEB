@@ -85,15 +85,16 @@
                     <div class="header__cart">
                         <a href="#" class="cart__link">
                             <i class="fas fa-shopping-cart">
-                                <span class="cart__notice">3</span>
+                                <!-- su dung class 'active__cartNotice' neu co thong bao -->
+                                <span class="cart__notice ">3</span>
                             </i>
                         </a>
 
                         <!-- cartItemMenu -->
                         <div class="header__cartMenu">
 
-                            <!-- su dung class 'active' neu co san pham -->
-                            <div class="header__cartMenuWrapper active">
+                            <!-- su dung class 'active__cartList' neu co san pham -->
+                            <div class="header__cartMenuWrapper ">
 
                                 <!-- Khong co san pham -->
                                 <div class="no__cart">
@@ -106,24 +107,6 @@
                                     <div class="cartList__header">Sản phẩm đã thêm</div>
         
                                     <ul class="header__cartList">
-                                        <li class="header__cartItem">               
-                                            <div class="cartItem__img">
-                                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="img">
-                                            </div>
-                                            <div class="cartItem__content">
-                                                <div class="cartItem__Name">
-                                                    <a href="#">Bao da đeo đa di năng Remax YD-03</a>       
-                                                </div>
-                                                <div class="cartItem__InfoPay">
-                                                    <div class="cartItem__Price">2.070.000đ</div>
-                                                    <div class="cartItem__Muntiply">x</div>
-                                                    <div class="cartItem__Quantity">1</div>
-                                                </div>
-                                            </div>
-                                            <div class="cartItem__Remove">
-                                                <i class="far fa-times-circle"></i>
-                                            </div>                       
-                                        </li>
                                         <li class="header__cartItem">               
                                             <div class="cartItem__img">
                                                 <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="img">
@@ -220,5 +203,7 @@
             </div>
         </footer>
     </div>
+
+    <script src="./assets/JS/main.js"></script>
 </body>
 </html>
