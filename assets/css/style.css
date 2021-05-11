@@ -203,7 +203,7 @@
     height: 16px;
 }
 
-.header__cart:hover .header__cartList{
+.header__cart:hover .header__cartMenu{
     display: block;
 }
 
@@ -211,7 +211,8 @@
     color: var(--subTheme_color);
 }
 
-.header__cartList{
+/* item cart */
+.header__cartMenu{
     z-index: 4;
     position: absolute;
     top: 160%;
@@ -219,14 +220,32 @@
     background-color: white;
     box-shadow: 0 0 3px #ccc;
     border-radius: 2px;
-    padding: 0;
-    margin: 0;
     width: 400px;
     /* aniamtion */
     transform-origin: calc(100% - 10px)top;
     animation: growth ease 0.2s;
     will-change: opacity, transform;
-    /* display: none; */
+    display: none;
+}
+
+.header__cartMenuWrapper{
+    padding: 10px 16px 20px 16px;
+}
+
+.cartList__header{
+    color: #aaa;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.header__cartList{
+    padding: 0;
+    margin: 0;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .header__cartList::before{
@@ -240,19 +259,15 @@
     right: -2px;
 }
 
-.header__cartListWrapper{
-    padding: 10px 16px 20px 16px;
-}
-
-.cartList__header{
-    color: #aaa;
-    font-weight: 500;
-}
-
 .header__cartItem{
     display: flex;
     margin-top: 10px;
     border-top: 1px solid #ddd;
+}
+
+.header__cartItem:first-child{
+    margin: 0;
+    border-top: none;
 }
 
 .cartItem__content{
@@ -267,6 +282,11 @@
     text-decoration: none;
     color: var(--textColor);
     display: block;
+    max-width: 230px;
+    height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cartItem__Name a:hover{
@@ -292,7 +312,9 @@
 .cartItem__Remove{
     display: flex;
     align-items: center;
-    margin: 0 0 0 auto;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 12px;
 }
 
 .cartItem__Remove i{
@@ -311,7 +333,6 @@
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
-    border-top: 1px solid #ddd;
 }
 
 .show__spCart,
