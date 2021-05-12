@@ -542,6 +542,152 @@
     color: white;
 }
 
+/* FOOTER */
+.footer{
+    border-top: 4px solid var(--primary-color);
+}
+
+.footer__spaceHeading{
+    height: 124px;
+}
+
+.footer__info{
+    background-color: #fbfbfb;
+}
+
+.footer__infoDetail{
+    border-top: 1px solid #e8e8e8;
+    font-size: 14px;
+}
+
+.footer__infoDetail__heading{
+    color: #737373;
+    font-weight: 500;
+    margin: 40px 0 20px 0;
+}
+
+.footer__infoDetail__list{
+    margin: 0;
+    padding: 0;
+}
+
+.footer__infoDetail__item{
+    list-style-type: none;
+    margin-bottom: 12px;
+    color: #737373;
+}
+
+.footer__inforDetail__link{
+    text-decoration: none;
+    font-size: 14px;
+    color: #737373;
+}
+
+.phone__list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.phone{
+    font-weight: 500;
+}
+
+.footer__inforDetail__link:hover{
+    color: var(--subTheme_color);
+}
+
+.footer__infoDetail__PayImg{
+    height: 29px;
+    width: 55px;
+    object-fit: contain;
+    margin: 0 8px 8px 0;
+}
+
+.footer__infoDetail__icon{
+    font-size: 16px;
+    color: #737373;
+    margin-right: 10px;
+}
+
+.footer__infoDetail__imgDownload{
+    display: flex;
+    margin-right: 46px;
+}
+
+.imgDownload--qr{
+    width: 86px;
+    border: 1px solid #e4e4e4;
+    border-radius: 2px;
+}
+
+.imgDownload--mobi{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 12px;
+}
+
+.imgDownload--chplay,
+.imgDownload--appstore{
+    height: 20px;
+}
+
+/* footer__Policy */
+
+.footer__Policy{
+    background-color: rgb(245, 245, 245);
+    padding: 40px 0 36px 0 ;
+}
+
+.footer__Policy__nav{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.footer__Policy__navItem{
+    padding: 0 25px;
+    border-right: 1px solid #c0c0c0;
+    height: 14px;
+}
+
+.footer__Policy__navItem:last-child{
+    border: none;
+}
+
+.footer__Policy__navLink{
+    text-decoration: none;
+    font-size: 14px;
+    color: #737373;
+}
+
+.footer__Policy__resgister{
+    display: flex;
+    justify-content: center;
+}
+
+.Policy__resgister__link{
+    display: block;
+    margin: 0 20px;
+}
+
+.footer__Policy__resgister img{
+    width: 120px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.footer__Policy__info{
+    font-size: 13px;
+    color: #737373;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.Policy__info__nameCom{
+    margin-bottom: 24px;
+}
+
 /* common */
 .no__cart span{
     font-weight: 500;
