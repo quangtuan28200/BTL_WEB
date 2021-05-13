@@ -42,5 +42,58 @@ function scrollFunction() {
 function topFunction() {
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
-    $("html, body").animate({ scrollTop: 0 }, 400);  
+    $("html, body").animate({ scrollTop: 0 }, 300);  
 }
+
+//! slide_show
+// var dot__Container = document.getElementsByClassName("dot__component");
+// console.log(dot__Container);
+showDots();
+var slideIndex = 1;
+//hien slide dau tien len
+showSlides(slideIndex);
+
+setInterval(() => {
+    plusSlides(1);
+}, 3500);
+
+// Next/previous controls
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length){
+        slideIndex = 1;
+    }
+    if (n < 1){
+        slideIndex = slides.length;
+    }
+    for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (var j = 0; j < dots.length; j++) {
+        dots[j].classList.remove('dot_active');
+    }
+    //slides
+    slides[slideIndex-1].style.display = "block";
+
+    //dots
+    dots[slideIndex-1].classList.add('dot_active');
+}
+
+function showDots() {
+    var dot__Container = document.querySelector(".dot__component");
+    var slides = document.getElementsByClassName("mySlides");
+
+    for (var i = 1; i <= slides.length; i++) {
+        dot__Container.insertAdjacentHTML('beforeend','<span class="dot" onclick="currentSlide('+ i +')"></span>');
+    }
+}
+
