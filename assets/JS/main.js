@@ -31,19 +31,10 @@ window.onscroll = function(){
 function scrollFunction() {
     if (document.documentElement.scrollTop > 100) {
         $("#myBtn").fadeIn();
-        // $("#myBtn").animate({ 
-        //     opacity: '1',
-        //     bottom: '40px'
-        // }, 300); 
+        document.getElementById("myBtn").style.bottom = "60px";
     } else {    
-        $("#myBtn").fadeOut();
-        // $("#myBtn").animate({ 
-        //     opacity: '0',
-        //     bottom: '20px',
-        // }, 300); 
-        // setTimeout(() => {
-        //     $("#myBtn").hide();
-        // }, 300);      
+        document.getElementById("myBtn").style.bottom = "40px";
+        $("#myBtn").fadeOut(); 
     }
 }
 

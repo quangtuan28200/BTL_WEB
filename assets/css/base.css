@@ -40,9 +40,9 @@ body{
 /* Animation */
 @keyframes fadeOut__nav{
     from {
-        opacity: 1;
+        transform: scale(1);
     }to{
-        opacity: 75%;
+        transform: scale(1.1);
     }
 }
 
