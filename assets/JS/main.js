@@ -97,3 +97,44 @@ function showDots() {
     }
 }
 
+//! active new_product
+activeNews__header(0)
+
+function activeNews__header(n) {  
+    var newsHeader__Selector = document.querySelectorAll('.news__headerWr');
+    var newsContent__Selector = document.querySelectorAll('.news__contentWr');
+
+    for (let index = 0; index < newsHeader__Selector.length; index++) {
+        newsHeader__Selector[index].classList.remove('product__active');
+    }
+    for (let index = 0; index < newsContent__Selector.length; index++) {
+        newsContent__Selector[index].classList.remove('show');
+    }
+    
+    newsHeader__Selector[n].classList.add('product__active');
+    newsContent__Selector[n].classList.add('show');
+}
+
+
+
+function hoverNews__header() {
+    document.querySelector('.product__active').classList.remove('product__active');
+}
+
+
+function outNews__header() {
+    if(document.querySelector('.news__productArea').matches('.show')){
+        document.querySelector('.news__product').classList.add('product__active');
+    }
+
+    if(document.querySelector('.news__newsArea').matches('.show')){
+        document.querySelector('.news_news').classList.add('product__active');
+    }
+}
+
+function date() {
+    d = new Date();
+    return d.getDate() + ' Tháng ' + d.getMonth() + ', ' + d.getFullYear() ;
+}
+
+

@@ -591,11 +591,6 @@
     display: block;
 }
 
-.news__product a{
-    margin-right: 4px;
-    
-}
-
 .news__product a::before{
     content: "";
     position: absolute;
@@ -636,6 +631,10 @@
 
 .news__contentArea{
     margin-top: 10px;
+}
+
+.news__contentWr{
+    display: none;
 }
 
 .news__contentWrap{
@@ -965,4 +964,17 @@ footer{
 
 .dot_active{
     background-color: black;
+}
+
+.product__active a::before{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
 }
