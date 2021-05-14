@@ -98,7 +98,7 @@ function showDots() {
 }
 
 //! active new_product
-activeNews__header(0)
+activeNews__header(0);
 
 function activeNews__header(n) {  
     var newsHeader__Selector = document.querySelectorAll('.news__headerWr');
@@ -136,5 +136,19 @@ function date() {
     d = new Date();
     return d.getDate() + ' Tháng ' + d.getMonth() + ', ' + d.getFullYear() ;
 }
+
+//!itemNav--active
+
+function active__cate(n) {
+    var x = document.querySelectorAll('.Category__link');
+    var y = document.querySelector('.itemCate__active');
+    if(y != null){
+        y.classList.remove('itemCate__active');
+    }
+    x[n].classList.add('itemCate__active');
+    var z = document.querySelector('.content__headingText h4')
+    z.innerText = x[n].textContent.toUpperCase();
+}
+
 
 

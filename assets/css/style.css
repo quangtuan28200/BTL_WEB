@@ -627,8 +627,6 @@
     transform: translateX(0);
 }
 
-
-
 .news__contentArea{
     margin-top: 10px;
 }
@@ -747,11 +745,22 @@
     font-weight: 500;
 }
 
+.products__Wrap {
+    margin-bottom: 16px;
+}
+
 .product__areaWrapper{
     border: 1px solid var(--subTheme_color);
     background-color: wheat;
     overflow: hidden;
     border-radius: 2px;
+}
+
+.product__textHeader a{
+    height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product__textHeader:hover a{
