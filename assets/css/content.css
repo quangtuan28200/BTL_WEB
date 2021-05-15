@@ -1,6 +1,5 @@
 .content__heading{
     display: flex;
-    justify-content: space-between;
     font-weight: 500;
     color: var(--textColor);
     align-items: center;
@@ -26,6 +25,11 @@
 
 .content__headingText span {
     margin: 0 10px;
+}
+
+.headingFilter__container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .content__headingFilter{
@@ -163,6 +167,7 @@
 .pagination__list{
     justify-content: center;
     margin: 4px 0;
+    display: flex;
 }
 
 .pagination__item{

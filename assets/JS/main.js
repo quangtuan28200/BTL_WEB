@@ -161,4 +161,95 @@ slider.oninput = function() {
     output.innerText = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
+//! minus, plus btn
+function minus_plus(n) {
+    number_field = document.querySelector('.number_field');
+    value = parseInt(number_field.value);
+    min = parseInt(number_field.min);
+    max = parseInt(number_field.max);
+    
+    value += n;
+
+    if(min <= value && value <= max){
+        number_field.value = value;
+    }else{
+        number_field.value = 1;
+    }
+}
+
+//! product__slider
+ul = document.querySelector('.productSame__list');
+ul_width = ul.offsetWidth;
+
+
+function next() {
+    ul.style.transform = 'translateX(' + -ul_width + 'px)';
+}
+
+function prev() {
+    ul.style.transform = 'translateX(' + 0 + 'px)';
+}
+
+// productScroll();
+
+// function productScroll() {
+//     let slider = document.getElementById("productSame__area ");
+//     let next = document.getElementsByClassName("pro-next");
+//     let prev = document.getElementsByClassName("pro-prev");
+//     console.log(next);
+//     console.log(prev);
+//     let slide = document.getElementById("productSame__list");
+//     let item = document.getElementById("productSame__list");
+
+//     for (let i = 0; i < next.length; i++) {
+//         //refer elements by class name
+
+//         let position = 0; //slider postion
+
+//         prev[i].addEventListener("click", function() {
+//         //click previos button
+//             if (position > 0) {
+//                 //avoid slide left beyond the first item
+//                 position -= 3;
+//                 translateX(position); //translate items
+//             }
+//         });
+
+//         next[i].addEventListener("click", function() {
+//             if (position >= 0 && position < hiddenItems()) {
+//                 //avoid slide right beyond the last item
+//                 position += 3;
+//                 translateX(position); //translate items
+//             }
+//         });
+//     }
+
+//     function hiddenItems() {
+//         //get hidden items
+//         let items = getCount(item, false);
+//         let visibleItems = slider.offsetWidth / 210;
+//         return items - Math.ceil(visibleItems);
+//     }
+// }
+
+// function translateX(position) {
+//     //translate items
+//     slide.style.left = position * -210 + "px";
+// }
+
+// function getCount(parent, getChildrensChildren) {
+//     //count no of items
+//     let relevantChildren = 0;
+//     let children = parent.childNodes.length;
+//     for (let i = 0; i < children; i++) {
+//         if (parent.childNodes[i].nodeType != 3) {
+//         if (getChildrensChildren)
+//             relevantChildren += getCount(parent.childNodes[i], true);
+//         relevantChildren++;
+//         }
+//     }
+//     return relevantChildren;
+// }
+
+
 
