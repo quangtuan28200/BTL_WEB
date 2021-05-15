@@ -146,9 +146,19 @@ function active__cate(n) {
         y.classList.remove('itemCate__active');
     }
     x[n].classList.add('itemCate__active');
-    var z = document.querySelector('.content__headingText h4')
+    var z = document.querySelector('.content__headingText h4');
     z.innerText = x[n].textContent.toUpperCase();
 }
 
+//! range slider
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("price_desc");
+output.innerText = slider.value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+
+slider.oninput = function() {
+    output.innerText = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
 
 

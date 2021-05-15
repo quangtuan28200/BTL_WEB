@@ -93,60 +93,90 @@
 
 /* filter__price */
 .price_slider_wrapper{
-    padding: 30px 15px 15px 15px;
+    padding: 20px 15px 20px 15px;
     border-top: 1px solid #ececec;
 }
 
-.price_slider{
-    background: #f1f1f1;
+.slide{
+    -webkit-appearance: none;
     height: 5px;
-    text-align: center;
+    border-radius: 5px;
+    background: #d7dcdf;
+    outline: none;
     margin-bottom: 14px;
-    position: relative;
-}
-.slide_range{
-    position: absolute;
-    opacity: .5;
-    z-index: 1;
-    font-size: 10px;
-    display: block;
-    border: 0;
-    background-color: #666;
-    height: 5px;
     width: 100%;
 }
 
-.slide_handle{
-    position: absolute;
-    z-index: 2;
+.slide::-webkit-slider-thumb {
+    appearance: none;
     width: 15px;
     height: 15px;
-    cursor: pointer;
-    top: -5px;
     border-radius: 50%;
-    background-color: #666;
-}
-
-.slide{
-    background-color: #666;
-    appearance: none;
-    height: 5px;
-    outline: none;
-}
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #aa0457;
+    background: #666;
     cursor: pointer;
+    transition: background .15s ease-in-out;
+}
+
+.price_slider_amount{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter__btn{
+    padding: 5px;
+    width: 50px;
+}
+
+.price_label{
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.from,
+#price_desc{
+    color: var(--red);
+}
+
+.gia{
+    margin-right: 4px;
+}
+
+.gachngang{
+    color: var(--red);
+    margin: 0 4px;
+}
+
+.d{
+    margin-left: 4px;
+    color: var(--red);
 }
 
 /* product */
 .product__areaWrapper{
     border: none;
 }
+
+/* pagination */
+
+.pagination__list{
+    justify-content: center;
+    margin: 4px 0;
+}
+
+.pagination__item{
+    margin-right: 8px;
+}
+
+.pagination__link{
+    text-align: center;
+    width: 30px;
+    line-height: 26px;
+    border: 2px solid var(--theme_color);
+    border-radius: 50%;
+}
+
 
 /* common */
 .itemCate__active::before{

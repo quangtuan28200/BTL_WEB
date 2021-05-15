@@ -742,17 +742,15 @@
                         <div class="products__FilterPrice">
                             <h4 class="FilterPrice__header">LỌC THEO GIÁ</h4>
                             <div class="price_slider_wrapper">
-                                <div class="price_slider">
-                                    <div class="slide_range"></div>
-                                    <span class="slide_handle" style="left: 0;"></span>
-                                    <span class="slide_handle" style="right: 0;" ondrag=""></span>
-                                    <input type="range" class="slide">
-                                </div> 
+                                <input type="range" class="slide" min="1000000" max="15000000" value="5000000" id="myRange">
                                 <div class="price_slider_amount">
-                                    <button type="submit" class="button">Lọc</button>
+                                    <button type="submit" class="filter__btn btn">Lọc</button>
                                     <div class="price_label">
-                                        Giá 
-                                        <span class="from">3,437,793&nbsp;₫</span> — <span class="to">13,000,000&nbsp;₫</span>
+                                        <span class="gia">Giá:</span>
+                                        <span class="from">1.000.000 đ</span> 
+                                        <span class="gachngang">-</span> 
+                                        <span id="price_desc"></span> 
+                                        <span class="d"> đ</span>
                                     </div>
                                 </div>
                             </div>
@@ -937,6 +935,120 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="products__Wrap col l-3">
+                                <div class="product__areaWrapper">
+                                    <div class="product__img">
+                                        <a href="#">
+                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product__textArea">
+                                        <div class="product__textHeader">
+                                            <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                        </div>
+                                        <div class="product__textPrice">
+                                            150.000 
+                                            <span>đ</span>
+                                        </div>
+                                        
+                                        <div class="product__textButton">
+                                            <a href="#">Thêm vào giỏ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="products__Wrap col l-3">
+                                <div class="product__areaWrapper">
+                                    <div class="product__img">
+                                        <a href="#">
+                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product__textArea">
+                                        <div class="product__textHeader">
+                                            <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                        </div>
+                                        <div class="product__textPrice">
+                                            150.000 
+                                            <span>đ</span>
+                                        </div>
+                                        
+                                        <div class="product__textButton">
+                                            <a href="#">Thêm vào giỏ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="products__Wrap col l-3">
+                                <div class="product__areaWrapper">
+                                    <div class="product__img">
+                                        <a href="#">
+                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product__textArea">
+                                        <div class="product__textHeader">
+                                            <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                        </div>
+                                        <div class="product__textPrice">
+                                            150.000 
+                                            <span>đ</span>
+                                        </div>
+                                        
+                                        <div class="product__textButton">
+                                            <a href="#">Thêm vào giỏ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="products__Wrap col l-3">
+                                <div class="product__areaWrapper">
+                                    <div class="product__img">
+                                        <a href="#">
+                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product__textArea">
+                                        <div class="product__textHeader">
+                                            <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                        </div>
+                                        <div class="product__textPrice">
+                                            150.000 
+                                            <span>đ</span>
+                                        </div>
+                                        
+                                        <div class="product__textButton">
+                                            <a href="#">Thêm vào giỏ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pagination__area">
+                            <ul class="pagination__list ul__format">
+                                <!-- prev -->
+                                <li class="pagination__item">
+                                    <a href="#" class="pagination__link a_format">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                </li>
+
+                                <!-- page__number+- -->
+                                <li class="pagination__item">
+                                    <a href="#" class="pagination__link a_format">1</a>
+                                </li>              
+                                <li class="pagination__item">
+                                    <a href="#" class="pagination__link a_format">2</a>
+                                </li>
+
+                                <!-- next -->
+                                <li class="pagination__item">
+                                    <a href="#" class="pagination__link a_format">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>                             
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -977,6 +1089,48 @@
                             </ul>
                         </div>
                         <div class="col l-2-4">
+                            <h4 class="footer__infoDetail__heading">THEO DÕI CHÚNG TÔI TRÊN</h4>
+                            <ul class="footer__infoDetail__list">
+                                <li class="footer__infoDetail__item">
+                                    <i class="footer__infoDetail__icon fab fa-facebook-square"></i>
+                                    <a href="https://www.facebook.com/ShopeeVN/" target="_blank" class="footer__inforDetail__link">Facebook</a>
+                                </li>
+                                <li class="footer__infoDetail__item">
+                                    <i class="footer__infoDetail__icon fab fa-instagram-square"></i>
+                                    <a href="#" class="footer__inforDetail__link">Instagram</a>
+                                </li>
+                                <li class="footer__infoDetail__item">
+                                    <i class="footer__infoDetail__icon fab fa-linkedin"></i>
+                                    <a href="#" class="footer__inforDetail__link">Linkedin</a>
+                                </li>
+                            </ul>
+
+                            
+                        </div>                 
+                        <div class="col l-2-4">
+                            <h4 class="footer__infoDetail__heading">THANH TOÁN</h4>
+                            <div class="footer__infoDetail__Pay">
+                                <img src="./assets/imgs/visa.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/mastercard.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/jcb.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/amex.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/airpay.png" alt="" class="footer__infoDetail__PayImg">
+                            </div>
+                        </div>       
+                        <div class="col l-2-4">
+                            <h4 class="footer__infoDetail__heading">ĐƠN VỊ VẬN CHUYỂN</h4>
+                            <div class="footer__infoDetail__Expresss">
+                                <img src="./assets/imgs/shoppeexpress.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/tải xuống.png" alt="" class="footer__infoDetail__PayImg">                   
+                                <img src="./assets/imgs/vietnampost.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/j&t.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/grapex.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/now.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/ninja.png" alt="" class="footer__infoDetail__PayImg">
+                                <img src="./assets/imgs/bestex.png" alt="" class="footer__infoDetail__PayImg">
+                            </div>
+                        </div>
+                        <div class="col l-2-4">
                             <h4 class="footer__infoDetail__heading">LIÊN HỆ</h4>
                             <ul class="footer__infoDetail__list">
                                 <li class="footer__infoDetail__item phone__list">
@@ -996,48 +1150,6 @@
                                     <a href="" class="footer__inforDetail__link phone">1900 636 648</a>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="col l-2-4">
-                            <h4 class="footer__infoDetail__heading">THANH TOÁN</h4>
-                            <div class="footer__infoDetail__Pay">
-                                <img src="./assets/imgs/visa.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/mastercard.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/jcb.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/amex.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/airpay.png" alt="" class="footer__infoDetail__PayImg">
-                            </div>
-                        </div>
-                        <div class="col l-2-4">
-                            <h4 class="footer__infoDetail__heading">ĐƠN VỊ VẬN CHUYỂN</h4>
-                            <div class="footer__infoDetail__Expresss">
-                                <img src="./assets/imgs/shoppeexpress.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/tải xuống.png" alt="" class="footer__infoDetail__PayImg">                   
-                                <img src="./assets/imgs/vietnampost.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/j&t.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/grapex.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/now.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/ninja.png" alt="" class="footer__infoDetail__PayImg">
-                                <img src="./assets/imgs/bestex.png" alt="" class="footer__infoDetail__PayImg">
-                            </div>
-                        </div>
-                        <div class="col l-2-4">
-                            <h4 class="footer__infoDetail__heading">THEO DÕI CHÚNG TÔI TRÊN</h4>
-                            <ul class="footer__infoDetail__list">
-                                <li class="footer__infoDetail__item">
-                                    <i class="footer__infoDetail__icon fab fa-facebook-square"></i>
-                                    <a href="https://www.facebook.com/ShopeeVN/" target="_blank" class="footer__inforDetail__link">Facebook</a>
-                                </li>
-                                <li class="footer__infoDetail__item">
-                                    <i class="footer__infoDetail__icon fab fa-instagram-square"></i>
-                                    <a href="#" class="footer__inforDetail__link">Instagram</a>
-                                </li>
-                                <li class="footer__infoDetail__item">
-                                    <i class="footer__infoDetail__icon fab fa-linkedin"></i>
-                                    <a href="#" class="footer__inforDetail__link">Linkedin</a>
-                                </li>
-                            </ul>
-
-                            
                         </div>
                     </div>
                 </div>
