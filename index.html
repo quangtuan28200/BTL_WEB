@@ -1192,7 +1192,29 @@
                     <h3 class="productSame__Header col l-12">SẢN PHẨM TƯƠNG TỰ</h3>
                     <div class="productSame__area col l-12" id="productSame__area">
                         <ul class=" productSame__list ul__format row" id="productSame__list">
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
+                                <div class="product__areaWrapper">
+                                    <div class="product__img">
+                                        <a href="#">
+                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product__textArea">
+                                        <div class="product__textHeader">
+                                            <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                        </div>
+                                        <div class="product__textPrice">
+                                            300.000 
+                                            <span>đ</span>
+                                        </div>
+                                        
+                                        <div class="product__textButton">
+                                            <a href="#">Thêm vào giỏ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1214,7 +1236,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1236,7 +1258,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1258,7 +1280,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1280,29 +1302,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
-                                <div class="product__areaWrapper">
-                                    <div class="product__img">
-                                        <a href="#">
-                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product__textArea">
-                                        <div class="product__textHeader">
-                                            <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                                        </div>
-                                        <div class="product__textPrice">
-                                            150.000 
-                                            <span>đ</span>
-                                        </div>
-                                        
-                                        <div class="product__textButton">
-                                            <a href="#">Thêm vào giỏ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1324,7 +1324,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1346,7 +1346,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1368,7 +1368,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1390,7 +1390,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="products__Wrap col l-2-4">
+                            <li class="productSame__item products__Wrap col l-2-4">
                                 <div class="product__areaWrapper">
                                     <div class="product__img">
                                         <a href="#">
@@ -1415,14 +1415,18 @@
                         </ul>
                     </div>
                     <!-- Next and previous buttons -->
-                    <a class="prev pro_prev" onclick="prev()">
+                    <a class="prev pro_prev" onclick="product__slider(-3, 244.8, '.productSame__item:first-child', '.productSame__item:last-child')">
                         <i class="fas fa-chevron-left"></i>
                     </a>
-                    <a class="next pro_next" onclick="next()">
+                    <a class="next pro_next" onclick="product__slider(3, 244.8, '.productSame__item:first-child')">
                         <i class="fas fa-chevron-right"></i>
                     </a>
                     <!-- <button class="ctrl-btn pro-prev" onclick="prev()">Prev</button>
                     <button class="ctrl-btn pro-next" onclick="next()">Next</button> -->
+                </div>
+
+                <div class="slideshow__container productSame__container row">
+
                 </div>
             </div>
 

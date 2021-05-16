@@ -189,38 +189,17 @@
 
 .productSame__area {
     height: 421px;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .productSame__list{
     display: flex;
     flex-wrap: nowrap;
-    transition: transform .5s ease;
 }
 
-/* .ctrl-btn {
-    padding: 20px 20px;
-    min-width: 50px;
-    background: #fff;
-    border: none;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-
-    position: absolute;
-    top: 50%;
-    margin-top: -27.5px;
+.productSame__item{
+    transition: margin-left .5s ease;
 }
-  
-.ctrl-btn.pro-prev {
-    left: 0;
-}
-
-.ctrl-btn.pro-next {
-    right: 0;
-} */
 
 .pro_prev,
 .pro_next{
@@ -232,3 +211,4 @@
 .pro_next:hover{
     opacity: 80%;
 }
+
