@@ -1,0 +1,187 @@
+.cart__wrapper{
+    background-color: white;
+    border-radius: 2px;
+}
+
+
+.cart__productWrap{
+    padding: 20px;
+}
+
+.cart__productHeader{
+    display: flex;
+    color: var(--textColor);
+}
+
+.productHeader__price{
+    margin-left: 322px;
+}
+
+.productHeader__amount{
+    margin-left: 64px;
+}
+
+.cart__productItem{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
+
+.cart__productImg img{
+    width: 75px;
+    border-radius: 2px;
+}
+
+.cart__productImg img:hover{
+    box-shadow: 0 0 5px #ccc;
+}
+
+.cart__productName a{
+    text-decoration: none;
+    color: var(--textColor);
+    font-weight: 500;
+    margin: 0 12px;
+}
+
+.cart__productName a:hover{
+    color: var(--subTheme_color);
+}
+
+.cart__productPriceWr{
+    color: var(--red);
+    font-weight: 500;
+    margin: 0 12px;
+}
+
+.cart__productAmount{
+    margin: 0 12px;
+}
+
+.cart__productRemove i{
+    font-size: 24px;
+    color: var(--textColor);
+}
+
+.cart__productRemove i:hover{
+    color: var(--red);
+}
+
+.cart__productBtn{
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.cart__productBtn a{
+    text-decoration: none;
+    color: var(--textColor);
+    font-weight: 500;
+    display: block;
+    transition: color .2s ease;
+    text-rendering: optimizeLegibility;
+    padding: 10px;
+    border: 2px solid var(--subTheme_color);
+    color: var(--textColor);
+    border-radius: 2px;
+}
+
+.cart__productBtn a:hover{
+    color: white;
+    padding: 12px;
+    background-image: linear-gradient(0, var(--subTheme_color), var(--theme_color));
+    border: none;
+}
+
+.cart__productTotal{
+    display: inline-block;
+    margin-left: 123px;
+    font-weight: 500;
+    color: var(--textColor);
+}
+
+.productTotal__label{
+    margin-right: 8px;
+}
+
+.productTotal__number{
+    color: var(--red);
+}
+
+/* cart__payWrap */
+.cart__payWrap{
+    padding: 20px;
+    color: var(--textColor);
+    font-weight: 500;
+}
+
+.area_total{
+    border-bottom: 1px solid #ccc;
+}
+
+.applycode{
+    display: flex;
+    padding-bottom: 14px;
+}
+
+.applycode__text_input input{
+    width: 100%;
+    border: 1px solid #c6c6c6;
+}
+
+.applycode__code{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.applycode__code i{
+    color: var(--textColor);
+}
+
+.applycode__code:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.applycode__button button {
+    border: 1px solid #288ad6;
+    background-color: #288ad6;
+    color: white;
+    width: 100px;
+    margin-left: 10px;
+}
+
+.applycode__button button:hover{
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.price_provisional,
+.price_total,
+.money_discount{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 14px;
+}
+
+.price_total_money{
+    color: var(--red);
+}
+
+.sex_customer{
+    padding-bottom: 10px;
+}
+
+.fill_inform{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fill_infor{
+    width: 218px;
+}
+
+.fill_infor input{
+    border: 1px solid #c6c6c6;
+    width: 100%;
+}

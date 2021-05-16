@@ -202,3 +202,46 @@ function product__slider(n, m ,product_Fistitem, product_lastitem) {
         }, 0.0001);
     }
 }
+
+var cart_product_quantity = document.querySelectorAll('.cart__productItem').length;
+
+document.querySelector('.price_provisional_label span').innerText = '( ' + cart_product_quantity + ' sản phẩm ):';
+
+var asd = document.querySelectorAll('.cart__productPrice');
+// var qwe = document.querySelectorAll('.number_field');
+// console.log(qwe);
+
+var dsa = Array.from(asd).reduce(function (value, input) {  
+    return value + parseInt(input.innerText.split('.').join(''));
+}, 0);
+
+document.querySelector('.price_provisional_money').innerHTML = dsa.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' đ';
+document.querySelector('.price_total_money').innerHTML = dsa.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' đ';
+
+//! random_discountCode
+function makeid(length) {
+var result           = [];
+var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+        result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+    }
+
+    document.querySelector('.applycode__text_input input').value = result.join('');
+}
+
+function money_discount() {
+    input = document.querySelector('.applycode__text_input input');
+    if(input.value == ''){
+        input.style.boxShadow = '0 0 5px red';
+    }else{
+        // 1-1.000.000
+        var money = Math.floor(200000 + Math.random() * 500000);
+
+        // input.removeAttribute("style");
+        input.style.boxShadow = '0 0 5px green';
+        // document.querySelector('.applycode').style.display = 'none';
+        document.querySelector('.money_discount').style.display = 'flex';
+        document.querySelector('.money_dis').innerText = '- ' + money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' đ';
+    }
+}
