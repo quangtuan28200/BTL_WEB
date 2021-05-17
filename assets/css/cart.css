@@ -123,6 +123,12 @@
     padding-bottom: 14px;
 }
 
+.applycode_suc{
+    margin-bottom: 20px;
+    color: green;
+    display: none;
+}
+
 .applycode__text_input input{
     width: 100%;
     border: 1px solid #c6c6c6;
@@ -168,20 +174,90 @@
     color: var(--red);
 }
 
+.infor_customer{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
 .sex_customer{
     padding-bottom: 10px;
 }
 
-.fill_inform{
+.choosegetgoods{
+    border-bottom: 1px solid #c6c6c6;
+}
+
+#fill_informWrap{
     display: flex;
     justify-content: space-between;
 }
 
-.fill_infor{
+#fill_inforName,
+#fill_inforSDT{
     width: 218px;
+    border: 1px solid #c6c6c6;
+    margin-bottom: 5px;
 }
 
-.fill_infor input{
-    border: 1px solid #c6c6c6;
-    width: 100%;
+.form_message{
+    font-size: 14px;
+    display: none;
 }
+
+.deli_unit,
+.fee_deli,
+.last_pay{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fee_deli span ,
+.last_pay span{
+    color: var(--red);
+}
+
+#deli_unit_sl{
+    padding: 10px;
+    height: 40px;
+    outline: none;
+    border: 1px solid #c6c6c6;
+    border-radius: 4px;
+}
+
+.pay_with{
+    padding-bottom: 20px;
+}
+
+#address_input,
+#other_request{
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    border: 1px solid #c6c6c6;
+}
+
+.cart_payBtn button{
+    width: 100%;
+    color: white;
+    border: none;
+    background-color: var(--red);
+}
+
+.cart_payBtn button:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+
+/* common */
+
+.form_group.invalid .form_control {
+    border-color: #f33a58 !important;
+}
+
+.form_group.invalid .form_message {
+    color: #f33a58 !important;
+    display: block;
+}
+
+
