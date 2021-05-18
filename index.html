@@ -1550,11 +1550,11 @@
                     </div>
                     <div class="cart__pay col l-5">
                         <div class="cart__payWrap">
-                            <h4 class="cart__payHeader">TẠO PHIẾU THANH TOÁN</h4>
-
-                            <div class="area_total">
-                                <div class="discountcode">
-                                    <form action="" class="applycode ">
+                            <form id="cart__payForm" method="POST" action="">
+                                <h4 class="cart__payHeader">TẠO PHIẾU THANH TOÁN</h4>
+                         
+                                <div class="area_total">
+                                    <div class="discountcode">                               
                                         <div class="applycode__text_input">
                                             <input class="input_format" maxlength="20" placeholder="Nhập mã giảm giá">
                                         </div>
@@ -1563,99 +1563,100 @@
                                         </div>
                                         <div class="applycode__button">
                                             <button class="input_format" type="button" onclick="money_discount()">Áp dụng</button>
-                                        </div>
-                                    </form>
+                                        </div>                                   
+                                    </div>
                                     <div class="applycode_suc">
                                         <i class="fas fa-check-circle"></i>
                                         <span>Áp dụng thành công mã giảm giá </span> 
                                     </div>
+                                    <div class="price_provisional">
+                                        <span class="price_provisional_label">
+                                            Tạm tính
+                                            <span>( 3 sản phẩm ):</span>
+                                        </span>
+                                        <span class="price_provisional_money"></span>
+                                    </div>
+                                    <div class="money_discount" style="display: none;">
+                                        <span>Mã giảm giá:</span>                                  
+                                        <span name="money_dis" class="money_dis" money_dis = "0" style="color: green"></span>
+                                    </div>
+                                    <div class="price_total">
+                                        <strong class="price_total_label">Tổng tiền:</strong>
+                                        <span class="price_total_money"></span>
+                                    </div>
+                                    
                                 </div>
-                                <div class="price_provisional">
-                                    <span class="price_provisional_label">
-                                        Tạm tính
-                                        <span>( 3 sản phẩm ):</span>
-                                    </span>
-                                    <span class="price_provisional_money"></span>
-                                </div>
-                                <div class="money_discount" style="display: none;">
-                                    <span>Mã giảm giá:</span>                                  
-                                    <span class="money_dis" money_dis = "0" style="color: green"></span>
-                                </div>
-                                <div class="price_total">
-                                    <strong class="price_total_label">Tổng tiền:</strong>
-                                    <span class="price_total_money"></span>
-                                </div>
-                                
-                            </div>
 
-                            <div class="infor_customer">
-                                <h4>THÔNG TIN KHÁCH HÀNG:</h4>
-                                <form action="" id="form_customer">
+                                <div class="infor_customer">
+                                    <h4>THÔNG TIN KHÁCH HÀNG:</h4>
+                                    
                                     <div class="sex_customer form_group">
                                         <input name="gender" type="radio" value="male"> Anh
                                         <input name="gender" type="radio" value="female"> Chị
+                                        <span class="form_message">vui long nhap</span>                                                     
                                     </div>
                                     
-                                    <div id="fill_informWrap">
+                                    <div id="fill_informWrap">                                    
                                         <div class="form_group"> 
-                                            <input id="fill_inforName" name="fill_inforName" class="input_format form_control" placeholder="Họ và Tên" type="text" maxlength="50">  
+                                            <input id="fill_inforName" name="name" class="input_format form_control" placeholder="Họ và Tên" type="text" maxlength="50">  
                                             <span class="form_message"></span>                                                     
                                         </div>
     
                                         <div class="form_group"> 
-                                            <input id="fill_inforSDT" name="fill_inforSDT"  class="input_format form_control" placeholder="Số điện thoại" type="text" maxlength="50">                                
+                                            <input id="fill_inforSDT" name="phone"  class="input_format form_control" placeholder="Số điện thoại" type="text" maxlength="50">                                
                                             <span class="form_message"></span>                                                     
                                         </div>
+                                    </div>                            
+                                </div>
+    
+                                <div class="choosegetgoods">
+                                    <h4>THÔNG TIN NHẬN HÀNG:</h4>
+                                    
+                                    <div class="choose_content">
+                                        <div class="form_group">    
+                                            <input id="address_input" name="address" class="input_format form_control" type="text" placeholder="Nhập địa chỉ nhận hàng">
+                                            <span class="form_message"></span>                                                                                               
+                                        </div>
+                                        <div class="form_group">
+                                            <input id="other_request" name="request" class="input_format form_control" type="text" placeholder="Yêu cầu khác (không bắt buộc)">                                                               
+                                        </div>
                                     </div>
-
-                                </form>
-                            </div>
-
-                            <div class="choosegetgoods">
-                                <h4>THÔNG TIN NHẬN HÀNG:</h4>
-                                
-                                <div class="choose_content">
-                                    <div class="form_group">    
-                                        <input id="address_input" class="input_format form_control" type="text" placeholder="Nhập địa chỉ nhận hàng">
-                                        <span class="form_message">Chọn đơn vị vận chuyển</span>                                                     
-                                        
+    
+                                    <div class="deli_unitWr">
+                                        <div class=" form_group">
+                                            <div class="deli_unit">
+                                                <p>Đơn vị vận chuyển:</p>
+                                                <select name="deli_unit" id="deli_unit_sl" onchange="fee_deli()">
+                                                    <option value="0">Chọn đơn vị vận chuyển</option>
+                                                    <option value="1">Giao hàng nhanh</option>
+                                                    <option value="2">Giao hàng tiết kiệm</option>
+                                                    <option value="3">J&T</option>
+                                                    <option value="4">Vietnam Post</option>
+                                                </select>
+                                            </div>
+                                            <span class="form_message" style="text-align: end;"></span>                                                     
+                                        </div>
+                                        <div class="fee_deli" style="display: none">
+                                            <p>Phí giao hàng:</p>
+                                            <span fee_deli = "0">0 đ</span>
+                                        </div>
                                     </div>
-                                    <div class="form_group">
-                                        <input id="other_request" class="input_format form_control" type="text" placeholder="Yêu cầu khác (không bắt buộc)">                                                               
+    
+                                    <div class="pay_with">
+                                        <p>Hình thức thanh toán: </p>
+                                        <input name="pay_format" type="radio" value="Khi nhận hàng" checked="checked"> Khi nhận hàng
+                                        <input type="radio" disabled> <span style="color: #ccc;">Bằng thẻ (update)</span>                        
                                     </div>
                                 </div>
-
-                                <div class="deli_unitWr">
-                                    <div class="deli_unit">
-                                        <p>Đơn vị vận chuyển:</p>
-                                        <select name="" id="deli_unit_sl" onchange="fee_deli()">
-                                            <option value="0">Chọn đơn vị vận chuyển</option>
-                                            <option value="1">Giao hàng nhanh</option>
-                                            <option value="2">Giao hàng tiết kiệm</option>
-                                            <option value="3">J&T</option>
-                                            <option value="4">Vietnam Post</option>
-                                        </select>
+    
+                                <div class="cart_payBtn">
+                                    <div class="last_pay">
+                                        <p>Phải trả:</p>
+                                        <span></span>
                                     </div>
-                                    <div class="fee_deli" style="display: none">
-                                        <p>Phí giao hàng:</p>
-                                        <span fee_deli = "0">0 đ</span>
-                                    </div>
+                                    <button class="input_format">ĐẶT HÀNG</button>
                                 </div>
-
-                                <div class="pay_with">
-                                    <p>Hình thức thanh toán: </p>
-                                    <input type="radio" checked="checked"> Khi nhận hàng
-                                    <input type="radio" disabled> <span style="color: #ccc;">Bằng thẻ (update)</span>                        
-                                </div>
-                            </div>
-
-                            <div class="cart_payBtn">
-                                <div class="last_pay">
-                                    <p>Phải trả:</p>
-                                    <span></span>
-                                </div>
-                                <button class="input_format" type="button">ĐẶT HÀNG</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -1813,32 +1814,23 @@
     <script src="./assets/JS/validator.js"></script>
     <script>
         validator({
-            form: '.cart__payWrap',
+            form: '#cart__payForm',
             errorSelector: '.form_message',
             formGroupSelector: '.form_group',
             rules: [
+            //gender
+                validator.isRequire('input[name="gender"]', 'Vui lòng chọn giới tính'), 
             //name
                 validator.isRequire('#fill_inforName'),
+                validator.isString('#fill_inforName', 'Tên phải là những chữ cái'),
             //sdt
                 validator.isRequire('#fill_inforSDT'),
-                validator.sdt('#fill_inforSDT'),
+                validator.isNumber('#fill_inforSDT', 'SĐT phải là những chữ sô'),
                 validator.minLength('#fill_inforSDT', 10),
             //address
-                validator.isRequire('#address_input')
-            //     validator.isRequire('#email'),              
-            //     validator.isEmail('#email', 'Input value is not Email'),
-            // //pass
-            //     validator.isRequire('#password'),              
-            //     validator.minLength('#password', 3),
-            // //pass-confirm
-            //     validator.isRequire('#password_confirmation'),
-            //     validator.isConfirmed('#password_confirmation', function () {
-            //         return document.querySelector('#form-1 #password').value;
-            //     }, 'Password confirm not correct'),
-            // //gender
-            //     validator.isRequire('input[name="gender"]'),    
-            // //file
-            //     validator.isRequire('#a'),    
+                validator.isRequire('#address_input'),
+            //deli_unit
+                validator.select('#deli_unit_sl', 'Vui lòng chọn đơn vị vận chuyển')
             ],
             onSubmit: function (data) {  
                 return data;

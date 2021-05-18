@@ -118,6 +118,11 @@
     border-bottom: 1px solid #ccc;
 }
 
+.discountcode{
+    display: flex;
+    padding-bottom: 20px;
+}
+
 .applycode{
     display: flex;
     padding-bottom: 14px;
@@ -196,12 +201,15 @@
 #fill_inforSDT{
     width: 218px;
     border: 1px solid #c6c6c6;
-    margin-bottom: 5px;
 }
 
 .form_message{
     font-size: 14px;
     display: none;
+}
+
+.deli_unitWr{
+    padding-top: 10px;
 }
 
 .deli_unit,
@@ -233,8 +241,11 @@
 #other_request{
     display: block;
     width: 100%;
-    margin: 8px 0;
     border: 1px solid #c6c6c6;
+}
+
+#other_request{
+    margin-top: 8px;
 }
 
 .cart_payBtn button{
@@ -256,8 +267,10 @@
 }
 
 .form_group.invalid .form_message {
+    padding-top: 6px;
     color: #f33a58 !important;
     display: block;
+
 }
 
 

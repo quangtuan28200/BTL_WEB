@@ -92,15 +92,20 @@ function validator(options) {
                                     if(!Array.isArray(values[input.name])){
                                         values[input.name] = [];
                                     }
-    
                                     values[input.name].push(input.value);                                  
                                 }
                                 break;
                             case 'file':
                                 values[input.name] = input.files;
-                                break;                                 
-                            default:
+                                break;    
+                            case 'text':
                                 values[input.name] = input.value;
+                                break;                             
+                            default:
+                                values.money_provisional = document.querySelector('.price_provisional_money').getAttribute('provisional_money');
+                                values.money_discount = document.querySelector('.money_dis').getAttribute('money_dis');
+                                values.money_deliver = document.querySelector('.fee_deli span').getAttribute('fee_deli');
+                                values.money_lastPay = document.querySelector('.last_pay span').getAttribute('last_money');
                                 break;
                         }
                         return values;
@@ -143,7 +148,7 @@ function validator(options) {
 }
 
 //Define rules
-validator.isRequire = function (selector){
+validator.isRequire = function (selector, mess){
     return {
         //get id element want check
         selector: selector,
@@ -153,7 +158,22 @@ validator.isRequire = function (selector){
             
             //When input info => return nothing(undifined)
             //When dont have info => return String
-            return value ? undefined : 'Vui lòng nhập đủ thông tin';
+            return value ? undefined : mess || 'Vui lòng nhập đủ thông tin';
+        }
+    };
+};
+
+validator.select = function (selector, mess){
+    return {
+        //get id element want check
+        selector: selector,
+
+        //Check field
+        test: function (value) {
+            
+            //When input info => return nothing(undifined)
+            //When dont have info => return String
+            return value != 0 ? undefined : mess;
         }
     };
 };
@@ -183,15 +203,26 @@ validator.minLength = function (selector, min, mess){
     };
 };
 
-validator.sdt = function (selector, mess){
+validator.isNumber = function (selector, mess){
     return {
         //get id element want check
         selector: selector,
 
         //Check value
         test: function (value) {
-            console.log(isNaN(value));
-            return isNaN(value) == false ? undefined : mess || `SĐT phải là những chữ sô` ;
+            return isNaN(value) == false ? undefined : mess;
+        }
+    };
+};
+
+validator.isString = function (selector, mess){
+    return {
+        //get id element want check
+        selector: selector,
+
+        //Check value
+        test: function (value) {
+            return isNaN(value) == true ? undefined : mess;
         }
     };
 };

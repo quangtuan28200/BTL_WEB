@@ -234,7 +234,7 @@ var dsa = Array.from(asd).reduce(function (value, input) {
     return value + convert_money(input.innerText);
 }, 0);
 
-var provisional_money = document.querySelector('.price_provisional_money')
+var provisional_money = document.querySelector('.price_provisional_money');
 var total_money = document.querySelector('.price_total_money');
 
 // tao attribute gan tong tam vao
@@ -275,21 +275,21 @@ function money_discount() {
         input.style.boxShadow = '0 0 5px red';
     }
     else{
-        money = -Math.floor(200000 + Math.random() * 500000);
+        money = 200000 + Math.floor(Math.random() * 100000);
 
         // input.removeAttribute("style");
-        document.querySelector('.applycode').style.display = 'none';
-        document.querySelector('.applycode_suc').style.display = 'block';
+        document.querySelector('.discountcode').style.display = 'none';
         document.querySelector('.money_discount').style.display = 'flex';
+        document.querySelector('.applycode_suc').style.display = 'block';
 
         var money_dis = document.querySelector('.money_dis');
         //gan gia tri cua money_discount vao attribute
         money_dis.setAttribute("money_dis", money);
         //In money ra ngoai
-        money_dis.innerText = convert_money(money) + ' đ';
+        money_dis.innerText = '- ' + convert_money(money) + ' đ';
 
         //gan lai gia tri cho attribute tong tien sau khi tru money-discount
-        total_money.setAttribute('total_money', prov_money + money);
+        total_money.setAttribute('total_money', prov_money - money);
         //Get tra tri sau khi da tru
         to_money = parseInt(total_money.getAttribute("total_money"));
         //In so tien sau khi da tru ra ngoai
@@ -336,7 +336,7 @@ function Last_money(){
     let m_provisional = prov_money;
     let m_discount = parseInt(document.querySelector('.money_dis').getAttribute('money_dis'));
     let m_fee_deli = parseInt(document.querySelector('.fee_deli span').getAttribute('fee_deli'));
-    m_last = m_provisional + m_discount + m_fee_deli;
+    m_last = m_provisional - m_discount + m_fee_deli;
 
     //last_money
     last_pay_selector.setAttribute('last_money', m_last);
