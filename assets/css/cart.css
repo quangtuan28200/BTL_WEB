@@ -56,6 +56,7 @@
 
 .cart__productAmount{
     margin: 0 12px;
+    display: flex;
 }
 
 .cart__productRemove i{
@@ -270,7 +271,6 @@
     padding-top: 6px;
     color: #f33a58 !important;
     display: block;
-
 }
 
 

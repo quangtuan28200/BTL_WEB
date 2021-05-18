@@ -169,16 +169,10 @@
                                             </li>
                                         </ul>
             
-                                        <div class="cartList__button">
-                                            <!-- Xem gio hang -->
-                                            <div class="show__spCart">
-                                                <a href="#">Xem giỏ hàng</a>
-                                            </div>
-                                            <!-- Thanh toan -->
-                                            <div class="pay__spCart">
-                                                <a href="#">Thanh toán</a>
-                                            </div>
-                                        </div>
+                                        <!-- Xem gio hang -->
+                                        <div class="show__spCart">
+                                            <a href="#">Xem giỏ hàng</a>
+                                        </div>                                      
                                     </div>
                                 </div>
                             </div>
@@ -251,7 +245,7 @@
         <!-- content -->
         <div id="content" class="grid">
             <!-- trang chu -->
-            <div class="content__wrapper wide" style="display: none">
+            <div class="content__wrapper wide" style="display: block">
                 <!-- slide -->
                 <div class="content__slide row">
                     <div class="col l-9">
@@ -690,7 +684,7 @@
             </div>
 
             <!-- san pham -->
-            <div class="content__wrapper wide" style="display: none">
+            <div class="content__wrapper wide" style="display: block">
                 <!-- heading -->
                 <div class="content__heading row">
                     <div class="content__headingText col l-3">
@@ -1072,7 +1066,7 @@
             </div>
 
             <!-- san pham chi tiet -->
-            <div class="productDetail__wrapper wide" style="display: none">
+            <div class="productDetail__wrapper wide" style="display: block">
                 <!-- productDetail -->
                 <div class="productDetail__container row">
                     <!-- product__IMG -->
@@ -1834,6 +1828,11 @@
             ],
             onSubmit: function (data) {  
                 return data;
+            },
+            tag_not_input:{
+                name_value: ['money_provisional', 'money_discount', 'money_deliver', 'money_lastPay'],
+                tag_selector: ['.price_provisional_money', '.money_dis', '.fee_deli span', '.last_pay span'],
+                tag_attribute: ["provisional_money", "money_dis", "fee_deli", "last_money"]
             }
         });
     </script>

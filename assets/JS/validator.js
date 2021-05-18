@@ -97,15 +97,18 @@ function validator(options) {
                                 break;
                             case 'file':
                                 values[input.name] = input.files;
-                                break;    
-                            case 'text':
-                                values[input.name] = input.value;
-                                break;                             
+                                break;                                     
                             default:
-                                values.money_provisional = document.querySelector('.price_provisional_money').getAttribute('provisional_money');
-                                values.money_discount = document.querySelector('.money_dis').getAttribute('money_dis');
-                                values.money_deliver = document.querySelector('.fee_deli span').getAttribute('fee_deli');
-                                values.money_lastPay = document.querySelector('.last_pay span').getAttribute('last_money');
+                                values[input.name] = input.value;
+                                var l = options.tag_not_input.name_value.length;
+                                if(l>0){
+                                    var t1 = options.tag_not_input.name_value;
+                                    var t2 = options.tag_not_input.tag_selector;     
+                                    var t3 = options.tag_not_input.tag_attribute;
+                                    for (let x = 0; x < l; x++) {
+                                        values[t1[x]] = document.querySelector(t2[x]).getAttribute(t3[x]);                        
+                                    }
+                                }
                                 break;
                         }
                         return values;
