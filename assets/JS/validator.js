@@ -241,4 +241,3 @@ validator.isConfirmed = function (selector, pass, mess){
         }
     };
 };
-
