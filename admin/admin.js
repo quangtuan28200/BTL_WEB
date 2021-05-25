@@ -60,42 +60,45 @@ document.querySelector('.btn_save button').onclick = function () {
 //! add li
     
 document.querySelector('.addGift_wr').onclick = function () {  
-    document.querySelector('.infoGift__item:last-child').insertAdjacentHTML('beforebegin','<li class="infoGift__item text_edittor" contenteditable spellcheck="false"><span class="infoGift__icon" contenteditable="false"><i class="fas fa-check-circle" ></i></span><span class="infoGift__text" name="giftProduct">Nội dung quà tặng</span></li>');
+    document.querySelector('.infoGift__item:last-child').insertAdjacentHTML('beforebegin','<li class="infoGift__item text_edittor" contenteditable spellcheck="false"><span class="infoGift__icon" contenteditable="false"><i class="fas fa-check-circle" ></i></span><span class="infoGift__text" name="giftProduct">Nội dung quà tặng</span><span class="x_icon" contenteditable="false" ><i class="fas fa-times-circle"></i></span></li>');
+    let li = document.querySelectorAll('li[contenteditable]');
+    let x_icon = document.querySelectorAll('.x_icon');
+    qwe(li, x_icon);
 };
 
 document.querySelector('.addConfig_wr').onclick = function () {  
-    document.querySelector('.productConfig__item:last-child').insertAdjacentHTML('beforebegin','<li class="productConfig__item text_edittor" contenteditable="true" spellcheck="false"><div name="titleConfig" class="li__left">Tên cấu hình</div><div name="contentConfig" class="li__right">Nội dung cấu hình</div></li>');
+    document.querySelector('.productConfig__item:last-child').insertAdjacentHTML('beforebegin','<li class="productConfig__item text_edittor" contenteditable="true" spellcheck="false"><div name="titleConfig" class="li__left">Tên cấu hình</div><div name="contentConfig" class="li__right">Nội dung cấu hình</div><span class="x_icon" contenteditable="false" ><i class="fas fa-times-circle"></i></span></li>');
+    let li = document.querySelectorAll('li[contenteditable]');
+    let x_icon = document.querySelectorAll('.x_icon');
+    qwe(li, x_icon);
 };
 
 
 //! text focus_blur
 
-function text_edit_Event(event,a,b) {
-    switch (event) {
-        case 'focus':
-            document.querySelector(a).onfocus = function (){
-                document.querySelector(b).style.display = 'block';
-            };
-            break;
-        case 'blur':
-            document.querySelector(a).onblur = function (){
-                document.querySelector(b).style.display = 'none';
-            };
-            break;
-        case 'click':
-            document.querySelector(b).onclick = function (){
-                document.querySelector(a).remove();
-            };
-            break;
-        default:
-            break;
+let li = document.querySelectorAll('li[contenteditable]');
+let x_icon = document.querySelectorAll('.x_icon');
+
+function qwe(li, x_icon) {
+    for (let index = 0; index < li.length; index++) {
+        li[index].onfocus = function () {  
+            if(li[index] === document.activeElement){          
+                x_icon[index].style.display = 'block';
+                x_icon[index].onclick = function (){
+                    li[index].remove();
+                };
+            }
+        };
+    
+        li[index].onblur = function () {  
+            for (let index1 = 0; index1 < li.length; index1++) {
+                x_icon[index1].style.display = 'none';
+            }
+        };
     }
 }
 
-text_edit_Event('focus', '.infoGift__item', '.x_icon');
-text_edit_Event('blur', '.infoGift__item', '.x_icon');
-text_edit_Event('click', '.infoGift__item', '.x_icon');
-
+qwe(li, x_icon);
 
 //! upload IMG
 function readURL(input) {
