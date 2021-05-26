@@ -344,13 +344,3 @@ function Last_money(){
 }
 
 
-var array = ['a', 'b', 'c'];
-
-function loger(...rest) {
-    console.log(...rest);
-    for (let index = 0; index < rest.length; index++) {
-        console.log(rest[index]);
-    }
-}
-loger(...array);
-
