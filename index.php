@@ -10,14 +10,14 @@
     <!-- Icons -->
     <link rel="stylesheet" href="./assets/icons/fontawesome-free-5.15.1-web/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/content.css">
-    <link rel="stylesheet" href="./assets/css/product_detail.css">
-    <link rel="stylesheet" href="./assets/css/cart.css">
+    <link rel="stylesheet" href="./assets/css/common/base.css">
+    <link rel="stylesheet" href="./assets/css/common/grid.css">
+    <link rel="stylesheet" href="./assets/css/main/style.css">
+    <link rel="stylesheet" href="./assets/css/main/content.css">
+    <link rel="stylesheet" href="./assets/css/main/product_detail.css">
+    <link rel="stylesheet" href="./assets/css/main/cart.css">
 
-    <title>Document</title>
+    <title>KMA_TECH</title>
 </head>
 <body>
     <div id="main">
@@ -28,7 +28,7 @@
         ?>
     </div>
 
-    <script src="./assets/JS/main.js"></script>
+    <script src="./assets/JS/main/main.js"></script>
     <script src="./assets/JS/validator.js"></script>
     <script>
         validator({
