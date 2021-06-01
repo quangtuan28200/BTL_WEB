@@ -16,4 +16,19 @@ td, th {
 
 #add_category{
     display: flex;
+    margin-top: 20px;
+}
+
+.form-control{
+    padding: 6px;
+    margin: 0 6px;
+    outline: none;
+}
+
+.add_btn{
+    padding: 0 20px;
+}
+
+.add_btn:hover{
+    cursor: pointer;
 }

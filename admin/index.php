@@ -29,6 +29,9 @@
 <body>
 
     <?php
+        //importDB
+        include('../config/connectDB.php');
+        //redirect
         include('./pages/header.php');
         include('./pages/content.php');
         include('./pages/footer.php');
