@@ -162,15 +162,15 @@
             <div class="Nav__wrapper wide">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="?product=maytinh" class="nav__link">
-                            <i class="fas fa-desktop"></i>
-                            <span>Máy tính</span> 
-                        </a>
-                    </li>
-                    <li class="nav__item">
                         <a href="#" class="nav__link">
                             <i class="fas fa-laptop"></i>
                             <span>Laptop</span> 
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="?product=maytinh" class="nav__link">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Điện thoại</span> 
                         </a>
                     </li>
                     <li class="nav__item">

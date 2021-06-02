@@ -22,7 +22,7 @@
                 ?>
                     <tr>
                         <td><?php echo $no ?></td>
-                        <td><?php echo $categories['name'] ?></td>
+                        <td class="category_name"><?php echo $categories['name'] ?></td>
                         <td><?php echo $categories['createdAt'] ?></td>
                         <td>
                             <a href="home?management&category&delete&id=<?php echo $categories['id'] ?>">Delete</a>
@@ -36,7 +36,7 @@
             <form id="add_category" action="pages/contents/categoryMn/handle.php" method="POST">
                 <div class="form-group">
                     <label for="name">Category</label>
-                    <input name="name" type="text" class="form-control" id="" placeholder="Enter Name Category">
+                    <input name="name" type="text" class="form-control" id="input_nameCategory" placeholder="Enter Name Category">
                 </div>
             
                 <button type="submit" class="add_btn" name="add">ADD</button>  

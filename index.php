@@ -12,7 +12,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/common/base.css">
     <link rel="stylesheet" href="./assets/css/common/grid.css">
-    <link rel="stylesheet" href="./assets/css/main/style.css">
+    <link rel="stylesheet" href="./assets/css/main/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./assets/css/main/content.css">
     <link rel="stylesheet" href="./assets/css/main/product_detail.css">
     <link rel="stylesheet" href="./assets/css/main/cart.css">

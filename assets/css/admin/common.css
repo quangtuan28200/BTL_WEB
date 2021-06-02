@@ -1,0 +1,58 @@
+
+.Container{
+    background-color: white;
+    border-radius: 4px;
+}
+
+.content{
+    background-color: #ececec;
+    padding: 15px 0 20px 0;
+    min-height: calc(100vh - 70px);
+}
+
+.wrapper{
+    padding: 30px;
+}
+
+.header__container {
+    background-color: #484848;
+    position: unset;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#add_category,
+#add_brand{
+    display: flex;
+    margin-top: 20px;
+}
+
+.form-control{
+    padding: 6px;
+    margin: 0 6px;
+    outline: none;
+    border: 1px solid #aaa;
+}
+
+.add_btn{
+    padding: 0 20px;
+}
+
+.add_btn:hover{
+    cursor: pointer;
+}
+
+.validate{
+    border: 1px solid red;
+    background-color: #f7e3e3;
+}

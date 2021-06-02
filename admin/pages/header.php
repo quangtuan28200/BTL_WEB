@@ -1,6 +1,6 @@
 <!-- admin_interface -->
 <!-- admin_header -->
-<header style="display: block;">
+<header>
     <div class="header__container grid">
         <div class="header__wrap wide">
             <div class="header_name">

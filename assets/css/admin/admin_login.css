@@ -1,8 +1,8 @@
 #form_admin{
-    height: 650px;
+    height: 100vh;
     text-align: center;
     display: block;
-    background-image: url(../assets/imgs/aa.jpg);
+    background-image: url('../../imgs/aa.jpg');
     background-size: cover;
 }
 
@@ -23,6 +23,10 @@
 .btn_submit{
     width: 100%;
     margin-top: 5px;
+}
+
+.btn_submit:hover{
+    cursor: pointer;
 }
 
 .form_group.invalid .form_control {

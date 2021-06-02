@@ -43,10 +43,10 @@
                 <h4 class="Category__header">DANH MỤC SẢN PHẨM</h4>
                 <ul class="Category__list">
                     <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(0)">Máy tính</a>
+                        <a href="#" class="Category__link" onclick="active__cate(0)">Laptop</a>
                     </li>
                     <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(1)">Laptop</a>
+                        <a href="#" class="Category__link" onclick="active__cate(1)">Điện thoại</a>
                     </li>
                     <li class="Category__item">
                         <a href="#" class="Category__link" onclick="active__cate(2)">Camera</a>

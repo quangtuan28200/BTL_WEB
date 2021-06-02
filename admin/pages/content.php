@@ -14,7 +14,11 @@
                 include('contents/brandMn/main.php');  // ../admin/management/brand
             }
         }elseif (isset($_GET['product'])) {
-            include('contents/productMn/productMn.php');  // ../admin/management/product
+            if(isset($_GET['create'])){ 
+                include('contents/productMn/create.php'); // ../admin/management/product/create
+            }else{
+                include('contents/productMn/main.php');  // ../admin/management/product
+            }
         }else {
             include('contents/home.php'); // ../admin/home
         }
