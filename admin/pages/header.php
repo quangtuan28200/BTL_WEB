@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li class="header__userItem">
-                        <a href="?management=brand" class="userItem__Link">
+                        <a href="?management&brand" class="userItem__Link">
                             Product brand management
                         </a>
                     </li>

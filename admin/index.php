@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="../assets/css/admin/admin_interface.css?v=<?php echo time(); ?>">
     <?php
         if(isset($_GET['management'])){
-            echo'<link rel="stylesheet" href="../assets/css/admin/admin_header.css?v=<?php echo time(); ?>">';
-            if(isset($_GET['category'])){
-                echo'<link rel="stylesheet" href="../assets/css/admin/category/main.css?v=<?php echo time(); ?>">';
+            echo'<link rel="stylesheet" href="../assets/css/admin/admin_header.css">';
+            if(isset($_GET['category'])||isset($_GET['brand'])){
+                echo'<link rel="stylesheet" href="../assets/css/admin/category/main.css">';
             }
         }
 

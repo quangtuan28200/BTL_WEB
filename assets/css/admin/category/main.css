@@ -14,7 +14,8 @@ td, th {
     padding: 30px;
 }
 
-#add_category{
+#add_category,
+#add_brand{
     display: flex;
     margin-top: 20px;
 }
@@ -23,6 +24,7 @@ td, th {
     padding: 6px;
     margin: 0 6px;
     outline: none;
+    border: 1px solid #aaa;
 }
 
 .add_btn{
@@ -31,4 +33,9 @@ td, th {
 
 .add_btn:hover{
     cursor: pointer;
+}
+
+.validate{
+    border: 1px solid red;
+    background-color: #f7e3e3;
 }

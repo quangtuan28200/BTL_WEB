@@ -12,7 +12,7 @@
             <table>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
+                    <th>Name category</th>
                     <th>CreatedAt</th>
                     <th>Action</th>
                 </tr>
@@ -22,7 +22,7 @@
                 ?>
                     <tr>
                         <td><?php echo $no ?></td>
-                        <td id="name_category" contenteditable="true"><?php echo $categories['name'] ?></td>
+                        <td><?php echo $categories['name'] ?></td>
                         <td><?php echo $categories['createdAt'] ?></td>
                         <td>
                             <a href="home?management&category&delete&id=<?php echo $categories['id'] ?>">Delete</a>
