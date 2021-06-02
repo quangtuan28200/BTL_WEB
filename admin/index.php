@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="../assets/css/common/base.css">
     <link rel="stylesheet" href="../assets/css/common/grid.css">
     <link rel="stylesheet" href="../assets/css/admin/admin_login.css">
-    <link rel="stylesheet" href="../assets/css/admin/admin_interface.css">
+    <link rel="stylesheet" href="../assets/css/admin/admin_interface.css?v=<?php echo time(); ?>">
     <?php
         if(isset($_GET['management'])){
-            echo'<link rel="stylesheet" href="../assets/css/admin/admin_header.css">';
+            echo'<link rel="stylesheet" href="../assets/css/admin/admin_header.css?v=<?php echo time(); ?>">';
             if(isset($_GET['category'])){
-                echo'<link rel="stylesheet" href="../assets/css/admin/category/main.css">';
+                echo'<link rel="stylesheet" href="../assets/css/admin/category/main.css?v=<?php echo time(); ?>">';
             }
         }
 
@@ -37,8 +37,8 @@
         include('./pages/footer.php');
     ?>
 
-
-    <script src="../assets/JS/admin/admin.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="../assets/JS/admin/admin.js?v=<?php echo time(); ?>"></script>
     <script src="../assets/JS/validator.js"></script>
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script>

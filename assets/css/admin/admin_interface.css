@@ -184,7 +184,7 @@
 .content{
     background-color: #ececec;
     padding: 15px 0 20px 0;
-    min-height: calc(100vh-70px);
+    min-height: calc(100vh - 70px);
 }
 
 .productDetail__container {

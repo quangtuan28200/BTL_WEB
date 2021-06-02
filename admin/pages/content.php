@@ -2,8 +2,8 @@
 <div class="main">
     <?php
         if(isset($_GET['category'])){
-            if(isset($_GET['create'])){ 
-                include('contents/categoryMn/create.php'); // ../admin/management/category/create
+            if(isset($_GET['delete'])){ 
+                include('contents/categoryMn/handle.php'); // ../admin/management/category/delete
             }else {
                 include('contents/categoryMn/main.php');  // ../admin/management/category
             }

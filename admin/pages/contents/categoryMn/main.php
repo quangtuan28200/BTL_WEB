@@ -1,6 +1,6 @@
 <?php
     //GET product category list
-    $sql = 'SELECT * FROM type';
+    $sql = 'SELECT * FROM category';
     //Thuc hien truy van den DB
     $query = mysqli_query($mysqli, $sql);
 ?>
@@ -14,7 +14,6 @@
                     <th>No</th>
                     <th>Name</th>
                     <th>CreatedAt</th>
-                    <th>UpdatedAt</th>
                     <th>Action</th>
                 </tr>
                 <?php
@@ -23,12 +22,10 @@
                 ?>
                     <tr>
                         <td><?php echo $no ?></td>
-                        <td><?php echo $categories['name'] ?></td>
-                        <td>Germany</td>
-                        <td>Germany</td>
+                        <td id="name_category" contenteditable="true"><?php echo $categories['name'] ?></td>
+                        <td><?php echo $categories['createdAt'] ?></td>
                         <td>
-                            <a href="#">Modify</a>
-                            <a href="pages/contents/categoryMn/handle.php">Delete</a>
+                            <a href="home?management&category&delete&id=<?php echo $categories['id'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php
@@ -39,10 +36,10 @@
             <form id="add_category" action="pages/contents/categoryMn/handle.php" method="POST">
                 <div class="form-group">
                     <label for="name">Category</label>
-                    <input name="name" type="text" class="form-control" id="" placeholder="Enter Name">
+                    <input name="name" type="text" class="form-control" id="" placeholder="Enter Name Category">
                 </div>
             
-                <button type="submit" class="add_btn" name="add">ADD</button>        
+                <button type="submit" class="add_btn" name="add">ADD</button>  
             </form>
         </div>
     </div>
