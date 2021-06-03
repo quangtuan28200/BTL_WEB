@@ -32,7 +32,7 @@
                     
                     <!-- price__product -->
                     <div class="product__infoPrice">                       
-                        <span class="text_edittor" contenteditable spellcheck="false" name="priceProduct">258.000<span contenteditable="false"> đ</span></span>
+                        <span class="productPrice text_edittor" contenteditable spellcheck="false" name="priceProduct">258.000<span contenteditable="false"> đ</span></span>
                     </div>
     
                     <!-- sort-descrip__product -->

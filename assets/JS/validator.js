@@ -62,7 +62,6 @@ function validator(options) {
         //Loai bo hanh dong submit form
         formElement.onsubmit = function (e) {
             e.preventDefault();
-
             var isFormValid = true;
 
             options.rules.forEach(rule => {

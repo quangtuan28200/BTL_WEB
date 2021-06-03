@@ -1,4 +1,5 @@
 
+
 //! format price_product
 
 function convert_money(n) {
@@ -16,7 +17,7 @@ function convert_money(n) {
     return money;
 }
 
-var price_slt = document.querySelector('.product__infoPrice span');
+var price_slt = document.querySelector('.productPrice');
 price_slt.onblur = function () {  
     let mn = convert_money(this.innerHTML);
     this.innerHTML = convert_money(mn) + '<span contenteditable="false"> đ</span>' ;
@@ -55,7 +56,10 @@ document.querySelector('.btn_save button').onclick = function () {
         }
         return values;
     }, {});
-    console.log(form1Values);
+    // console.log(form1Values);
+    // var myObject = JSON.parse(form1Values);
+    document.cookie = "a="+ JSON.stringify(form1Values) ;
+    window.location.replace("http://localhost/BTL_WEB/admin/pages/contents/productMn/handle.php");
 };
 
 //! add li

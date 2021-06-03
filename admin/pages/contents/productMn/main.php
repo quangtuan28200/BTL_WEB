@@ -59,7 +59,7 @@
                    
                 ?>
             </table>
-            <a href="?management&product&create">ADD</a>
+            <a  class="dmm" href="?management&product&create">ADD</a>
         </div>
     </div>
 </div>

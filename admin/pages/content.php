@@ -2,7 +2,7 @@
 <div class="main">
     <?php
         if(isset($_GET['category'])){
-            if(isset($_GET['delete'])){ 
+            if(isset($_GET['delete'])&&isset($_GET['true'])){ 
                 include('contents/categoryMn/handle.php'); // ../admin/management/category/delete
             }else {
                 include('contents/categoryMn/main.php');  // ../admin/management/category

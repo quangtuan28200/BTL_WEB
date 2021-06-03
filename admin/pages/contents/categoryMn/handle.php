@@ -19,7 +19,7 @@
 
     //! delete product category
 
-    if(isset($_GET['delete'])){ 
+    if(isset($_GET['delete'])&&isset($_GET['true'])){ 
         //import DB
         include('../config/connectDB.php');
 

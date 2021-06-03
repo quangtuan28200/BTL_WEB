@@ -27,3 +27,17 @@ function isExist() {
     }
     return false;
 }
+
+var deletes =  document.querySelectorAll('.delete');
+
+Array.from(deletes).forEach(element => {
+    element.onclick = (e)=>{
+        e.preventDefault();
+        document.querySelector('.modal').style.display = 'block';
+    };
+});
+
+
+document.querySelector('.modal_close').onclick = ()=>{
+    document.querySelector('.modal').style.display = 'none';
+};
