@@ -1,3 +1,4 @@
+
 //! validate product brand
 var select_category = document.querySelector('#select_category');
 var input_nameBrand = document.querySelector('#input_nameBrand');
@@ -52,3 +53,20 @@ function validatePr(input, e) {
         input.classList.remove('validate');
     }
 }
+
+//! confirm delete
+var deletes =  document.querySelectorAll('.delete');
+var modal_delete = document.querySelector('.modal_delete');
+
+Array.from(deletes).forEach(element => {
+    element.onclick = (e)=>{
+        e.preventDefault();
+        modal_delete.setAttribute('href', element.getAttribute('href'));
+        document.querySelector('.modal').style.display = 'block';
+    };
+});
+
+
+document.querySelector('.modal_close').onclick = ()=>{
+    document.querySelector('.modal').style.display = 'none';
+};

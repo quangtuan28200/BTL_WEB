@@ -41,8 +41,6 @@
             
                 <button type="submit" class="add_btn" name="add">ADD</button>  
             </form>
-            <a href="?v">asd</a>
-
         </div>
     </div>
 </div>

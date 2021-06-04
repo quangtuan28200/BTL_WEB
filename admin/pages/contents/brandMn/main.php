@@ -31,7 +31,7 @@
                         <td class="brand_name"><?php echo $brands['name'] ?></td>
                         <td><?php echo $brands['createdAt'] ?></td>
                         <td>
-                            <a href="home?management&brand&delete&id=<?php echo $brands['id'] ?>">Delete</a>
+                            <a class="delete" href="home?management&brand&delete&id=<?php echo $brands['id'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php
@@ -57,6 +57,15 @@
             
                 <button type="submit" class="add_btn" name="add">ADD</button>  
             </form>
+        </div>
+    </div>
+</div>
+<div class="modal">
+    <div class="modal_Wr">
+        <h3>Are you sure ?</h3>
+        <div class="btn_modal">
+            <div class="modal_close">Close</div>
+            <a class="modal_delete" href="?true">Delete</a>
         </div>
     </div>
 </div>
