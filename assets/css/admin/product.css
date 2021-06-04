@@ -202,15 +202,11 @@
     width: 90%;
 }
 
-.quantity_proWr{
-    margin-top: 20px;
-    margin-left: 9px;
-}
-
 .quantity_proWr input{
     padding: 4px;
     outline: none;
     width: 100px;
+    margin-top: 4px;
 }
 
 /* description && config */
@@ -437,4 +433,33 @@ cursor: pointer;
 .remove-image:active {
 border: 0;
 transition: all .2s ease;
+}
+
+.select_container{
+    display: flex;
+    margin: 20px 0 0 9px;
+}
+
+.selectWr span{
+    margin-right: 10px;
+}
+
+.selectWr select{
+    padding: 4px;
+    outline: none;
+    margin-top: 4px;
+}
+
+.quantity_proWr{
+    width: 100px;
+    margin-right: 20px;
+}
+
+.selectWrcate{
+    width: 124px;
+    margin-right: 20px;
+}
+
+.selectWrbrand{
+    width: 130px;
 }

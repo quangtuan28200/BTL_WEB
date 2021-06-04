@@ -70,3 +70,4 @@ Array.from(deletes).forEach(element => {
 document.querySelector('.modal_close').onclick = ()=>{
     document.querySelector('.modal').style.display = 'none';
 };
+

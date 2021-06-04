@@ -56,8 +56,6 @@ document.querySelector('.btn_save button').onclick = function () {
         }
         return values;
     }, {});
-    // console.log(form1Values);
-    // var myObject = JSON.parse(form1Values);
     document.cookie = "a="+ JSON.stringify(form1Values) ;
     window.location.replace("http://localhost/BTL_WEB/admin/pages/contents/productMn/handle.php");
 };
@@ -139,3 +137,37 @@ $('.image-upload-wrap').bind('dragover', function () {
 $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
+
+//!auto get brands when selected category
+
+var category_select = document.querySelector('#category_select');
+var brand_select = document.querySelector('#brand_select');
+var selectWrbrand = document.querySelector('.selectWrbrand');
+var array = Array.from(brand_select.querySelectorAll('option[categoryid]'));
+category_select.onchange = () =>{
+    array.forEach(element => {
+        if(element.getAttribute('categoryid') == category_select.value){
+            element.style.display = 'block';
+        }else{
+            element.style.display = 'none';
+        }
+    });
+};
+
+
+//! get cookie
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}

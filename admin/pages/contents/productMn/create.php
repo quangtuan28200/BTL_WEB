@@ -1,3 +1,13 @@
+<?php
+    //GET product category list
+    $sql_category = 'SELECT * FROM category';
+    //GET product brand list
+    $sql_brand = 'SELECT * FROM category';
+    //Thuc hien truy van den DB
+    $query_category = mysqli_query($mysqli, $sql_category);
+    $query_brand = mysqli_query($mysqli, $sql_brand);
+?>
+
 <div class="content grid">
     <div class="Container wide"> 
         <!-- productDetail -->
@@ -87,10 +97,46 @@
                             </li>
                         </ul>
                     </div>
-    
-                    <div class="quantity_proWr">
-                        <span>Số lượng:</span>
-                        <input class="text_edittor" name="quantityProduct" type="number" min="1" value="1">
+                    
+                    <div class="select_container">
+                        <div class="quantity_proWr">
+                            <span>Số lượng:</span>
+                            <input class="text_edittor" name="quantityProduct" type="number" min="1" value="1">
+                        </div>
+                        <div class="selectWr selectWrcate">
+                            <span>Loại SP</span>
+                            <select name="category" id="category_select">
+                                <option value="">-Chọn Loại SP-</option>
+                                <?php
+                                    while ($categories = mysqli_fetch_array($query_category)) {
+                                ?>
+                                    <option value="<?php echo $categories['id'] ?>"><?php echo $categories['name'] ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="selectWr selectWrbrand">
+                            <?php
+                                //GET product brand list
+                                // $sql_brand = 'SELECT * FROM brand WHERE category_id = '.$_COOKIE["categoryID"];
+                                $sql_brand = 'SELECT category.name as categoryName, brand.name, brand.id, category_id
+                                FROM brand, category WHERE brand.category_id = category.id ORDER BY `category_id` ASC';
+                                //Thuc hien truy van den DB
+                                $query_brand = mysqli_query($mysqli, $sql_brand);
+                            ?>
+                            <span>Hãng SP</span>
+                            <select name="brand" id="brand_select">
+                                <option value="">-Chọn Hãng SP-</option>
+                                <?php
+                                    while ($brands = mysqli_fetch_array($query_brand)) {
+                                ?>
+                                    <option style="display: none;" categoryID="<?php echo $brands['category_id'] ?>" value="<?php echo $brands['id'] ?>"><?php echo $brands['name'] ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
