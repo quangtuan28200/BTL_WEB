@@ -1,26 +1,27 @@
 
 <?php
-    include('../../../../config/connectDB.php');
 
-    $object = json_decode($_COOKIE["a"]) ;
-
-    $thumbnail = time().'_'.$_FILES['imgProduct']['name'];
-    $thumbnail_tmp = $_FILES['imgProduct']['tmp_name'];
-    move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
-    
-    $category = $object->category;
-    $brand = $object->brand;
-    $name = $object->nameProduct;
-    $price = $object->priceProduct;
-    $short_desc = $object->despProduct;
-    $gift = $object->giftProduct;
-    $quantity = $object->quantityProduct;
-    $titleNews = $object->titleDsp;
-    $contentNews = $object->contentDsp;
-    $titleConfig = $object->titleConfig;
-    $contentConfig = $mysqli -> real_escape_string($object->contentConfig);
-
+    //! CREATE product
     if(isset($_GET['create'])){
+        include('../../../../config/connectDB.php');
+        $object = json_decode($_COOKIE["a"]) ;
+    
+        $thumbnail = time().'_'.$_FILES['imgProduct']['name'];
+        $thumbnail_tmp = $_FILES['imgProduct']['tmp_name'];
+        move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
+        
+        $category = $object->category;
+        $brand = $object->brand;
+        $name = $object->nameProduct;
+        $price = $object->priceProduct;
+        $short_desc = $object->despProduct;
+        $gift = $object->giftProduct;
+        $quantity = $object->quantityProduct;
+        $titleNews = $object->titleDsp;
+        $contentNews = $object->contentDsp;
+        $titleConfig = $object->titleConfig;
+        $contentConfig = $mysqli -> real_escape_string($object->contentConfig);
+
         //get DATE_TIME
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $createdAt = date("d-m-Y H:i:s");
@@ -32,5 +33,25 @@
         mysqli_query($mysqli, $sql_create);
 
         header('Location:../../../index.php?management&product');
+    }
+
+    //! DELETE product
+
+    if(isset($_GET['delete'])){ 
+        //import DB
+        include('../config/connectDB.php');
+
+        $sql = 'SELECT thumbnail FROM product WHERE id ='.$_GET["id"];
+        //delete file
+        $query = mysqli_query($mysqli, $sql);
+        while ($row = mysqli_fetch_array($query)) {
+            unlink('../assets/imgs/admin/upload_img_product/'.$row['thumbnail']);
+        }
+
+        $sql_delete = 'DELETE FROM product WHERE id='.$_GET["id"];
+        //delete in DB
+        mysqli_query($mysqli, $sql_delete);
+        //quay ve trang main
+        header('Location:?management&product');
     }
 ?>

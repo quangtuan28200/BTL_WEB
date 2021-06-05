@@ -30,8 +30,8 @@
                         <td class="category_name"><?php echo $brands['categoryName'] ?></td>
                         <td class="brand_name"><?php echo $brands['name'] ?></td>
                         <td><?php echo $brands['createdAt'] ?></td>
-                        <td>
-                            <a class="delete" href="home?management&brand&delete&id=<?php echo $brands['id'] ?>">Delete</a>
+                        <td style="width: 100px">
+                            <a class="delete btn_action" href="home?management&brand&delete&id=<?php echo $brands['id'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php
@@ -52,7 +52,7 @@
                             }
                         ?>
                     </select>
-                    <input id="input_nameBrand" name="name" type="text" class="form-control" id="" placeholder="Enter Name Brand">
+                    <input style="padding: 7px;" id="input_nameBrand" name="name" type="text" class="form-control" id="" placeholder="Enter Name Brand">
                 </div>
             
                 <button type="submit" class="add_btn" name="add">ADD</button>  
@@ -65,7 +65,7 @@
         <h3>Are you sure ?</h3>
         <div class="btn_modal">
             <div class="modal_close">Close</div>
-            <a class="modal_delete" href="?true">Delete</a>
+            <a class="modal_delete" href="">Delete</a>
         </div>
     </div>
 </div>

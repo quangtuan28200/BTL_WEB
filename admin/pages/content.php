@@ -16,6 +16,8 @@
         }elseif (isset($_GET['product'])) {
             if(isset($_GET['create'])){ 
                 include('contents/productMn/create.php'); // ../admin/management/product/create
+            }elseif(isset($_GET['delete'])){ 
+                include('contents/productMn/handle.php'); // ../admin/management/product/delete
             }else{
                 include('contents/productMn/main.php');  // ../admin/management/product
             }

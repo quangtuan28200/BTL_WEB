@@ -24,8 +24,8 @@
                         <td><?php echo $no ?></td>
                         <td class="category_name"><?php echo $categories['name'] ?></td>
                         <td><?php echo $categories['createdAt'] ?></td>
-                        <td>
-                            <a class="delete" href="home?management&category&delete&id=<?php echo $categories['id'] ?>">Delete</a>
+                        <td style="width: 100px">
+                            <a class="delete btn_action" href="home?management&category&delete&id=<?php echo $categories['id'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php
@@ -36,7 +36,7 @@
             <form id="add_category" action="pages/contents/categoryMn/handle.php" method="POST">
                 <div class="form-group">
                     <label for="name">Category</label>
-                    <input name="name" type="text" class="form-control" id="input_nameCategory" placeholder="Enter Name Category">
+                    <input style="padding: 7px;" name="name" type="text" class="form-control" id="input_nameCategory" placeholder="Enter Name Category">
                 </div>
             
                 <button type="submit" class="add_btn" name="add">ADD</button>  
@@ -49,7 +49,7 @@
         <h3>Are you sure ?</h3>
         <div class="btn_modal">
             <div class="modal_close">Close</div>
-            <a class="modal_delete" href="?true">Delete</a>
+            <a class="modal_delete" href="">Delete</a>
         </div>
     </div>
 </div>
