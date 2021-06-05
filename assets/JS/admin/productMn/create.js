@@ -34,14 +34,10 @@ document.querySelector('.btn_save button').onclick = function () {
     let form1Values = Array.from(text_selc).reduce(function (values, input) {
         if(input.type == 'number'){
             values.quantityProduct = input.value;
-        }else if(input.type == 'file'){
-            values.imgProduct = input.files;
-        }
-        else if(input.getAttribute("name") == 'giftProduct'){
+        }else if(input.getAttribute("name") == 'giftProduct'){
             vl += input.innerText + '$';
             values.giftProduct = vl;
-        }
-        else if(input.getAttribute("name") == 'titleConfig'){
+        }else if(input.getAttribute("name") == 'titleConfig'){
             vl1 += input.innerText + '$';
             values.titleConfig = vl1;
         }else if(input.getAttribute("name") == 'contentConfig'){
@@ -50,14 +46,17 @@ document.querySelector('.btn_save button').onclick = function () {
         }else if(input.getAttribute("name") == 'priceProduct'){
             let x = input.innerText.split(' đ').join('');
             values.priceProduct = x.split('.').join('');
-        }
-        else{
+        }else if(input.getAttribute("name") == 'brand'){
+            values.brand = input.value;
+        }else if(input.getAttribute("name") == 'category'){
+            values.category = input.value;
+        }else{
             values[input.getAttribute("name")] = input.innerText;
         }
         return values;
     }, {});
+    console.log(form1Values);
     document.cookie = "a="+ JSON.stringify(form1Values) ;
-    window.location.replace("http://localhost/BTL_WEB/admin/pages/contents/productMn/handle.php");
 };
 
 //! add li

@@ -14,22 +14,24 @@
         <div class="productDetail__container row">
             <!-- product__IMG -->
             <div class="productDetail__Area col l-6">
-                <div class="file-upload">
-                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">CHỌN ẢNH</button>
-    
-                <div class="image-upload-wrap">
-                    <input name="imgProduct" class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-                    <div class="drag-text">
-                    <h3>Kéo và thả ảnh hoặc click để chọn ảnh</h3>
+                <form id="formasd" action="pages/contents/productMn/handle.php?create" method="post" enctype="multipart/form-data">
+                    <div class="file-upload">
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">CHỌN ẢNH</button>
+            
+                        <div class="image-upload-wrap">
+                            <input name="imgProduct" class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                            <div class="drag-text">
+                            <h3>Kéo và thả ảnh hoặc click để chọn ảnh</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image" />
+                            <div class="image-title-wrap">
+                            <button type="button" onclick="removeUpload()" class="remove-image">XOÁ <span class="image-title">Uploaded Image</span></button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="file-upload-content">
-                    <img class="file-upload-image" src="#" alt="your image" />
-                    <div class="image-title-wrap">
-                    <button type="button" onclick="removeUpload()" class="remove-image">XOÁ <span class="image-title">Uploaded Image</span></button>
-                    </div>
-                </div>
-                </div>
+                </form>
             </div>
     
             <!-- product__info -->
@@ -215,7 +217,7 @@
                 </div>
             </div>
             <div class="btn_save">
-                <button>LƯU</button>
+                <button type="submit" form="formasd">LƯU</button>
             </div>
         </div>
     </div>

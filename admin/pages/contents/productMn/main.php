@@ -1,3 +1,11 @@
+
+<?php
+    //GET product list
+    $sql = 'SELECT * FROM product';
+    //Thuc hien truy van den DB
+    $query = mysqli_query($mysqli, $sql);
+?>
+
 <div class="content grid">
     <div class="Container wide">
         <div class="wrapper">
@@ -14,52 +22,28 @@
                     <th>Action</th>
                 </tr>
                 <?php
-                    
+                    $no = 1;
+                    while ($products = mysqli_fetch_array($query)) {
                 ?>
                     <tr>
-                        <td>1</td>
-                        <td>img</td>
-                        <td>Name product</td>
-                        <td>250000</td>
-                        <td>Mo ta product</td>
-                        <td>6/2/2021</td>
-                        <td>6/2/2021</td>
+                        <td><?php echo $no ?></td>
+                        <td><img style="height: 80px" src="../assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img"></td>
+                        <td><?php echo $products['name_prod'] ?></td>
+                        <td><?php echo $products['price'] ?></td>
+                        <td><?php echo $products['description_prod'] ?></td>
+                        <td><?php echo $products['createdAt'] ?></td>
+                        <td><?php echo $products['updatedAt'] ?></td>
                         <td>
-                            <a href="#">Modify</a>
-                            <a href="#">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>img</td>
-                        <td>Name product</td>
-                        <td>250000</td>
-                        <td>Mo ta product</td>
-                        <td>6/2/2021</td>
-                        <td>6/2/2021</td>
-                        <td>
-                            <a href="#">Modify</a>
-                            <a href="#">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>img</td>
-                        <td>Name product</td>
-                        <td>250000</td>
-                        <td>Mo ta product</td>
-                        <td>6/2/2021</td>
-                        <td>6/2/2021</td>
-                        <td>
-                            <a href="#">Modify</a>
-                            <a href="#">Delete</a>
+                            <a class="MODIFY_BTN btn_action" href="?management&product&modify">Modify</a>
+                            <a class="DELETE_BTN btn_action" href="?management&product&delete">Delete</a>
                         </td>
                     </tr>
                 <?php
-                   
+                    $no += 1;
+                    }
                 ?>
             </table>
-            <a  class="dmm" href="?management&product&create">ADD</a>
+            <a  class="ADD_BTN btn_action" href="?management&product&create">ADD</a>
         </div>
     </div>
 </div>

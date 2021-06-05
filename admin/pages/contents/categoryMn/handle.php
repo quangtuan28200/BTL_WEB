@@ -8,7 +8,7 @@
         $name = $_POST['name'];
         //get DATE_TIME
         date_default_timezone_set("Asia/Ho_Chi_Minh");
-        $createdAt = date("Y-m-d H:i:s");
+        $createdAt = date("d-m-Y H:i:s");
 
         $sql_add = 'INSERT INTO category(name, createdAt) VALUE("'.$name.'","'.$createdAt.'")';
         //thuc hien tuy van

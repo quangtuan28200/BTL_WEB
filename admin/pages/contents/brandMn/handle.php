@@ -10,7 +10,7 @@
         $category = $_POST['product_type'];
         //get DATE_TIME
         date_default_timezone_set("Asia/Ho_Chi_Minh");
-        $createdAt = date("Y-m-d H:i:s");
+        $createdAt = date("d-m-Y H:i:s");
 
         $sql_add = 'INSERT INTO brand(category_id, name, createdAt) VALUE("'.$category.'","'.$name.'","'.$createdAt.'")';
         //thuc hien tuy van

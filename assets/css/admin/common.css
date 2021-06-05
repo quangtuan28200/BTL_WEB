@@ -1,4 +1,6 @@
 
+/* category && brand */
+
 .main{
     position: relative;
 }
@@ -118,4 +120,34 @@ td, th {
 .modal_close:hover,
 .modal_delete:hover{
     opacity: 80%;
+}
+
+/* main product */
+
+.btn_action{
+    margin-top: 20px;
+    padding: 10px;
+    
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;  
+    display: block;
+    width: 80px;
+    text-align: center;
+}
+
+.btn_action:hover{
+    opacity: 85%;
+}
+
+.MODIFY_BTN{
+    background-color: #076c9c;
+}
+
+.DELETE_BTN{
+    background-color: #e40000;
+}
+
+.ADD_BTN{
+    background-color: green;
 }
