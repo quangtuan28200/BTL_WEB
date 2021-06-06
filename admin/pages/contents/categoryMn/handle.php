@@ -12,7 +12,18 @@
 
         $sql_add = 'INSERT INTO category(name, createdAt) VALUE("'.$name.'","'.$createdAt.'")';
         //thuc hien tuy van
-        mysqli_query($mysqli, $sql_add);
+        $query = mysqli_query($mysqli, $sql_add);
+
+        // if(!$query)
+        // {   
+        //     setcookie('checkSuccess', 0, 0 ,'/');
+        //     setcookie('errorMess', mysqli_error($mysqli), 0 ,'/');
+        // }
+        // else
+        // {
+        //     setcookie('checkSuccess', 1, 0 ,'/');
+        // } 
+    
         //quay ve trang main
         header('Location:../../../index.php?management&category');
     }

@@ -1,9 +1,37 @@
+<?php
+    session_start();
+    include('../config/connectDB.php');
+
+    if(isset($_POST['login'])){
+        $username = $_POST['user_name'];
+        $password = md5($_POST['password']);
+        $sql = 'SELECT * FROM admin WHERE username = "'.$username.'" AND password = "'.$password.'"';
+        $query = mysqli_query($mysqli, $sql);
+        $count = mysqli_num_rows($query);
+
+        if($count == 1){
+            $_SESSION['login'] = $username;
+            header("Location:index.php");
+        }else{
+            echo 
+            "<script>
+                var checkSuccess = false;
+                var errMess = 'Username or password uncorrect';
+            </script>";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="../assets/icons/fontawesome-free-5.15.1-web/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/common/base.css">
     <link rel="stylesheet" href="../assets/css/admin/admin_login.css?v=<?php echo time() ?>">
@@ -11,43 +39,30 @@
     <title>ADMINSTRATOR_LOGIN</title>
 </head>
 <body>
+    <div class="notify_container">
+        <div class="notify_wr">
+            <!-- <i class="fas fa-exclamation-circle"></i> -->
+            <i class="fas fa-check-circle"></i>
+            <span>Thanh cong</span>
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
     <!-- admin_login -->
-    <form action="" id="form_admin" style="display: block;">
+    <form action="" method="POST" autocomplete="off" id="form_admin" >
         <div class="form_groupWrap">
             <div class="form_group">
-                <input id="user_name" class="form_control" name="user_name" type="text" placeholder="UserName">
+                <input autocomplete="false" id="user_name" class="form_control" name="user_name" type="text" placeholder="UserName">
                 <span class="form_message"></span>
             </div>
             <div class="form_group">
-                <input id="password" class="form_control" name="password" type="password" placeholder="PassWord">
+                <input autocomplete="false" id="password" class="form_control" name="password" type="password" placeholder="PassWord">
                 <span class="form_message"></span>
             </div>
-            <button class="btn_submit">ĐĂNG NHẬP</button>
+            <button class="btn_submit" type="submit" name="login">ĐĂNG NHẬP</button>
         </div>
     </form>
 
-    <!-- JS -->
-    <script src="../assets/JS/validator.js"></script>
-    <script>
-        validator({
-            form: '#form_admin',
-            errorSelector: '.form_message',
-            formGroupSelector: '.form_group',
-            rules: [
-            //username
-                validator.isRequire('#user_name'), 
-            //pass
-                validator.isRequire('#password')
-            ],
-            onSubmit: function (data) {  
-                return data;
-            },
-            tag_not_input:{
-                name_value: [],
-                tag_selector: [],
-                tag_attribute: []
-            }
-        });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../assets/JS/admin/login/login_admin.js"></script>
 </body>
 </html>

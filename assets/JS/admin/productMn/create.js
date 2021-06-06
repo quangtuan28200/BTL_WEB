@@ -64,7 +64,7 @@ document.querySelector('.btn_save button').onclick = function () {
         return values;
     }, {});
     // console.log(form1Values);
-    document.cookie = "a="+ JSON.stringify(form1Values) ;
+    document.cookie = "a="+ JSON.stringify(form1Values) + "; ; path=http://localhost/BTL_WEB/admin/pages/contents/productMn/handle.php" ;
 };
 
 //! add li
@@ -226,18 +226,21 @@ formasd.onsubmit = (e) => {
     if(file_upload_image.getAttribute("src")==""){
         e.preventDefault();
         image_upload_wrap.classList.add("validatePro");
+        $("html, body").animate({ scrollTop: 100 }, 200); 
     }else{
         image_upload_wrap.classList.remove("validatePro");
     }
     if(category_select.value == ""){
         e.preventDefault();
         category_select.classList.add("validatePro");
+        $("html, body").animate({ scrollTop: 100 }, 200); 
     }else{
         category_select.classList.remove("validatePro");
     }
     if(brand_select.value == ""){
         e.preventDefault();
         brand_select.classList.add("validatePro");
+        $("html, body").animate({ scrollTop: 100 }, 200); 
     }else{
         brand_select.classList.remove("validatePro");
     }
@@ -259,3 +262,4 @@ brand_select.onchange = () =>{
     }
 };
 
+console.log(brand_select.scrollTop);

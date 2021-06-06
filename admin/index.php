@@ -1,3 +1,11 @@
+
+<?php
+    session_start();
+    if(!$_SESSION['login']){
+        header('Location:login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +18,7 @@
     <!-- Icons -->
     <link rel="stylesheet" href="../assets/icons/fontawesome-free-5.15.1-web/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/common/base.css">
+    <link rel="stylesheet" href="../assets/css/common/base.css?v=<?php echo time() ?>">
     <link rel="stylesheet" href="../assets/css/common/grid.css">
     <link rel="stylesheet" href="../assets/css/admin/admin_login.css">
     <link rel="stylesheet" href="../assets/css/admin/admin.css">
@@ -31,6 +39,14 @@
     <title>ADMIN</title>
 </head>
 <body>
+    <div class="notify_container">
+        <div class="notify_wr">
+            <!-- <i class="fas fa-exclamation-circle"></i> -->
+            <i class="fas fa-check-circle"></i>
+            <span>Thanh cong</span>
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
     <?php
         //importDB
         include('../config/connectDB.php');

@@ -3,6 +3,7 @@
     $sql = 'SELECT * FROM category';
     //Thuc hien truy van den DB
     $query = mysqli_query($mysqli, $sql);
+    
 ?>
 
 <div class="content grid">

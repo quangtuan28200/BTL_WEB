@@ -1,4 +1,9 @@
-<!-- admin_interface -->
+<?php
+    if(isset($_GET['logout'])){
+        unset($_SESSION['login']);
+        header('Location:login.php');
+    }
+?>
 <!-- admin_header -->
 <header>
     <div class="header__container grid">
@@ -33,7 +38,7 @@
                         </a>
                     </li>
                     <li class="header__userItem">
-                        <a href="#" class="userItem__Link">
+                        <a href="?logout" class="userItem__Link">
                             Log out
                         </a>
                     </li>

@@ -18,3 +18,29 @@ if(modal_close){
         document.querySelector('.modal').style.display = 'none';
     };
 }
+
+//! notify
+
+// var x_buton = document.querySelector('.notify_wr i:last-child');
+// var notify_container = document.querySelector('.notify_container');
+
+// x_buton.onclick = () =>{
+//     notify_container.style.left = "";
+// };
+
+// console.log(getCookie('checkSuccess'));
+
+// if(getCookie('checkSuccess') == 1){
+//     $( document ).ready(function() {
+//         setTimeout(() => {
+//             notify_container.style.left = "80%";      
+//         }, 200);
+//     });
+// }
+
+//! get cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
