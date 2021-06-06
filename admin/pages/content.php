@@ -18,6 +18,8 @@
                 include('contents/productMn/create.php'); // ../admin/management/product/create
             }elseif(isset($_GET['delete'])){ 
                 include('contents/productMn/handle.php'); // ../admin/management/product/delete
+            }elseif(isset($_GET['modify'])){ 
+                include('contents/productMn/modify.php'); // ../admin/management/product/delete
             }else{
                 include('contents/productMn/main.php');  // ../admin/management/product
             }

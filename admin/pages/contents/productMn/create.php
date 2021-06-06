@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="file-upload-content">
-                            <img class="file-upload-image" src="#" alt="your image" />
+                            <img class="file-upload-image" src="" alt="your image" />
                             <div class="image-title-wrap">
                             <button type="button" onclick="removeUpload()" class="remove-image">XOÁ <span class="image-title">Uploaded Image</span></button>
                             </div>
@@ -217,7 +217,7 @@
                 </div>
             </div>
             <div class="btn_save">
-                <button type="submit" form="formasd">LƯU</button>
+                <button type="submit" form="formasd">TẠO</button>
             </div>
         </div>
     </div>

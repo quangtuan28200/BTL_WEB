@@ -18,9 +18,11 @@
         // ../admin/management
         if(isset($_GET['management'])){
             echo'<link rel="stylesheet" href="../assets/css/admin/common.css?v='.time().'">';
-            // ../admin/management/product/create
-            if(isset($_GET['product']) && isset($_GET['create'])){
-                echo'<link rel="stylesheet" href="../assets/css/admin/product.css?v='.time().'">';
+            // ../admin/management/product/create(modify)
+            if(isset($_GET['product'])){
+                if(isset($_GET['create']) || isset($_GET['modify'])){
+                    echo'<link rel="stylesheet" href="../assets/css/admin/product.css?v='.time().'">';
+                }
             }
         }
 
@@ -49,8 +51,8 @@
                 // ../admin/management/category
                 echo'<script src="../assets/JS/admin/categoryMn/category.js?v='.time().'"></script>';
             }elseif (isset($_GET['product'])) {
-                if(isset($_GET['create'])){
-                    // ../admin/management/product/create
+                if(isset($_GET['create']) || isset($_GET['modify'])){
+                    // ../admin/management/product/create(modify)
                     echo'<script src="../assets/JS/admin/productMn/create.js ?v='.time().'"></script>';
                 }
             }

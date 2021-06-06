@@ -31,10 +31,10 @@
                     <tr>
                         <td><?php echo $no ?></td>
                         <td>
-                            <a class="img_productLink" href="#">
+                            <a class="img_productLink" href="?management&product&modify&id=<?php echo $products['id'] ?>">
                                 <img class="img_product" src="../assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img">
                                 <div class="show_detail">
-                                    Show detail
+                                    View detail
                                 </div>
                             </a>
                         </td>
@@ -44,8 +44,8 @@
                         <td><?php echo $products['price'] ?></td>
                         <td><?php echo $products['createdAt'] ?></td>
                         <td><?php echo $products['updatedAt'] ?></td>
-                        <td>
-                            <a class="MODIFY_BTN btn_action" href="?management&product&modify">Modify</a>
+                        <td style="width: 98px">
+                            <a class="MODIFY_BTN btn_action" href="?management&product&modify&id=<?php echo $products['id'] ?>">Modify</a>
                             <a style="margin-top: 10px" class="delete btn_action" href="?management&product&delete&id=<?php echo $products['id'] ?>">Delete</a>
                         </td>
                         

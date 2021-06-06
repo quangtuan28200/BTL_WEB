@@ -1,6 +1,15 @@
 
+var url = window.location.search;
 
 //! format price_product
+
+var price_slt = document.querySelector('.productPrice');
+if(url.includes("modify")){
+    changeTextPrice();
+}
+price_slt.onblur = function () {  
+    changeTextPrice();
+};
 
 function convert_money(n) {
     let money;
@@ -17,11 +26,10 @@ function convert_money(n) {
     return money;
 }
 
-var price_slt = document.querySelector('.productPrice');
-price_slt.onblur = function () {  
-    let mn = convert_money(this.innerHTML);
-    this.innerHTML = convert_money(mn) + '<span contenteditable="false"> đ</span>' ;
-};
+function changeTextPrice(){
+    let mn = convert_money(price_slt.innerHTML);
+    price_slt.innerHTML = convert_money(mn) + '<span contenteditable="false"> đ</span>' ;
+}
 
 //! Get value text_editor
 
@@ -55,7 +63,7 @@ document.querySelector('.btn_save button').onclick = function () {
         }
         return values;
     }, {});
-    console.log(form1Values);
+    // console.log(form1Values);
     document.cookie = "a="+ JSON.stringify(form1Values) ;
 };
 
@@ -103,6 +111,11 @@ function qwe(li, x_icon) {
 qwe(li, x_icon);
 
 //! upload IMG
+if(url.includes("modify")){
+    $('.image-upload-wrap').hide();
+    $('.file-upload-content').show();
+}
+
 function readURL(input) {
     if (input.files && input.files[0]) {
   
@@ -125,6 +138,7 @@ function readURL(input) {
 }
   
 function removeUpload() {
+    $('.file-upload-image').attr("src", "");
     $('.file-upload-input').replaceWith($('.file-upload-input').clone());
     $('.file-upload-content').hide();
     $('.image-upload-wrap').show();
@@ -144,6 +158,11 @@ var brand_select = document.querySelector('#brand_select');
 var selectWrbrand = document.querySelector('.selectWrbrand');
 var array = Array.from(brand_select.querySelectorAll('option[categoryid]'));
 category_select.onchange = () =>{
+    if(category_select.getAttribute("src")==""){
+        category_select.classList.add("validatePro");
+    }else{
+        category_select.classList.remove("validatePro");
+    }
     array.forEach(element => {
         if(element.getAttribute('categoryid') == category_select.value){
             element.style.display = 'block';
@@ -152,6 +171,24 @@ category_select.onchange = () =>{
         }
     });
 };
+
+//! set selected attribute for option brand, category product from DB
+var value_categorySelect = category_select.getAttribute("value");
+var value_brandSelect = brand_select.getAttribute("value");
+var options_category = Array.from(category_select.querySelectorAll('option'));
+var options_brand = Array.from(brand_select.querySelectorAll('option'));
+
+options_category.forEach(element => {
+    if(element.getAttribute("value") == value_categorySelect){
+        element.setAttribute("selected", "selected");
+    }
+});
+
+options_brand.forEach(element => {
+    if(element.getAttribute("value") == value_brandSelect){
+        element.setAttribute("selected", "selected");
+    }
+});
 
 
 //! get cookie
@@ -170,3 +207,55 @@ function getCookie(cname) {
     }
     return "";
 }
+
+//! LOADER CONTROLLER
+
+if(url.includes("modify")){
+    $( document ).ready(function() {
+        $('.loader_container').css("display", "none");
+        $('.content_loaded').css("display", "block");
+    });
+}
+
+//! VALIDATION
+var file_upload_image = document.querySelector('.file-upload-image');
+var image_upload_wrap = document.querySelector('.image-upload-wrap');
+var formasd = document.querySelector('#formasd');
+
+formasd.onsubmit = (e) => {
+    if(file_upload_image.getAttribute("src")==""){
+        e.preventDefault();
+        image_upload_wrap.classList.add("validatePro");
+    }else{
+        image_upload_wrap.classList.remove("validatePro");
+    }
+    if(category_select.value == ""){
+        e.preventDefault();
+        category_select.classList.add("validatePro");
+    }else{
+        category_select.classList.remove("validatePro");
+    }
+    if(brand_select.value == ""){
+        e.preventDefault();
+        brand_select.classList.add("validatePro");
+    }else{
+        brand_select.classList.remove("validatePro");
+    }
+};
+
+file_upload_image.onchange = () =>{
+    if(file_upload_image.getAttribute("src")==""){
+        image_upload_wrap.classList.add("validatePro");
+    }else{
+        image_upload_wrap.classList.remove("validatePro");
+    }
+};
+
+brand_select.onchange = () =>{
+    if(brand_select.getAttribute("src")==""){
+        brand_select.classList.add("validatePro");
+    }else{
+        brand_select.classList.remove("validatePro");
+    }
+};
+
