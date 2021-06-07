@@ -1,3 +1,8 @@
+<?php
+    $sql = 'SELECT * FROM category';
+    $query = mysqli_query($mysqli, $sql);
+?>
+
 <!-- header -->
 <header>
     <div class="header__wrapper">
@@ -6,7 +11,7 @@
             <div class="header__mainWrapper wide">
                 <!-- logo -->
                 <div class="header__logo">
-                    <a href="index.php" class="logo__Link">
+                    <a href="home" class="logo__Link">
                         <img src="./assets/imgs/Screenshot_1.png" alt="logo">
                     </a>
                 </div>
@@ -162,37 +167,37 @@
             <div class="Nav__wrapper wide">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="?product=laptop" class="nav__link">
                             <i class="fas fa-laptop"></i>
                             <span>Laptop</span> 
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="?product=maytinh" class="nav__link">
+                        <a href="?product=dien-thoai" class="nav__link">
                             <i class="fas fa-mobile-alt"></i>
                             <span>Điện thoại</span> 
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="?product=camera" class="nav__link">
                             <i class="fas fa-camera"></i>
                             <span>Camera</span> 
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="?product=tai-nghe" class="nav__link">
                             <i class="fas fa-headphones-alt"></i>
                             <span>Tai nghe</span> 
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="?product=chuot" class="nav__link">
                             <i class="fas fa-mouse"></i>
                             <span>Chuột</span> 
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="?product=ban-phim" class="nav__link">
                             <i class="fas fa-keyboard"></i>
                             <span>Bàn phím</span> 
                         </a>

@@ -37,15 +37,12 @@
     align-items: center;
 }
 
-.oderBy__form{
-    margin-left: 10px;
-}
-
 .oderBy__select{
     padding: 8px;
     outline: none;
     border-color: #ccc;
     border-radius: 2px;
+    margin-left: 10px;
 }
 
 /* content__products */
@@ -187,12 +184,12 @@
 .itemCate__active::before{
     content: "";
     position: absolute;
-    left: 12px;
+    left: -10px;
     top: 50%;
     transform: translateY(-50%);
-    border: 5px;
-    border-style: solid;
-    border-color: transparent transparent transparent var( --subTheme_color);
+    width: 6px;
+    height: 100%;
+    background-color: var(--subTheme_color);
 }
 
 .itemCate__active{

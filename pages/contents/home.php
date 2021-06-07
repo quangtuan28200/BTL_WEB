@@ -1,3 +1,8 @@
+<?php
+    $sql = 'SELECT * FROM category';
+    $query = mysqli_query($mysqli, $sql);
+?>
+
 <!-- trang chu -->
 <div class="content__wrapper wide" style="display: block">
     <!-- slide -->
@@ -326,113 +331,119 @@
         </div>
     </div>
 
+    <?php
+        while ($categories = mysqli_fetch_array($query)) {
+    ?>
     <!-- may tinh -->
-    <div class="content__area">
-        <div class="content__areaWrapper">
-            <!-- content__header -->
-            <div class="content__header">
-                <h3>Máy tính</h3> 
-                <i class="fas fa-chevron-right"></i>
-                <span></span> 
-            </div>
-
-            <!-- content__product -->
-            <div class="content__product row">
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
+        <div class="content__area">
+            <div class="content__areaWrapper">
+                <!-- content__header -->
+                <div class="content__header">
+                    <h3><?php echo $categories['name'] ?></h3> 
+                    <i class="fas fa-chevron-right"></i>
+                    <span></span> 
                 </div>
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>        
-            </div>
 
-            <!-- Xem Them -->
-            <div class="content__footer">
-                <a href="#">Xem thêm</a>
-                <i class="fas fa-chevron-right"></i> 
+                <!-- content__product -->
+                <div class="content__product row">
+                    <div class="product__area col l-3">
+                        <div class="product__areaWrapper">
+                            <div class="product__img">
+                                <a href="#">
+                                    <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="product__textArea">
+                                <div class="product__textHeader">
+                                    <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                </div>
+                                <div class="product__textPrice">
+                                    150.000 
+                                    <span>đ</span>
+                                </div>
+                                
+                                <div class="product__textButton">
+                                    <a href="#">Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="product__area col l-3">
+                        <div class="product__areaWrapper">
+                            <div class="product__img">
+                                <a href="#">
+                                    <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="product__textArea">
+                                <div class="product__textHeader">
+                                    <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                </div>
+                                <div class="product__textPrice">
+                                    150.000 
+                                    <span>đ</span>
+                                </div>
+                                
+                                <div class="product__textButton">
+                                    <a href="#">Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__area col l-3">
+                        <div class="product__areaWrapper">
+                            <div class="product__img">
+                                <a href="#">
+                                    <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="product__textArea">
+                                <div class="product__textHeader">
+                                    <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                </div>
+                                <div class="product__textPrice">
+                                    150.000 
+                                    <span>đ</span>
+                                </div>
+                                
+                                <div class="product__textButton">
+                                    <a href="#">Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__area col l-3">
+                        <div class="product__areaWrapper">
+                            <div class="product__img">
+                                <a href="#">
+                                    <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="product__textArea">
+                                <div class="product__textHeader">
+                                    <a href="#">Ô dù trong suốt bền đẹp Remax</a>
+                                </div>
+                                <div class="product__textPrice">
+                                    150.000 
+                                    <span>đ</span>
+                                </div>
+                                
+                                <div class="product__textButton">
+                                    <a href="#">Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+
+                <!-- Xem Them -->
+                <div class="content__footer">
+                    <a href="?product=<?php echo $categories['id'] ?>">Xem thêm</a>
+                    <i class="fas fa-chevron-right"></i> 
+                </div>
             </div>
         </div>
-    </div>
+    <?php
+        }
+    ?>
 </div>

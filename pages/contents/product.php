@@ -1,24 +1,41 @@
+
+<?php
+    $sql_categories = 'SELECT * FROM category';
+    $sql_category = 'SELECT name FROM category WHERE slug = "'.$_GET['product'].'"';
+    $sql_brands = 'SELECT brand.name, brand.slug FROM category, brand 
+    WHERE category.id = category_id AND category.slug = "'.$_GET['product'].'"';
+
+    $query_categories = mysqli_query($mysqli, $sql_categories);
+    $query_category = mysqli_query($mysqli, $sql_category);
+    $category = mysqli_fetch_row($query_category);
+
+    $query_brands = mysqli_query($mysqli, $sql_brands);
+?>
+
 <!-- san pham -->
 <div class="content__wrapper wide" style="display: block">
     <!-- heading -->
     <div class="content__heading row">
         <div class="content__headingText col l-3">
-            <a href="#">TRANG CHỦ</a>
+            <a href="home">TRANG CHỦ</a>
             <span>/</span>
-            <h4>MÁY TÍNH</h4>
+            <h4><?php echo mb_strtoupper($category[0], 'UTF-8') ;  ?></h4>
         </div>
 
         <div class="headingFilter__container col l-9">
             <div class="content__headingFilter">
                 <span>Lọc theo hãng sản xuất :</span>
-                <form action="" class="oderBy__form">
-                    <select name="" class="oderBy__select">
-                        <option value="default" selected>Thứ tự mặc định</option>
-                        <option value="new">Sản phẩm mới nhất</option>
-                        <option value="price_asc">Giá: thấp đến cao</option>
-                        <option value="price_desc">Giá: cao xuống thấp</option>
-                    </select>
-                </form>
+                <select name="" id="fllter_brand_select" class="oderBy__select">
+                    <option value="#" selected="selected">Chọn hãng sản xuất</option>
+                    <?php
+                        while ($brands = mysqli_fetch_array($query_brands)) {
+                    ?>
+                        <option value="<?php echo $brands['slug'] ?>" ><?php echo $brands['name'] ?></option>                       
+                    <?php
+                        }
+                    ?>
+                </select>
+                
             </div>
             <div class="content__headingFilter">
                 <span>Lọc sản phẩm theo :</span>
@@ -42,24 +59,15 @@
             <div class="products__Category">
                 <h4 class="Category__header">DANH MỤC SẢN PHẨM</h4>
                 <ul class="Category__list">
-                    <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(0)">Laptop</a>
-                    </li>
-                    <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(1)">Điện thoại</a>
-                    </li>
-                    <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(2)">Camera</a>
-                    </li>
-                    <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(3)">Tai nghe</a>
-                    </li>
-                    <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(4)">Chuột</a>
-                    </li>
-                    <li class="Category__item">
-                        <a href="#" class="Category__link" onclick="active__cate(5)">Bàn phím</a>
-                    </li>
+                    <?php
+                        while ($categories = mysqli_fetch_array($query_categories)) {
+                    ?>
+                        <li class="Category__item">
+                            <a product="<?php echo $categories['slug']; ?>" href="?product=<?php echo $categories['slug']; ?>" class="Category__link"><?php echo $categories['name'] ?></a>
+                        </li>
+                    <?php
+                        }
+                    ?>
                 </ul>
             </div>
 

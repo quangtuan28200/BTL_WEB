@@ -1,4 +1,3 @@
-var url = window.location.search;
 
 //! confirm delete
 
@@ -62,7 +61,6 @@ if(!url.includes("create")){
         }else{
             window.location.href = `?management&product&category_id=${category_select.value}`;
             localStorage.setItem('category', category_select.selectedIndex);
-            console.log(localStorage.getItem('category'));
         }
     };
 
