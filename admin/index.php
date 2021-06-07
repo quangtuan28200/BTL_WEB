@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Icons -->
-    <link rel="stylesheet" href="../assets/icons/fontawesome-free-5.15.1-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/common/base.css?v=<?php echo time() ?>">
     <link rel="stylesheet" href="../assets/css/common/grid.css">

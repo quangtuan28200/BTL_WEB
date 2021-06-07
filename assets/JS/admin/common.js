@@ -21,9 +21,9 @@ if(modal_close){
     };
 }
 
-/* ../admin/index.php/management/product  */
+//! ../admin/index.php/management/product  
 
-//Xu ly select cayegory, brand product
+//! Xu ly select cayegory, brand product
 
 var category_select = document.querySelector('#category_select');
 var brand_select = document.querySelector('#brand_select');
@@ -75,3 +75,18 @@ if(!url.includes("create")){
         }
     };
 }
+
+//! pagination
+var pageCurrent;
+
+
+function currentPage() {
+    if(!url.includes("page")){
+        return 1;
+    }else{
+        return /page=([^&]+)/.exec(url)[1];
+    }
+}
+
+var pagination_link = document.querySelector(`.pagination_link[pageCurrent="${currentPage()}"]`);
+pagination_link.classList.add('currentPage');

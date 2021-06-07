@@ -1,16 +1,31 @@
 
 <?php
+    $quantity_product_of_page = 1;
+    $page_choosed = 0;
+    if(isset($_GET['page'])){
+        if($_GET['page'] == 1){
+            $page_choosed = 0;
+        }else {
+            $page_choosed = ($_GET['page']*$quantity_product_of_page)-$quantity_product_of_page;
+        }
+    }
+
     //GET product list
     if(isset($_GET['category_id'])){
         $sql = 'SELECT category.name as categoryName, brand.name as brandName, name_prod, product.createdAt, product.updatedAt, product.id, thumbnail, price 
-        FROM product, category, brand WHERE product.category_id = "'.$_GET['category_id'].'" AND product.category_id = category.id AND product.brand_id = brand.id ORDER BY product.category_id ASC';
+        FROM product, category, brand WHERE product.category_id = "'.$_GET['category_id'].'" 
+        AND product.category_id = category.id AND product.brand_id = brand.id 
+        ORDER BY product.category_id ASC LIMIT '.$page_choosed.','.$quantity_product_of_page.'';
         if(isset($_GET['brand_id'])){
             $sql = 'SELECT category.name as categoryName, brand.name as brandName, name_prod, product.createdAt, product.updatedAt, product.id, thumbnail, price 
-            FROM product, category, brand WHERE product.category_id = "'.$_GET['category_id'].'" AND product.brand_id = "'.$_GET['brand_id'].'" AND product.category_id = category.id AND product.brand_id = brand.id ORDER BY product.category_id ASC';
+            FROM product, category, brand WHERE product.category_id = "'.$_GET['category_id'].'" 
+            AND product.brand_id = "'.$_GET['brand_id'].'" AND product.category_id = category.id 
+            AND product.brand_id = brand.id ORDER BY product.category_id ASC LIMIT '.$page_choosed.','.$quantity_product_of_page.'';
         }
     }else {
         $sql = 'SELECT category.name as categoryName, brand.name as brandName, name_prod, product.createdAt, product.updatedAt, product.id, thumbnail, price 
-        FROM product, category, brand WHERE product.category_id = category.id AND product.brand_id = brand.id ORDER BY product.category_id ASC';
+        FROM product, category, brand WHERE product.category_id = category.id AND product.brand_id = brand.id 
+        ORDER BY product.category_id ASC LIMIT '.$page_choosed.','.$quantity_product_of_page.'';
     }
     //Thuc hien truy van den DB
     $query = mysqli_query($mysqli, $sql);
@@ -103,6 +118,53 @@
                 </table>
                 <div class="add_btn_wr">
                     <a  class="ADD_BTN btn_action" href="?management&product&create">ADD</a>
+                </div>
+
+                <!-- pagination -->
+                <div class="pagination_wr">
+                    <?php
+                        if(isset($_GET['category_id'])){
+                            $sql_page = 'SELECT * FROM product WHERE category_id='.$_GET['category_id'].'';
+                            if(isset($_GET['brand_id'])){
+                                $sql_page = 'SELECT * FROM product WHERE brand_id='.$_GET['brand_id'].'';
+                            }
+                        }else{
+                            $sql_page = 'SELECT * FROM product';
+                        }
+                        $query_page = mysqli_query($mysqli, $sql_page);
+                        $count_product = mysqli_num_rows($query_page);
+
+                        $quantity_page = ceil($count_product/$quantity_product_of_page);
+
+                        function a($i) {
+                            $a = '';
+                            if(isset($_GET['category_id'])){
+                                $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
+                                href="?management&product&category_id='.$_GET["category_id"].'&page='.$i.'">'.$i.'</a>';                                                         
+                                if(isset($_GET['brand_id'])){
+                                    $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
+                                    href="?management&product&category_id='.$_GET["category_id"].'&brand_id='.$_GET["brand_id"].'&page='.$i.'">'.$i.'</a>';       
+                                }
+                            }else{
+                                $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
+                                href="?management&product&page='.$i.'">'.$i.'</a>';                                 
+                            }
+                            return $a;
+                        }
+                    ?>
+                    <ul class="pagination_ul">
+                        <?php
+                            for ($i=1; $i <= $quantity_page; $i++) {    
+                        ?>
+                            <li class="pagination_li">
+                                <?php
+                                   echo a($i);
+                                ?>
+                            </li>
+                        <?php
+                            }
+                        ?>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -246,5 +246,3 @@ brand_select.onchange = () =>{
         brand_select.classList.remove("validatePro");
     }
 };
-
-console.log(brand_select.scrollTop);
