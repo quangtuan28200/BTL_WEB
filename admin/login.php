@@ -48,14 +48,14 @@
         </div>
     </div>
     <!-- admin_login -->
-    <form action="" method="POST" autocomplete="off" id="form_admin" >
+    <form action="" method="POST" id="form_admin" >
         <div class="form_groupWrap">
             <div class="form_group">
-                <input autocomplete="false" id="user_name" class="form_control" name="user_name" type="text" placeholder="UserName">
+                <input id="user_name" class="form_control" name="user_name" type="text" placeholder="UserName">
                 <span class="form_message"></span>
             </div>
             <div class="form_group">
-                <input autocomplete="false" id="password" class="form_control" name="password" type="password" placeholder="PassWord">
+                <input autocomplete="new-password" id="password" class="form_control" name="password" type="password" placeholder="PassWord">
                 <span class="form_message"></span>
             </div>
             <button class="btn_submit" type="submit" name="login">ĐĂNG NHẬP</button>
@@ -63,6 +63,6 @@
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../assets/JS/admin/login/login_admin.js"></script>
+    <script src="../assets/JS/admin/login/login_admin.js?v=<?php echo time() ?>"></script>
 </body>
 </html>

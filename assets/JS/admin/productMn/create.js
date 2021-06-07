@@ -1,6 +1,4 @@
 
-var url = window.location.search;
-
 //! format price_product
 
 var price_slt = document.querySelector('.productPrice');
@@ -153,10 +151,6 @@ $('.image-upload-wrap').bind('dragleave', function () {
 
 //!auto get brands when selected category
 
-var category_select = document.querySelector('#category_select');
-var brand_select = document.querySelector('#brand_select');
-var selectWrbrand = document.querySelector('.selectWrbrand');
-var array = Array.from(brand_select.querySelectorAll('option[categoryid]'));
 category_select.onchange = () =>{
     if(category_select.getAttribute("src")==""){
         category_select.classList.add("validatePro");
@@ -206,15 +200,6 @@ function getCookie(cname) {
       }
     }
     return "";
-}
-
-//! LOADER CONTROLLER
-
-if(url.includes("modify")){
-    $( document ).ready(function() {
-        $('.loader_container').css("display", "none");
-        $('.content_loaded').css("display", "block");
-    });
 }
 
 //! VALIDATION

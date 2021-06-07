@@ -13,15 +13,10 @@
             </div>
             <div class="header__user">
                 <i class="fas fa-user-circle"></i>
-                <a href="#" class="header__userLink">Tên adminstrator</a>             
+                <a href="#" class="header__userLink"><?php echo $_SESSION['login'] ?></a>             
                 
                 <!-- userMenu -->
                 <ul class="header__userMenu">
-                    <li class="header__userItem">
-                        <a href="#" class="userItem__Link">
-                            My account
-                        </a>
-                    </li>
                     <li class="header__userItem">
                         <a href="?management&category" class="userItem__Link">
                             Product category management

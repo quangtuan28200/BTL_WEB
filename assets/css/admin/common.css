@@ -21,7 +21,6 @@
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -183,4 +182,13 @@ td, th {
     margin: 10px 10px 0 0;
     background-color: green;
     display: inline-block;
+}
+
+ /* ../admin/index.php/management/product  */
+
+.selectCSS{
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
 }

@@ -19,7 +19,7 @@ if(!checkSuccess){
             notify_container.style.right = "20px";  
             setTimeout(() => {
                 notify_container.style.right = "";     
-            }, 3000);
+            }, 1500);
         }, 200);
     });
 }

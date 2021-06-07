@@ -1,3 +1,5 @@
+var url = window.location.search;
+
 //! confirm delete
 
 var deletes =  document.querySelectorAll('.delete');
@@ -19,28 +21,57 @@ if(modal_close){
     };
 }
 
-//! notify
+/* ../admin/index.php/management/product  */
 
-// var x_buton = document.querySelector('.notify_wr i:last-child');
-// var notify_container = document.querySelector('.notify_container');
+//Xu ly select cayegory, brand product
 
-// x_buton.onclick = () =>{
-//     notify_container.style.left = "";
-// };
+var category_select = document.querySelector('#category_select');
+var brand_select = document.querySelector('#brand_select');
+var array = Array.from(brand_select.querySelectorAll('option[categoryid]'));
 
-// console.log(getCookie('checkSuccess'));
+if(!url.includes("create")){
+    if(!url.includes("category_id")){
+        category_select.options[0].selected = true;
+    }else{
+        if (localStorage.getItem('category')) {
+            category_select.options[localStorage.getItem('category')].selected = true;
+        }
+    }
 
-// if(getCookie('checkSuccess') == 1){
-//     $( document ).ready(function() {
-//         setTimeout(() => {
-//             notify_container.style.left = "80%";      
-//         }, 200);
-//     });
-// }
+    if(!url.includes("brand_id")){
+        brand_select.options[0].selected = true;
+    }else{
+        if (localStorage.getItem('brand')) {
+            brand_select.options[localStorage.getItem('brand')].selected = true;
+        }
+    }
 
-//! get cookie
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    $( document ).ready(function() {
+        array.forEach(element => {
+            if(element.getAttribute('categoryid') == category_select.value){
+                element.style.display = 'block';
+            }else{
+                element.style.display = 'none';
+            }
+        });
+
+    });
+    category_select.onchange = () =>{
+        if(category_select.value == '#'){
+            window.location.href = `?management&product`;
+        }else{
+            window.location.href = `?management&product&category_id=${category_select.value}`;
+            localStorage.setItem('category', category_select.selectedIndex);
+            console.log(localStorage.getItem('category'));
+        }
+    };
+
+    brand_select.onchange = () =>{
+        if(brand_select.value == '#'){
+            window.location.href = `?management&product&category_id=${category_select.value}`;
+        }else{
+            window.location.href = `?management&product&category_id=${category_select.value}&brand_id=${brand_select.value}`;
+            localStorage.setItem('brand', brand_select.selectedIndex);
+        }
+    };
 }

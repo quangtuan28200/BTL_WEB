@@ -58,6 +58,7 @@
         // JS
     
         echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?v='.time().'"></script>';
+        echo '<script src="../assets/JS/base.js?v='.time().'"></script>';
         if(isset($_GET['management'])){
                 echo'<script src="../assets/JS/admin/common.js?v='.time().'"></script>';
             if(isset($_GET['brand'])){

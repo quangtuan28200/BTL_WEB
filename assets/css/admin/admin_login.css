@@ -39,3 +39,7 @@
     display: block;
     font-size: 13px;
 }
+
+.notify_container{
+    box-shadow: none;
+}

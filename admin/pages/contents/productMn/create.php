@@ -119,12 +119,8 @@
                             </select>
                         </div>
                         <div class="selectWr selectWrbrand">
-                            <?php
-                                //GET product brand list
-                                // $sql_brand = 'SELECT * FROM brand WHERE category_id = '.$_COOKIE["categoryID"];
-                                $sql_brand = 'SELECT category.name as categoryName, brand.name, brand.id, category_id
-                                FROM brand, category WHERE brand.category_id = category.id ORDER BY `category_id` ASC';
-                                //Thuc hien truy van den DB
+                            <?php                  
+                                $sql_brand = 'SELECT * FROM brand ORDER BY `category_id` ASC';
                                 $query_brand = mysqli_query($mysqli, $sql_brand);
                             ?>
                             <span>Hãng SP</span>
