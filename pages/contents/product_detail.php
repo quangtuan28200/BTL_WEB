@@ -1,10 +1,16 @@
+<?php
+    $sql_product = 'SELECT * FROM product WHERE id = "'.$_GET['id'].'"';
+    $query_product = mysqli_query($mysqli, $sql_product);
+    $product = mysqli_fetch_row($query_product);
+?>
+
 <!-- san pham chi tiet -->
-<div class="productDetail__wrapper wide" style="display: block">
+<div class="productDetail__wrapper wide">
     <!-- productDetail -->
     <div class="productDetail__container row">
         <!-- product__IMG -->
         <div class="productDetail__Area col l-6">
-            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
+            <img src="./assets/imgs/admin/upload_img_product/<?php echo $product[3] ?>" alt="">
         </div>
 
         <!-- product__info -->
@@ -18,36 +24,33 @@
                 </div>
 
                 <!-- name__product -->
-                <h1 class="product__infoTitle">Giá đỡ điện thoại trên ô tô Remax RM-C06</h1>
+                <h1 class="product__infoTitle"><?php echo $product[4] ?></h1>
                 
                 <!-- price__product -->
-                <div class="product__infoPrice">258,000 ₫</div>
+                <div class="product__infoPrice"><?php echo $product[5] ?> đ</div>
 
                 <!-- sort-descrip__product -->
                 <div class="product__infoShortDescrip">
-                    Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng vào việc trình bày và dàn trang phục vụ cho in ấn. Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500
+                    <?php echo $product[6] ?>
                 </div>
 
                 <!-- uu dai them -->
                 <div class="product__infoGift">
                     <div class="infoGift__header">Quà tặng</div>
                     <ul class="infoGift__list ul__format">
-                        <li class="infoGift__item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Tặng Balo Laptop</span>
-                        </li>
-                        <li class="infoGift__item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Tặng PMH 300.000đ mua máy in HP</span>
-                        </li>
-                        <li class="infoGift__item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Tặng tai nghe có dây choàng đầu có Mic I.value T-139 áp dụng đến 20/05 (Không áp dụng Trả góp 0%/0đ)</span>
-                        </li>
-                        <li class="infoGift__item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Thu cũ đổi mới - Trợ giá ngay 15%</span>
-                        </li>
+                        <?php
+                            $gift = explode('$', $product[7]);
+                            for ($i=0; $i < count($gift)-1; $i++) { 
+                        ?>
+                                <li class="infoGift__item text_edittor">                      
+                                    <span class="infoGift__icon">
+                                        <i class="fas fa-check-circle" ></i>
+                                    </span> 
+                                    <span class="infoGift__text"><?php echo $gift[$i] ?></span>
+                                </li>
+                        <?php
+                            }
+                        ?>
                     </ul>
                 </div>
 
@@ -72,10 +75,10 @@
                 <h3 class="productDescrip__header">Bài viết đánh giá</h3>
                 <div class="productDescrip__contentWr">
                     <h3 class="productDescrip__title">
-                        sở hữu thiết kế từ kim loại toát lên vẻ sang trọng, sắc sảo, cấu hình lí tưởng cho học tập, trình duyệt web khi trang bị bộ vi xử lý Intel thế hệ thứ 10 mới và ổ cứng SSD cực nhanh.
+                        <?php echo $product[9] ?>
                     </h3>
                     <div class="productDescrip__content">
-                        Thiết kế của Laptop Lenovo ThinkBook 15 IML hướng đến sự tối giản và hiện đại. Máy có nắp lưng bằng kim loại và thân máy được làm từ nhựa ABS cao cấp, vừa mang lại vẻ sang trọng, vừa bền bỉ. Máy có độ dày chỉ 18.9 mm, trọng lượng chỉ 1.8 kg, khá mỏng nhẹ đối với laptop cùng phân khúc, dễ dàng cho vào balo hay túi xách, sẵn sàng cùng bạn “lên đường”.
+                        <?php echo $product[10] ?>
                     </div>
                 </div>
             </div>
@@ -84,32 +87,20 @@
         <!-- productConfig -->
         <div class="productConfig__area col l-6">
             <div class="productConfig__wrap">
-                <h3 class="productConfig__header">Cấu hình Laptop Lenovo ThinkBook 15IIL i3 1005G1/4GB/512GB/Win10 (20SM00D9VN)</h3>
+                <h3 class="productConfig__header">Cấu hình <?php echo $product[4] ?></h3>
                 <ul class="productConfig__list ul__format">
-                    <li class="productConfig__item">
-                        <div class="li__left">CPU:</div>
-                        <div class="li__right">Intel Core i3 Ice Lake1005G11.20 GHz</div>
-                    </li>
-                    <li class="productConfig__item">
-                        <div class="li__left">RAM:</div>
-                        <div class="li__right">4 GBDDR4 (1 khe)2666 MHz</div>
-                    </li>
-                    <li class="productConfig__item">
-                        <div class="li__left">Ổ cứng:</div>
-                        <div class="li__right">SSD 512 GB NVMe PCIeHỗ trợ khe cắm HDD SATA</div>
-                    </li>
-                    <li class="productConfig__item">
-                        <div class="li__left">Màn hình:</div>
-                        <div class="li__right">15.6"Full HD (1920 x 1080)</div>
-                    </li>
-                    <li class="productConfig__item">
-                        <div class="li__left">Card màn hình:</div>
-                        <div class="li__right">Card đồ họa tích hợpIntel UHD Graphics</div>
-                    </li>
-                    <li class="productConfig__item">
-                        <div class="li__left">Cổng kết nối:</div>
-                        <div class="li__right">2 x USB 3.1HDMILAN (RJ45)USB 2.02 x USB Type-C</div>
-                    </li>
+                    <?php
+                        $config_title = explode('$', $product[11]);
+                        $config_content = explode('$', $product[12]);
+                        for ($i=0; $i < count($config_title)-1; $i++) { 
+                    ?>
+                        <li class="productConfig__item">
+                            <div class="li__left"><?php echo $config_title[$i] ?></div>
+                            <div class="li__right"><?php echo $config_content[$i] ?></div>
+                        </li>
+                    <?php
+                        }
+                    ?>
                 </ul>
             </div>
         </div>

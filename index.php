@@ -12,7 +12,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/common/base.css?v=<?php echo time() ?>">
     <link rel="stylesheet" href="./assets/css/common/grid.css">
-    <link rel="stylesheet" href="./assets/css/main/common.css">
+    <link rel="stylesheet" href="./assets/css/main/common.css?v=<?php echo time() ?>">
     
     
     <?php
@@ -41,6 +41,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?v=<?php echo time() ?>"></script>
     <script src="./assets/JS/base.js?v=<?php echo time() ?>"></script>
+    <script src="./assets/JS/main/common.js?v=<?php echo time() ?>"></script>
 
     <?php
         if(isset($_GET['product'])){

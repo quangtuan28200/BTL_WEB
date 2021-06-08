@@ -9,19 +9,18 @@
         if($_FILES['imgProduct']['name']!=''){
             $thumbnail = time().'_'.$_FILES['imgProduct']['name'];
             $thumbnail_tmp = $_FILES['imgProduct']['tmp_name'];
-            move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
         }
         
         $category = $object->category;
         $brand = $object->brand;
-        $name = $object->nameProduct;
+        $name = $mysqli -> real_escape_string($object->nameProduct);
         $price = $object->priceProduct;
-        $short_desc = $object->despProduct;
-        $gift = $object->giftProduct;
+        $short_desc = $mysqli -> real_escape_string($object->despProduct);
+        $gift = $mysqli -> real_escape_string($object->giftProduct);
         $quantity = $object->quantityProduct;
-        $titleNews = $object->titleDsp;
-        $contentNews = $object->contentDsp;
-        $titleConfig = $object->titleConfig;
+        $titleNews = $mysqli -> real_escape_string($object->titleDsp);
+        $contentNews = $mysqli -> real_escape_string($object->contentDsp);
+        $titleConfig = $mysqli -> real_escape_string($object->titleConfig);
         $contentConfig = $mysqli -> real_escape_string($object->contentConfig);
 
         //get DATE_TIME
@@ -36,7 +35,14 @@
             VALUE ("'.$category.'","'.$brand.'","'.$thumbnail.'","'.$name.'","'.$price.'",
             "'.$short_desc.'","'.$gift.'","'.$quantity.'","'.$titleNews.'","'.$contentNews.'",
             "'.$titleConfig.'","'.$contentConfig.'","'.$createdAt.'","'.$updatedAt.'","1")';
-            mysqli_query($mysqli, $sql_create);
+            $ver = mysqli_query($mysqli, $sql_create);
+            if(!$ver){
+                echo mysqli_error($mysqli);
+                die();
+            }
+            else{
+                move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
+            } 
             header('Location:../../../index.php?management&product');
         }
         if(isset($_GET['modify'])){
@@ -67,7 +73,14 @@
                 config_title="'.$titleConfig.'" ,config_content="'.$contentConfig.'",updatedAt="'.$updatedAt.'"    
                 WHERE id='.$_GET['id'];
 
-                mysqli_query($mysqli, $sql_update);
+                $ver = mysqli_query($mysqli, $sql_update);
+                if(!$ver){
+                    echo mysqli_error($mysqli);
+                    die();
+                }
+                else{
+                    move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
+                } 
                 header('Location:../../../index.php?management&product');
             }
         }
@@ -90,6 +103,10 @@
         //delete in DB
         mysqli_query($mysqli, $sql_delete);
         //quay ve trang main
-        header('Location:?management&product');
+        echo '
+        <script>
+            window.history.back();
+        </script>';
+        // header('Location:?management&product');
     }
 ?>

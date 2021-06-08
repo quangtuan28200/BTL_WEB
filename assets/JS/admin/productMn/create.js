@@ -51,7 +51,8 @@ document.querySelector('.btn_save button').onclick = function () {
             values.contentConfig = vl2;
         }else if(input.getAttribute("name") == 'priceProduct'){
             let x = input.innerText.split(' đ').join('');
-            values.priceProduct = x.split('.').join('');
+            // values.priceProduct = x.split('.').join('');
+            values.priceProduct = x;
         }else if(input.getAttribute("name") == 'brand'){
             values.brand = input.value;
         }else if(input.getAttribute("name") == 'category'){

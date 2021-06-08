@@ -1,6 +1,6 @@
 
 <?php
-    $quantity_product_of_page = 1;
+    $quantity_product_of_page = 5;
     $page_choosed = 0;
     if(isset($_GET['page'])){
         if($_GET['page'] == 1){
@@ -102,7 +102,7 @@
                             <td><?php echo $products['categoryName'] ?></td>
                             <td><?php echo $products['brandName'] ?></td>
                             <td><?php echo $products['name_prod'] ?></td>
-                            <td><?php echo $products['price'] ?></td>
+                            <td style="width: 120px" ><?php echo $products['price'] ?> đ</td>
                             <td><?php echo $products['createdAt'] ?></td>
                             <td><?php echo $products['updatedAt'] ?></td>
                             <td style="width: 98px">

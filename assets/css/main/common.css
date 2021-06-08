@@ -723,6 +723,8 @@
 .product__img img{
     width: 100%;
     transition: transform .5s ease;
+    padding: 30px 20px 0 20px;
+    background-color: white;
 }
 
 .product__img:hover img{
@@ -730,7 +732,7 @@
 }
 
 .product__textArea{
-    padding: 10px 10px 20px 10px;
+    padding: 30px 20px;
     text-align: center;
     background-color: white;
 }
@@ -754,8 +756,12 @@
 }
 
 .product__textHeader a{
-    height: 16px;
-    white-space: nowrap;
+    line-height: 22px;
+    display: block;
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -765,7 +771,8 @@
 }
 
 .product__textPrice{
-    margin: 16px 0;
+    font-size: 20px;
+    margin: 18px 0;
     color: red;
     font-weight: 500;
 }

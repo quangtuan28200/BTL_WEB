@@ -19,7 +19,7 @@
                 <!-- search -->
                 <div class="header__search">
                     <div class="search__input">
-                        <input type="search" placeholder="Nhập sản phẩm cần tìm">
+                        <input type="search" >
                     </div>
                     <div class="search__buttom">
                         <button type="submit">

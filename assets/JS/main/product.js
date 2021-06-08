@@ -14,12 +14,17 @@ Array.from(Category__links).forEach(element => {
 
 //! range slider
 
+var slide_hoder = document.querySelector('.slide_hoder');
 var slider = document.getElementById("myRange");
 var output = document.getElementById("price_desc");
+
+slide_hoder.style.width = '50%';
 output.innerText = slider.value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
 slider.oninput = function() {
+    var rangeVal = (slider.value * 100) / slider.getAttribute('max');
+    slide_hoder.style.width = 'calc(' + rangeVal + '%';
     output.innerText = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
@@ -33,7 +38,7 @@ if(!url.includes("brand")){
     fllter_brand_select.options[0].selected = true;
 }else{
     if (localStorage.getItem('brand')) {
-        fllter_brand_select.options[localStorage.getItem('category')].selected = true;
+        fllter_brand_select.options[localStorage.getItem('brand')].selected = true;
     }
 }
 

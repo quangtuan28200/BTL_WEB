@@ -77,7 +77,6 @@ if(!url.includes("create")){
 //! pagination
 var pageCurrent;
 
-
 function currentPage() {
     if(!url.includes("page")){
         return 1;
@@ -85,6 +84,7 @@ function currentPage() {
         return /page=([^&]+)/.exec(url)[1];
     }
 }
-
-var pagination_link = document.querySelector(`.pagination_link[pageCurrent="${currentPage()}"]`);
-pagination_link.classList.add('currentPage');
+if(!url.includes("create") && !url.includes("modify")){
+    var pagination_link = document.querySelector(`.pagination_link[pageCurrent="${currentPage()}"]`);
+    pagination_link.classList.add('currentPage');
+}

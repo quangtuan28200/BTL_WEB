@@ -45,6 +45,10 @@
     margin-left: 10px;
 }
 
+.oderBy__select:hover{
+    cursor: pointer;
+}
+
 /* content__products */
 .content__products {
     margin-top: 20px;
@@ -93,9 +97,24 @@
 }
 
 /* filter__price */
-.price_slider_wrapper{
+
+.price_slider_containner{
     padding: 20px 15px 20px 15px;
     border-top: 1px solid #ececec;
+}
+
+.price_slider_wrapper{
+    position: relative;
+}
+
+.slide_hoder{
+    background-color: #666;
+    height: 5px;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    top: 8px;
+    border-radius: 5px;
 }
 
 .slide{
@@ -104,8 +123,12 @@
     border-radius: 5px;
     background: #d7dcdf;
     outline: none;
-    margin-bottom: 14px;
+    margin: 0 0 14px 0;
     width: 100%;
+}
+
+.slide:hover{
+    cursor: pointer;
 }
 
 .slide::-webkit-slider-thumb {
