@@ -51,3 +51,32 @@ fllter_brand_select.onchange = () => {
         localStorage.setItem('brand', fllter_brand_select.selectedIndex);
     }
 };
+
+//! handle filter_select
+
+//get filter_select
+var filter_select = document.querySelector('#filter_select');
+
+//select option when reload page
+if (url.includes("product") && localStorage.getItem('filter')) {
+    filter_select.options[localStorage.getItem('filter')].selected = true;
+}
+
+// khi chon 1 brand
+filter_select.onchange = () => {
+    localStorage.setItem('filter', filter_select.selectedIndex);
+    document.querySelector('.oderBy__form').submit();
+};
+
+//! handle action LOC of price_ranger
+var filter__btn = document.querySelector('.filter__btn');
+
+if (url.includes("product") && localStorage.getItem('value_price_range')) {
+    slider.setAttribute('value', localStorage.getItem('value_price_range'));
+    slide_hoder.style.width = 'calc(' + (localStorage.getItem('value_price_range') * 100) / slider.getAttribute('max') + '%';
+    output.innerText = localStorage.getItem('value_price_range').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+filter__btn.onclick = () =>{
+    localStorage.setItem('value_price_range', slider.value);
+};

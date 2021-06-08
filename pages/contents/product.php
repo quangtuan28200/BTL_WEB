@@ -5,13 +5,50 @@
     $sql_brands = 'SELECT brand.name, brand.slug FROM category, brand 
     WHERE category.id = category_id AND category.slug = "'.$_GET['product'].'"';
 
+    //loc theo brand
     if(isset($_GET['brand'])){
         $sql_products = 'SELECT product.id, thumbnail, name_prod, price FROM product, category, brand
         WHERE product.category_id = category.id AND brand_id = brand.id
         AND category.slug = "'.$_GET['product'].'" AND brand.slug = "'.$_GET['brand'].'"';
     }else{
-        $sql_products = 'SELECT product.id, thumbnail, name_prod, price FROM product, category WHERE category_id = category.id
-        AND slug = "'.$_GET['product'].'"';
+        $sql_products = 'SELECT product.id, thumbnail, name_prod, price FROM product, category 
+        WHERE category_id = category.id AND slug = "'.$_GET['product'].'"';
+    }
+
+    //loc theo moi nhat, gia thap den cao, cao den thap
+    if(isset($_POST['filter'])){
+        if($_POST['filter'] == 'new'){
+            $sql_products = $sql_products.' ORDER BY product.createdAt ASC';
+        }else if($_POST['filter'] == 'price_asc'){
+            $sql_products = $sql_products.' ORDER BY product.price ASC';
+        }else if($_POST['filter'] == 'price_desc'){
+            $sql_products = $sql_products.' ORDER BY product.price DESC';
+        }else{
+            unset($_POST['filter']); 
+        }
+    }else{
+        echo '
+            <script>
+                document.addEventListener("DOMContentLoaded", (event) => {
+                    document.querySelector("#filter_select").options[0].selected = true;
+                });
+            </script>
+        ';
+    }
+
+    //loc theo gia
+    if(isset($_POST['price_range'])){
+        $sql_products = $sql_products.' AND price < '.$_POST['price_range'];
+    }else{
+        echo '
+            <script>
+                document.addEventListener("DOMContentLoaded", (event) => {
+                    slider.setAttribute("value", 25000000);
+                    slide_hoder.style.width = "50%";
+                    output.innerText = "25000000".replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                });
+            </script>
+        ';
     }
 
     $query_categories = mysqli_query($mysqli, $sql_categories);
@@ -49,8 +86,8 @@
             </div>
             <div class="content__headingFilter">
                 <span>Lọc sản phẩm theo :</span>
-                <form action="" class="oderBy__form">
-                    <select name="" class="oderBy__select">
+                <form method="POST" action="" class="oderBy__form">
+                    <select name="filter" class="oderBy__select" id="filter_select">
                         <option value="default" selected>Thứ tự mặc định</option>
                         <option value="new">Sản phẩm mới nhất</option>
                         <option value="price_asc">Giá: thấp đến cao</option>
@@ -85,20 +122,22 @@
             <div class="products__FilterPrice">
                 <h4 class="FilterPrice__header">LỌC THEO GIÁ</h4>
                 <div class="price_slider_containner">
-                    <div class="price_slider_wrapper">
-                        <span class="slide_hoder"></span>
-                        <input type="range" class="slide" min="1000000" max="50000000" value="25000000" id="myRange">
-                        <div class="price_slider_amount">
-                            <button type="submit" class="filter__btn btn">Lọc</button>
-                            <div class="price_label">
-                                <span class="gia">Giá:</span>
-                                <span class="from">1.000.000 đ</span> 
-                                <span class="gachngang">-</span> 
-                                <span id="price_desc"></span> 
-                                <span class="d"> đ</span>
+                    <form action="" method="post">
+                        <div class="price_slider_wrapper">
+                            <span class="slide_hoder"></span>
+                            <input name="price_range" type="range" class="slide" min="1000000" max="50000000" value="25000000" id="myRange">
+                            <div class="price_slider_amount">
+                                <button type="submit" class="filter__btn btn">Lọc</button>
+                                <div class="price_label">
+                                    <span class="gia">Giá:</span>
+                                    <span class="from">1.000.000 đ</span> 
+                                    <span class="gachngang">-</span> 
+                                    <span id="price_desc"></span> 
+                                    <span class="d"> đ</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -120,7 +159,7 @@
                                 <a href="?product-detail&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
                             </div>
                             <div class="product__textPrice">
-                                <?php echo $products['price'] ?>
+                                <?php echo number_format($products['price'],0,"","."); ?>
                                 <span>đ</span>
                             </div>
                             

@@ -364,7 +364,7 @@
                                         <a href="?product-detail&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
                                     </div>
                                     <div class="product__textPrice">
-                                        <?php echo $products['price'] ?>
+                                        <?php echo number_format($products['price'],0,"","."); ?>
                                         <span>đ</span>
                                     </div>
                                     

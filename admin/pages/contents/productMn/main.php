@@ -102,7 +102,7 @@
                             <td><?php echo $products['categoryName'] ?></td>
                             <td><?php echo $products['brandName'] ?></td>
                             <td><?php echo $products['name_prod'] ?></td>
-                            <td style="width: 120px" ><?php echo $products['price'] ?> đ</td>
+                            <td style="width: 120px" ><?php echo number_format($products['price'],0,"","."); ?> đ</td>
                             <td><?php echo $products['createdAt'] ?></td>
                             <td><?php echo $products['updatedAt'] ?></td>
                             <td style="width: 98px">
