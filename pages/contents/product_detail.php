@@ -3,9 +3,16 @@
     $query_product = mysqli_query($mysqli, $sql_product);
     $product = mysqli_fetch_row($query_product);
 
+    //category
+    $sql_category = 'SELECT name FROM category WHERE slug = "'.$_GET['product-detail'].'"';
+    $query_category = mysqli_query($mysqli, $sql_category);
+    $category = mysqli_fetch_row($query_category);
+
     //product same
-    $sql_products = 'SELECT thumbnail, name_prod, price FROM product WHERE id != "'.$_GET['id'].'"';
+    $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, brand
+    WHERE product.brand_id = brand.id AND brand.slug = "'.$_GET['brand'].'" AND product.id != "'.$_GET['id'].'"';
     $query_products = mysqli_query($mysqli, $sql_products);
+    
 ?>
 
 <!-- san pham chi tiet -->
@@ -22,9 +29,9 @@
             <div class="product__infoWrap">
                 <!-- navigation -->
                 <div class="product__infoNav">
-                    <a href="#" class="infoNav__Home">TRANG CHỦ</a>
+                    <a href="?home" class="infoNav__Home">TRANG CHỦ</a>
                     <span>/</span>
-                    <a href="#" class="infoNav__Cate">MÁY TÍNH</a>
+                    <a href="?product=<?php echo $_GET['product-detail'] ?>" class="infoNav__Cate"><?php echo mb_strtoupper($category[0], 'UTF-8') ;  ?></a>
                 </div>
 
                 <!-- name__product -->
@@ -113,47 +120,55 @@
     <!-- san pham tuong tu -->
     <div class="slideshow__container productSame__container row">
         <h3 class="productSame__Header col l-12">SẢN PHẨM TƯƠNG TỰ</h3>
-        <div class="productSame__area col l-12" id="productSame__area">
-            <ul class=" productSame__list ul__format row" id="productSame__list">
-                <?php
-                    while ($products = mysqli_fetch_array($query_products)) {
-                ?>
-                    <li class="productSame__item products__Wrap col l-3">
-                        <div class="product__areaWrapper">
-                            <div class="product__img">
-                                <a href="#">
-                                    <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="">
-                                </a>
+        <div class="splide col l-12">
+            <div class="splide__arrows">
+                <button class="splide__arrow splide__arrow--prev prev pro_prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="splide__arrow splide__arrow--next next pro_next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <?php
+                        while ($products = mysqli_fetch_array($query_products)) {
+                    ?>
+                        <li class="splide__slide">
+                            <div class="product__areaWrapper">
+                                <div class="product__img">
+                                    <a href="?product-detail=<?php echo $_GET['product-detail'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>">
+                                        <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="">
+                                    </a>
+                                </div>
+                                <div class="product__textArea">
+                                    <div class="product__textHeader">
+                                        <a href="?product-detail=<?php echo $_GET['product-detail'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
+                                    </div>
+                                    <div class="product__textPrice">
+                                        <?php echo number_format($products['price'],0,"","."); ?>
+                                        <span>đ</span>
+                                    </div>
+                                    
+                                    <div class="product__textButton">
+                                        <a href="#">Thêm vào giỏ</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="product__textArea">
-                                <div class="product__textHeader">
-                                    <a href="#"><?php echo $products['name_prod'] ?></a>
-                                </div>
-                                <div class="product__textPrice">
-                                    <?php echo number_format($products['price'],0,"","."); ?>
-                                    <span>đ</span>
-                                </div>
-                                
-                                <div class="product__textButton">
-                                    <a href="#">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                <?php
-                    }
-                ?>
-            </ul>
+                        </li>
+                    <?php
+                        }
+                    ?>
+                </ul>
+            </div>
         </div>
         <!-- Next and previous buttons -->
-        <a class="prev pro_prev" onclick="product__slider(-1, 244.8, '.productSame__item:first-child', '.productSame__item:last-child')">
+        <!-- <a class="prev pro_prev" onclick="product__slider(-1, 244.8, '.productSame__item:first-child', '.productSame__item:last-child')">
             <i class="fas fa-chevron-left"></i>
         </a>
         <a class="next pro_next" onclick="product__slider(1, 244.8, '.productSame__item:first-child')">
             <i class="fas fa-chevron-right"></i>
-        </a>
-        <!-- <button class="ctrl-btn pro-prev" onclick="prev()">Prev</button>
-        <button class="ctrl-btn pro-next" onclick="next()">Next</button> -->
+        </a> -->
     </div>
 
     <div class="slideshow__container productSame__container row">

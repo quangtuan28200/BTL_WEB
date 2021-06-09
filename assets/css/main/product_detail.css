@@ -1,7 +1,7 @@
-/* imgsp */
-/* .productDetail__wrapper{
-    background-color: white;
-} */
+
+.product__areaWrapper{
+    border: none;
+}
 
 .productDetail__container {
     margin: 0;
@@ -119,6 +119,8 @@
     border-radius: 2px;
     padding: 10px;
     width: 210px;
+    text-decoration: none;
+    text-align: center;
 }
 
 .product__infoGift{
@@ -221,7 +223,7 @@
 .pro_prev,
 .pro_next{
     background-image: linear-gradient(0, var(--subTheme_color), var(--theme_color));
-    border-radius: 5px;
+    width: 48px;
 }
 
 .pro_prev:hover,

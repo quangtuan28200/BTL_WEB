@@ -347,21 +347,21 @@
                 <!-- content__product -->
                 <div class="content__product row">
                     <?php
-                        $sql_product = 'SELECT id, thumbnail, name_prod, price FROM product 
-                        WHERE category_id = '.$categories['id'].' LIMIT 4';
+                        $sql_product = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, brand 
+                        WHERE product.brand_id = brand.id AND product.category_id = '.$categories['id'].' LIMIT 4';
                         $query_product = mysqli_query($mysqli, $sql_product);
                         while ($products = mysqli_fetch_array($query_product)) {
                     ?>
                         <div class="product__area col l-3">
                             <div class="product__areaWrapper">
                                 <div class="product__img">
-                                    <a href="?product-detail&id=<?php echo $products['id'] ?>">
+                                    <a href="?product-detail=<?php echo $categories['slug'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>">
                                         <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img">
                                     </a>
                                 </div>
                                 <div class="product__textArea">
                                     <div class="product__textHeader">
-                                        <a href="?product-detail&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
+                                        <a href="?product-detail=<?php echo $categories['slug'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
                                     </div>
                                     <div class="product__textPrice">
                                         <?php echo number_format($products['price'],0,"","."); ?>

@@ -7,12 +7,12 @@
 
     //loc theo brand
     if(isset($_GET['brand'])){
-        $sql_products = 'SELECT product.id, thumbnail, name_prod, price FROM product, category, brand
-        WHERE product.category_id = category.id AND brand_id = brand.id
+        $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, category, brand
+        WHERE product.brand_id = brand.id AND product.category_id = category.id AND brand_id = brand.id
         AND category.slug = "'.$_GET['product'].'" AND brand.slug = "'.$_GET['brand'].'"';
     }else{
-        $sql_products = 'SELECT product.id, thumbnail, name_prod, price FROM product, category 
-        WHERE category_id = category.id AND slug = "'.$_GET['product'].'"';
+        $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, category, brand
+        WHERE product.brand_id = brand.id AND product.category_id = category.id AND category.slug = "'.$_GET['product'].'"';
     }
 
     //loc theo moi nhat, gia thap den cao, cao den thap
@@ -56,6 +56,7 @@
     $category = mysqli_fetch_row($query_category);
 
     $query_brands = mysqli_query($mysqli, $sql_brands);
+    // echo $sql_products;
     $query_products = mysqli_query($mysqli, $sql_products);
 ?>
 
@@ -150,13 +151,13 @@
                 <div class="products__Wrap col l-4">
                     <div class="product__areaWrapper">
                         <div class="product__img">
-                            <a href="?product-detail&id=<?php echo $products['id'] ?>">
+                            <a href="?product-detail=<?php echo $_GET['product'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>">
                                 <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img">
                             </a>
                         </div>
                         <div class="product__textArea">
                             <div class="product__textHeader">
-                                <a href="?product-detail&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
+                                <a href="?product-detail=<?php echo $_GET['product'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
                             </div>
                             <div class="product__textPrice">
                                 <?php echo number_format($products['price'],0,"","."); ?>

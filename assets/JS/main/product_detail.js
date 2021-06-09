@@ -1,4 +1,13 @@
 
+document.addEventListener( 'DOMContentLoaded', function () {
+    // new Splide( '.splide' ).mount();
+    new Splide( '.splide', {
+        type   : 'loop',
+        perPage: 4,
+        perMove: 2,
+        gap: 20,
+    } ).mount();
+} );
 //! minus, plus btn
 function minus_plus(n) {
     number_field = document.querySelector('.number_field');

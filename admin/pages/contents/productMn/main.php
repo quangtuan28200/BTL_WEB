@@ -1,6 +1,6 @@
 
 <?php
-    $quantity_product_of_page = 5;
+    $quantity_product_of_page = 10;
     $page_choosed = 0;
     if(isset($_GET['page'])){
         if($_GET['page'] == 1){
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="content_loaded" style="display: none">
+            <div class="content_loaded" style="display: block">
                 <h3>Product list</h3>
                 <table>
                     <tr>
@@ -86,6 +86,15 @@
                         <th>Action</th>
                     </tr>
                     <?php
+                        function hadle_href($action, $productid){
+                            $href = '';
+                            if(isset($_GET['page'])){
+                                $href = "?management&product&page=".$_GET['page']."&".$action."&id=".$productid;
+                            }else{
+                                $href = "?management&product&".$action."&id=".$productid;
+                            }
+                            return $href;
+                        }
                         $no = 1;
                         while ($products = mysqli_fetch_array($query)) {
                     ?>
@@ -106,7 +115,7 @@
                             <td><?php echo $products['createdAt'] ?></td>
                             <td><?php echo $products['updatedAt'] ?></td>
                             <td style="width: 98px">
-                                <a class="MODIFY_BTN btn_action" href="?management&product&modify&id=<?php echo $products['id'] ?>">Modify</a>
+                                <a class="MODIFY_BTN btn_action" href="<?php echo hadle_href('modify', $products['id']) ?>">Modify</a>
                                 <a style="margin-top: 10px" class="delete btn_action" href="?management&product&delete&id=<?php echo $products['id'] ?>">Delete</a>
                             </td>
                             
@@ -117,7 +126,7 @@
                     ?>
                 </table>
                 <div class="add_btn_wr">
-                    <a  class="ADD_BTN btn_action" href="?management&product&create">ADD</a>
+                    <a  class="ADD_BTN btn_action" href="?management&product&page=<?php echo $_GET['page'] ?>&create">ADD</a>
                 </div>
 
                 <!-- pagination -->

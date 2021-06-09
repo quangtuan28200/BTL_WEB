@@ -30,7 +30,7 @@
             <div class="productDetail__container row">
                 <!-- product__IMG -->
                 <div class="productDetail__Area col l-6">
-                    <form id="formasd" action="pages/contents/productMn/handle.php?modify&id=<?php echo $product['id'] ?>" method="post" enctype="multipart/form-data">
+                    <form id="formasd" action="pages/contents/productMn/handle.php?page=<?php echo $_GET['page'] ?>&modify&id=<?php echo $product['id'] ?>" method="post" enctype="multipart/form-data">
                         <div class="file-upload">
                             <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">CHỌN ẢNH</button>
                 

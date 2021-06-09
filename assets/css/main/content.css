@@ -1,3 +1,8 @@
+
+.product__areaWrapper{
+    border: none;
+}
+
 .content__heading{
     display: flex;
     font-weight: 500;

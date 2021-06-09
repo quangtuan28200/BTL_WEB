@@ -1,6 +1,16 @@
 
 <?php
 
+    function handleLocation(){
+        $location = '';
+        if(isset($_GET['page'])){
+            $location = "Location:../../../index.php?management&product&page=".$_GET['page'];
+        }else{
+            $location = "Location:../../../index.php?management&product";
+        }
+        return $location;
+    }
+
     //! CREATE product
     if(isset($_GET['create']) || isset($_GET['modify'])){
         include('../../../../config/connectDB.php');
@@ -43,7 +53,7 @@
             else{
                 move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
             } 
-            header('Location:../../../index.php?management&product');
+            header(handleLocation());
         }
         if(isset($_GET['modify'])){
             if($_FILES['imgProduct']['name']!=''){
@@ -62,9 +72,17 @@
                 config_title="'.$titleConfig.'" ,config_content="'.$contentConfig.'",updatedAt="'.$updatedAt.'"
                 ,status_prod="1"
                 WHERE id='.$_GET['id'];
-                mysqli_query($mysqli, $sql_update);
+                $ver = mysqli_query($mysqli, $sql_update);
+
+                if(!$ver){
+                    echo mysqli_error($mysqli);
+                    die();
+                }
+                else{
+                    move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
+                } 
     
-                header('Location:../../../index.php?management&product');
+                header(handleLocation());
             }else{
                 $sql_update = 'UPDATE product SET category_id="'.$category.'",
                 brand_id="'.$brand.'",name_prod="'.$name.'",status_prod="1",
@@ -73,15 +91,8 @@
                 config_title="'.$titleConfig.'" ,config_content="'.$contentConfig.'",updatedAt="'.$updatedAt.'"    
                 WHERE id='.$_GET['id'];
 
-                $ver = mysqli_query($mysqli, $sql_update);
-                if(!$ver){
-                    echo mysqli_error($mysqli);
-                    die();
-                }
-                else{
-                    move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
-                } 
-                header('Location:../../../index.php?management&product');
+                mysqli_query($mysqli, $sql_update);
+                header(handleLocation());
             }
         }
     }
