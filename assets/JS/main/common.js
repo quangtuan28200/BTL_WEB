@@ -86,3 +86,13 @@ function placeholder() {
 }
 
 placeholder();
+
+//! ADD_to_CART
+var product__textButtons = document.querySelectorAll('.product__textButton');
+var header__cartList = document.querySelector('.header__cartList');
+
+product__textButtons.forEach(element => {
+	element.onclick = () => {
+		header__cartList.insertAdjacentHTML("beforeend", "<p>My new paragraph</p>");
+	};
+});

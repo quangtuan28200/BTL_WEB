@@ -1,4 +1,16 @@
 
+//! product_slider
+
+document.addEventListener( 'DOMContentLoaded', function () {
+    // new Splide( '.splide' ).mount();
+    new Splide( '.splide', {
+        type   : 'loop',
+        perPage: 4,
+        perMove: 2,
+        gap: 20,
+    } ).mount();
+} );
+
 //! slide_show
 // var dot__Container = document.getElementsByClassName("dot__component");
 // console.log(dot__Container);

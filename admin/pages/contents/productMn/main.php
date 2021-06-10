@@ -36,6 +36,36 @@
     //brand
     $sql_brand = 'SELECT * FROM brand ORDER BY `category_id` ASC';
     $query_brand = mysqli_query($mysqli, $sql_brand);
+
+    //handle pagination
+    if(isset($_GET['category_id'])){
+        $sql_page = 'SELECT * FROM product WHERE category_id='.$_GET['category_id'].'';
+        if(isset($_GET['brand_id'])){
+            $sql_page = 'SELECT * FROM product WHERE brand_id='.$_GET['brand_id'].'';
+        }
+    }else{
+        $sql_page = 'SELECT * FROM product';
+    }
+    $query_page = mysqli_query($mysqli, $sql_page);
+    $count_product = mysqli_num_rows($query_page);
+
+    $quantity_page = ceil($count_product/$quantity_product_of_page);
+
+    function a($i) {
+        $a = '';
+        if(isset($_GET['category_id'])){
+            $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
+            href="?management&product&category_id='.$_GET["category_id"].'&page='.$i.'">'.$i.'</a>';                                                         
+            if(isset($_GET['brand_id'])){
+                $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
+                href="?management&product&category_id='.$_GET["category_id"].'&brand_id='.$_GET["brand_id"].'&page='.$i.'">'.$i.'</a>';       
+            }
+        }else{
+            $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
+            href="?management&product&page='.$i.'">'.$i.'</a>';                                 
+        }
+        return $a;
+    }        
 ?>
 
 <div class="content grid">
@@ -49,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="content_loaded" style="display: block">
+            <div class="content_loaded" style="display: none">
                 <h3>Product list</h3>
                 <table>
                     <tr>
@@ -95,7 +125,14 @@
                             }
                             return $href;
                         }
-                        $no = 1;
+                        function handle_no(){
+                            $no_init = 1;
+                            if(isset($_GET['page'])){
+                                $no_init = ($_GET['page'] * 10) - 9;
+                            }
+                            return $no_init;
+                        }
+                        $no = handle_no();
                         while ($products = mysqli_fetch_array($query)) {
                     ?>
                         <tr>
@@ -126,41 +163,11 @@
                     ?>
                 </table>
                 <div class="add_btn_wr">
-                    <a  class="ADD_BTN btn_action" href="?management&product&page=<?php echo $_GET['page'] ?>&create">ADD</a>
+                    <a  class="ADD_BTN btn_action" href="?management&product&page=<?php echo $quantity_page ?>&create">ADD</a>
                 </div>
 
                 <!-- pagination -->
-                <div class="pagination_wr">
-                    <?php
-                        if(isset($_GET['category_id'])){
-                            $sql_page = 'SELECT * FROM product WHERE category_id='.$_GET['category_id'].'';
-                            if(isset($_GET['brand_id'])){
-                                $sql_page = 'SELECT * FROM product WHERE brand_id='.$_GET['brand_id'].'';
-                            }
-                        }else{
-                            $sql_page = 'SELECT * FROM product';
-                        }
-                        $query_page = mysqli_query($mysqli, $sql_page);
-                        $count_product = mysqli_num_rows($query_page);
-
-                        $quantity_page = ceil($count_product/$quantity_product_of_page);
-
-                        function a($i) {
-                            $a = '';
-                            if(isset($_GET['category_id'])){
-                                $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
-                                href="?management&product&category_id='.$_GET["category_id"].'&page='.$i.'">'.$i.'</a>';                                                         
-                                if(isset($_GET['brand_id'])){
-                                    $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
-                                    href="?management&product&category_id='.$_GET["category_id"].'&brand_id='.$_GET["brand_id"].'&page='.$i.'">'.$i.'</a>';       
-                                }
-                            }else{
-                                $a = '<a pageCurrent="'.$i.'" class="pagination_link" 
-                                href="?management&product&page='.$i.'">'.$i.'</a>';                                 
-                            }
-                            return $a;
-                        }
-                    ?>
+                <div class="pagination_wr">             
                     <ul class="pagination_ul">
                         <?php
                             for ($i=1; $i <= $quantity_page; $i++) {    

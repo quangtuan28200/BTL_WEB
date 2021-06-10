@@ -1,115 +1,67 @@
+<?php
+?>
+
 <!-- thanh toan -->
 <div class="cart__wrapper wide" style="display: block">
     <div class="cart__area row">
         <div class="cart__product col l-7">
             <div class="cart__productWrap">
-                <div class="cart__productHeader">
-                    <h4 class="productHeader">SẢN PHẨM</h4>
-                    <h4 class="productHeader__price">GIÁ</h4>
-                    <h4 class="productHeader__amount">SỐ LƯỢNG</h4>
+
+                <div style="padding: 0" class="w3-container">
+                    <table class="w3-table w3-bordered">
+                        <tr>
+                            <th style="width: 360px;">SẢN PHẨM</th>
+                            <th style="width: 110px;">GIÁ</th>
+                            <th style="width: 120px;">SỐ LƯỢNG</th>
+                        </tr>
+                        <?php
+                            if(isset($_SESSION['cart'])){
+                                foreach ($_SESSION['cart'] as $cart_item) {            
+                        ?>
+                            <tr>
+                                <td>
+                                    <div class="cart__productWR">
+                                        <div class="cart__productImg">
+                                            <a href="?product-detail=<?php echo $cart_item['cate_slug'] ?>&brand=<?php echo $cart_item['brand_slug'] ?>&id=<?php echo $cart_item['id'] ?>">
+                                                <img src="./assets/imgs/admin/upload_img_product/<?php echo $cart_item['thumbnail'] ?>" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="cart__productName">
+                                            <a href="?product-detail=<?php echo $cart_item['cate_slug'] ?>&brand=<?php echo $cart_item['brand_slug'] ?>&id=<?php echo $cart_item['id'] ?>">
+                                                <?php echo $cart_item['name'] ?>
+                                            </a>    
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cart__productPriceWr">
+                                        <span class="cart__productPrice"><?php echo number_format($cart_item['price'],0,"","."); ?> đ</span>      
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cart__productWR">
+                                        <div class="cart__productAmount">
+                                            <input type="button" value="-" class="minus_btn" onclick="minus_plus(-1)">
+                                            <input type="number" min="1" max="99" step="1" value="1" class="number_field">
+                                            <input type="button" value="+" class="plus_btn" onclick="minus_plus(1)">
+                                        </div>
+                                        <div class="cart__productRemove">
+                                            <a href="pages/contents/handle/product_handle.php?delete-to-cart&id=<?php echo $cart_item['id'] ?>">
+                                                <i class="far fa-times-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php
+                                }
+                            }
+                        ?>     
+                    </table>
                 </div>
 
-                <ul class="cart__productList ul__format">
-                    <li class="cart__productItem">
-                        <div class="cart__productImg">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="cart__productName">
-                            <a href="#">Bao da đeo đa di năng Remax YD-03</a>    
-                        </div>
-                        <div class="cart__productPriceWr">
-                            <span class="cart__productPrice">15.000.000</span>                  
-                            <span>đ</span>
-                        </div>
-                        <div class="cart__productAmount">
-                            <input type="button" value="-" class="minus_btn" onclick="minus_plus(-1)">
-                            <input type="number" min="1" max="99" step="1" value="1" class="number_field">
-                            <input type="button" value="+" class="plus_btn" onclick="minus_plus(1)">
-                        </div>
-                        <div class="cart__productRemove">
-                            <a href="#">
-                                <i class="far fa-times-circle"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="cart__productItem">
-                        <div class="cart__productImg">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="cart__productName">
-                            <a href="#">Bao da đeo đa di năng Remax YD-03</a>    
-                        </div>
-                        <div class="cart__productPriceWr">
-                            <span class="cart__productPrice">15.000.000</span>   
-                            <span>đ</span>
-                        </div>
-                        <div class="cart__productAmount">
-                            <input type="button" value="-" class="minus_btn" onclick="minus_plus(-1)">
-                            <input type="number" min="1" max="99" step="1" value="1" class="number_field">
-                            <input type="button" value="+" class="plus_btn" onclick="minus_plus(1)">
-                        </div>
-                        <div class="cart__productRemove">
-                            <a href="#">
-                                <i class="far fa-times-circle"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="cart__productItem">
-                        <div class="cart__productImg">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="cart__productName">
-                            <a href="#">Bao da đeo đa di năng Remax YD-03</a>    
-                        </div>
-                        <div class="cart__productPriceWr">
-                            <span class="cart__productPrice">15.000.000</span>   
-                            <span>đ</span>
-                        </div>
-                        <div class="cart__productAmount">
-                            <input type="button" value="-" class="minus_btn" onclick="minus_plus(-1)">
-                            <input type="number" min="1" max="99" step="1" value="1" class="number_field">
-                            <input type="button" value="+" class="plus_btn" onclick="minus_plus(1)">
-                        </div>
-                        <div class="cart__productRemove">
-                            <a href="#">
-                                <i class="far fa-times-circle"></i>
-                            </a>
-                        </div>
-                    </li>    
-                    <li class="cart__productItem">
-                        <div class="cart__productImg">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="cart__productName">
-                            <a href="#">Bao da đeo đa di năng Remax YD-03</a>    
-                        </div>
-                        <div class="cart__productPriceWr">
-                            <span class="cart__productPrice">15.000.000</span>   
-                            <span>đ</span>
-                        </div>
-                        <div class="cart__productAmount">
-                            <input type="button" value="-" class="minus_btn" onclick="minus_plus(-1)">
-                            <input type="number" min="1" max="99" step="1" value="1" class="number_field">
-                            <input type="button" value="+" class="plus_btn" onclick="minus_plus(1)">
-                        </div>
-                        <div class="cart__productRemove">
-                            <a href="#">
-                                <i class="far fa-times-circle"></i>
-                            </a>
-                        </div>
-                    </li>                        
-                </ul>
-
                 <div class="cart__productBtn">
-                    <a href="#">
+                    <a href="?product=laptop">
                         <i class="fas fa-arrow-left"></i>
                         <span>Xem sản phẩm khác</span> 
                     </a>
@@ -119,7 +71,7 @@
         <div class="cart__pay col l-5">
             <div class="cart__payWrap">
                 <form id="cart__payForm" method="POST" action="">
-                    <h4 class="cart__payHeader">TẠO PHIẾU THANH TOÁN</h4>
+                    <h4 style="margin-top: 0;" class="cart__payHeader">TẠO PHIẾU THANH TOÁN</h4>
                 
                     <div class="area_total">
                         <div class="discountcode">                               

@@ -118,9 +118,9 @@
     </div>
 
     <!-- san pham tuong tu -->
-    <div class="slideshow__container productSame__container row">
+    <div class="productSame__container row">
         <h3 class="productSame__Header col l-12">SẢN PHẨM TƯƠNG TỰ</h3>
-        <div class="splide col l-12">
+        <div class="splide slideshow__container col l-12">
             <div class="splide__arrows">
                 <button class="splide__arrow splide__arrow--prev prev pro_prev">
                     <i class="fas fa-chevron-left"></i>

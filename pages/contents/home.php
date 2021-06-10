@@ -346,37 +346,52 @@
 
                 <!-- content__product -->
                 <div class="content__product row">
-                    <?php
-                        $sql_product = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, brand 
-                        WHERE product.brand_id = brand.id AND product.category_id = '.$categories['id'].' LIMIT 4';
-                        $query_product = mysqli_query($mysqli, $sql_product);
-                        while ($products = mysqli_fetch_array($query_product)) {
-                    ?>
-                        <div class="product__area col l-3">
-                            <div class="product__areaWrapper">
-                                <div class="product__img">
-                                    <a href="?product-detail=<?php echo $categories['slug'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>">
-                                        <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img">
-                                    </a>
-                                </div>
-                                <div class="product__textArea">
-                                    <div class="product__textHeader">
-                                        <a href="?product-detail=<?php echo $categories['slug'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
-                                    </div>
-                                    <div class="product__textPrice">
-                                        <?php echo number_format($products['price'],0,"","."); ?>
-                                        <span>đ</span>
-                                    </div>
-                                    
-                                    <div class="product__textButton">
-                                        <a href="#">Thêm vào giỏ</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-                    <?php
-                        }
-                    ?>
+                    <div class="splide slideshow__container col l-12">
+                        <div class="splide__arrows">
+                            <button class="splide__arrow splide__arrow--prev prev pro_prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="splide__arrow splide__arrow--next next pro_next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <?php
+                                    $sql_product = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, brand 
+                                    WHERE product.brand_id = brand.id AND product.category_id = '.$categories['id'].' ORDER BY RAND() LIMIT 10';
+                                    $query_product = mysqli_query($mysqli, $sql_product);
+                                    while ($products = mysqli_fetch_array($query_product)) {
+                                ?>
+                                    <li class="splide__slide">
+                                        <div class="product__areaWrapper">
+                                            <div class="product__img">
+                                                <a href="?product-detail=<?php echo $categories['slug'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>">
+                                                    <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img">
+                                                </a>
+                                            </div>
+                                            <div class="product__textArea">
+                                                <div class="product__textHeader">
+                                                    <a href="?product-detail=<?php echo $categories['slug'] ?>&brand=<?php echo $products['slug'] ?>&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
+                                                </div>
+                                                <div class="product__textPrice">
+                                                    <?php echo number_format($products['price'],0,"","."); ?>
+                                                    <span>đ</span>
+                                                </div>
+                                                
+                                                <div class="product__textButton">
+                                                    <a href="#">Thêm vào giỏ</a>
+                                                </div>
+                                            </div>
+                                        </div>                                
+                                    </li>
+                                <?php
+                                    }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <!-- Xem Them -->

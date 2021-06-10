@@ -9,6 +9,14 @@
     $query_product = mysqli_query($mysqli, $sql_product);
     $query_category = mysqli_query($mysqli, $sql_category);
     $query_brand = mysqli_query($mysqli, $sql_brand);
+
+    function handle_href_action_form($product_id){
+        $action = "pages/contents/productMn/handle.php?modify&id=".$product_id."";
+        if(isset($_GET['page'])){
+            $action = "pages/contents/productMn/handle.php?page=".$_GET['page']."&modify&id=".$product_id."";
+        }
+        return $action;
+    }
 ?>
 
 <div class="content grid">
@@ -30,7 +38,7 @@
             <div class="productDetail__container row">
                 <!-- product__IMG -->
                 <div class="productDetail__Area col l-6">
-                    <form id="formasd" action="pages/contents/productMn/handle.php?page=<?php echo $_GET['page'] ?>&modify&id=<?php echo $product['id'] ?>" method="post" enctype="multipart/form-data">
+                    <form id="formasd" action="<?php echo handle_href_action_form($_GET['id']) ?>" method="post" enctype="multipart/form-data">
                         <div class="file-upload">
                             <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">CHỌN ẢNH</button>
                 

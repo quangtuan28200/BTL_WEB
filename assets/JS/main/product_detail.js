@@ -1,4 +1,6 @@
 
+//! product_slider
+
 document.addEventListener( 'DOMContentLoaded', function () {
     // new Splide( '.splide' ).mount();
     new Splide( '.splide', {
@@ -8,6 +10,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
         gap: 20,
     } ).mount();
 } );
+
 //! minus, plus btn
 function minus_plus(n) {
     number_field = document.querySelector('.number_field');

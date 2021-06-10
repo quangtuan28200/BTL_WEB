@@ -1,18 +1,26 @@
 
 <?php
+    $quantity_product_of_page = 6;
+    $page_choosed = 0;
+    if(isset($_GET['page'])){
+        if($_GET['page'] == 1){
+            $page_choosed = 0;
+        }else {
+            $page_choosed = ($_GET['page']*$quantity_product_of_page)-$quantity_product_of_page;
+        }
+    }
+
     $sql_categories = 'SELECT * FROM category';
     $sql_category = 'SELECT name FROM category WHERE slug = "'.$_GET['product'].'"';
     $sql_brands = 'SELECT brand.name, brand.slug FROM category, brand 
     WHERE category.id = category_id AND category.slug = "'.$_GET['product'].'"';
 
+    $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, category, brand
+    WHERE product.brand_id = brand.id AND product.category_id = category.id AND category.slug = "'.$_GET['product'].'"';
+    
     //loc theo brand
     if(isset($_GET['brand'])){
-        $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, category, brand
-        WHERE product.brand_id = brand.id AND product.category_id = category.id AND brand_id = brand.id
-        AND category.slug = "'.$_GET['product'].'" AND brand.slug = "'.$_GET['brand'].'"';
-    }else{
-        $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, category, brand
-        WHERE product.brand_id = brand.id AND product.category_id = category.id AND category.slug = "'.$_GET['product'].'"';
+        $sql_products = $sql_products.' AND brand_id = brand.id AND brand.slug = "'.$_GET['brand'].'"';
     }
 
     //loc theo moi nhat, gia thap den cao, cao den thap
@@ -51,17 +59,33 @@
         ';
     }
 
+    //limit for pagination
+    $count_product = mysqli_num_rows(mysqli_query($mysqli, $sql_products));
+    if($count_product > $quantity_product_of_page){
+        $sql_products = $sql_products.' LIMIT '.$page_choosed.','.$quantity_product_of_page.'';
+    }
+
+    //query
     $query_categories = mysqli_query($mysqli, $sql_categories);
     $query_category = mysqli_query($mysqli, $sql_category);
     $category = mysqli_fetch_row($query_category);
 
     $query_brands = mysqli_query($mysqli, $sql_brands);
-    // echo $sql_products;
     $query_products = mysqli_query($mysqli, $sql_products);
+
+    //handle pagination
+    $quantity_page = ceil($count_product/$quantity_product_of_page);
+
+    //remove param
+    function removeParam($url, $param) {
+        $url = preg_replace('/(&|\?)'.preg_quote($param).'=[^&]*$/', '', $url);
+        $url = preg_replace('/(&|\?)'.preg_quote($param).'=[^&]*&/', '$1', $url);
+        return $url;
+    }
 ?>
 
 <!-- san pham -->
-<div class="content__wrapper wide" style="display: block">
+<div class="content__wrapper wide">
     <!-- heading -->
     <div class="content__heading row">
         <div class="content__headingText col l-3">
@@ -146,6 +170,14 @@
         <div class="products__Container col l-9">
             <div class="products__Area row">
                 <?php
+                    function handle_href_add_cart($id){
+                        $href_cart = $_SERVER['REQUEST_URI'].'&add-to-cart&id='.$id;
+                        if(isset($_GET['add-to-cart'])){
+                            $add_to_cart = str_replace("&add-to-cart","",$_SERVER['REQUEST_URI']);
+                            $href_cart = removeParam($add_to_cart, 'id').'&add-to-cart&id='.$id;
+                        }
+                        return $href_cart;
+                    }
                     while ($products = mysqli_fetch_array($query_products)) {
                 ?>
                 <div class="products__Wrap col l-4">
@@ -163,14 +195,13 @@
                                 <?php echo number_format($products['price'],0,"","."); ?>
                                 <span>đ</span>
                             </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
+                            <div class="product__textButton">                     
+                                <a href="pages/contents/handle/product_handle.php?add-to-cart&id=<?php echo $products['id'] ?>">Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
+                <?php              
                     }
                 ?>
             </div>
@@ -178,26 +209,34 @@
             <div class="pagination__area">
                 <ul class="pagination__list ul__format">
                     
-                    <li class="pagination__item">
+                    <!-- <li class="pagination__item">
                         <a href="#" class="pagination__link a_format">
                             <i class="fas fa-chevron-left"></i>
                         </a>
-                    </li>
+                    </li> -->
 
-                    
-                    <li class="pagination__item">
-                        <a href="#" class="pagination__link a_format">1</a>
-                    </li>              
-                    <li class="pagination__item">
-                        <a href="#" class="pagination__link a_format">2</a>
-                    </li>
-
-                    
-                    <li class="pagination__item">
+                    <?php
+                        function handle_href_page($i){
+                            $href_page = $_SERVER['REQUEST_URI'].'&page='.$i;
+                            if(isset($_GET['page'])){
+                                $href_page =  removeParam($_SERVER['REQUEST_URI'], 'page').'&page='.$i;
+                            }
+                            return $href_page;
+                        }
+                        for ($i=1; $i <= $quantity_page; $i++) {                            
+                    ?>
+                        <li class="pagination__item">
+                            <a href="<?php echo handle_href_page($i); ?>" class="pagination__link a_format"><?php echo $i; ?></a>
+                        </li>  
+                    <?php
+                        }
+                    ?>
+           
+                    <!-- <li class="pagination__item">
                         <a href="#" class="pagination__link a_format">
                             <i class="fas fa-chevron-right"></i>
                         </a>
-                    </li>                             
+                    </li>                              -->
                 </ul>
             </div>
         </div>

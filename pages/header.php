@@ -1,6 +1,13 @@
 <?php
+    session_start();
+
     $sql = 'SELECT * FROM category';
     $query = mysqli_query($mysqli, $sql);
+
+    if(isset($_GET['add-to-cart'])){
+        $sql_cart = 'SELECT * FROM product WHERE id ='.$_GET['id'];
+        $query_cart = mysqli_query($mysqli, $sql_cart);
+    }
 ?>
 
 <!-- header -->
@@ -95,65 +102,37 @@
                                 <div class="cartList__header">Sản phẩm đã thêm</div>
     
                                 <ul class="header__cartList">
-                                    <li class="header__cartItem">               
-                                        <div class="cartItem__img">
-                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="img">
-                                        </div>
-                                        <div class="cartItem__content">
-                                            <div class="cartItem__Name">
-                                                <a href="#">Bao da đeo đa di năng Remax YD-03</a>       
+                                    <?php
+                                        if(isset($_SESSION['cart'])){
+                                            foreach ($_SESSION['cart'] as $cart_item) {            
+                                    ?>
+                                        <li class="header__cartItem">               
+                                            <div class="cartItem__img">
+                                                <a href="?product-detail=<?php echo $cart_item['cate_slug'] ?>&brand=<?php echo $cart_item['brand_slug'] ?>&id=<?php echo $cart_item['id'] ?>">
+                                                    <img src="./assets/imgs/admin/upload_img_product/<?php echo $cart_item['thumbnail'] ?>" alt="img">
+                                                </a>
                                             </div>
-                                            <div class="cartItem__InfoPay">
-                                                <div class="cartItem__Price">2.070.000đ</div>
-                                                <div class="cartItem__Muntiply">x</div>
-                                                <div class="cartItem__Quantity">1</div>
+                                            <div class="cartItem__content">
+                                                <div class="cartItem__Name">
+                                                    <a href="?product-detail=<?php echo $cart_item['cate_slug'] ?>&brand=<?php echo $cart_item['brand_slug'] ?>&id=<?php echo $cart_item['id'] ?>"><?php echo $cart_item['name'] ?></a>       
+                                                </div>
+                                                <div class="cartItem__InfoPay">
+                                                    <div class="cartItem__Price"><?php echo number_format($cart_item['price'],0,"","."); ?> đ</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="cartItem__Remove">
-                                            <i class="far fa-times-circle"></i>
-                                        </div>                       
-                                    </li>
-                                    <li class="header__cartItem">               
-                                        <div class="cartItem__img">
-                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="img">
-                                        </div>
-                                        <div class="cartItem__content">
-                                            <div class="cartItem__Name">
-                                                <a href="#">Bao da đeo đa di năng Remax YD-03</a>       
-                                            </div>
-                                            <div class="cartItem__InfoPay">
-                                                <div class="cartItem__Price">2.070.000đ</div>
-                                                <div class="cartItem__Muntiply">x</div>
-                                                <div class="cartItem__Quantity">1</div>
-                                            </div>
-                                        </div>
-                                        <div class="cartItem__Remove">
-                                            <i class="far fa-times-circle"></i>
-                                        </div>                       
-                                    </li>
-                                    <li class="header__cartItem">               
-                                        <div class="cartItem__img">
-                                            <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="img">
-                                        </div>
-                                        <div class="cartItem__content">
-                                            <div class="cartItem__Name">
-                                                <a href="#">Bao da đeo đa di năng Remax YD-03</a>       
-                                            </div>
-                                            <div class="cartItem__InfoPay">
-                                                <div class="cartItem__Price">2.070.000đ</div>
-                                                <div class="cartItem__Muntiply">x</div>
-                                                <div class="cartItem__Quantity">1</div>
-                                            </div>
-                                        </div>
-                                        <div class="cartItem__Remove">
-                                            <i class="far fa-times-circle"></i>
-                                        </div>                       
-                                    </li>
+                                            <div class="cartItem__Remove">
+                                                <a href="pages/contents/handle/product_handle.php?delete-to-cart&id=<?php echo $cart_item['id'] ?>"><i class="far fa-times-circle"></i></a>          
+                                            </div>                       
+                                        </li>
+                                    <?php
+                                           }
+                                        }
+                                    ?>
                                 </ul>
     
                                 <!-- Xem gio hang -->
                                 <div class="show__spCart">
-                                    <a href="#">Xem giỏ hàng</a>
+                                    <a href="?pay">Xem giỏ hàng</a>
                                 </div>                                      
                             </div>
                         </div>
