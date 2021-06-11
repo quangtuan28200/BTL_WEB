@@ -67,12 +67,12 @@
 
                 <!-- form__quantity -->
                 <form class="form__quantity" action="" method="GET">
-                    <input type="button" value="-" class="minus_btn" onclick="minus_plus(-1)">
-                    <input type="number" min="1" max="99" step="1" value="1" class="number_field">
-                    <input type="button" value="+" class="plus_btn" onclick="minus_plus(1)">
+                    <input type="button" value="-" class="minus_btn">
+                    <input disabled type="number" min="1" max="<?php echo $product[8] ?>" step="1" value="1" class="number_field">
+                    <input type="button" value="+" class="plus_btn">
 
-                    <button type="submit" class="addCart_btn btn">THÊM VÀO GIỎ</button>
-                    <a href="?pay" type="submit" class="buy_btn btn">MUA NGAY</a>
+                    <a href="pages/contents/handle/product_handle.php?add-to-cart&quantity=<?php echo $product[8] ?>&id=<?php echo $product[0] ?>" class="addCart_btn btn">THÊM VÀO GIỎ</a>
+                    <a href="?pay" class="buy_btn btn">MUA NGAY</a>
                 </form>
             </div>
         </div>
@@ -151,7 +151,7 @@
                                     </div>
                                     
                                     <div class="product__textButton">
-                                        <a href="#">Thêm vào giỏ</a>
+                                        <a href="pages/contents/handle/product_handle.php?add-to-cart&id=<?php echo $products['id'] ?>">Thêm vào giỏ</a>
                                     </div>
                                 </div>
                             </div>

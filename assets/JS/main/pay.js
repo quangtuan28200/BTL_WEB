@@ -15,43 +15,97 @@ function convert_money(n) {
     return money;
 }
 
+//! get parentElement follow selector_name
+
+function getParent(element, selector){
+    while (element.parentElement) {
+        if(element.parentElement.matches(selector)){
+            return element.parentElement;
+        }
+        element = element.parentElement;
+    }
+} 
+
 //! total_money
 
 var cart_product_quantity = document.querySelectorAll('.cart__productItem').length;
-
 document.querySelector('.price_provisional_label span').innerText = '( ' + cart_product_quantity + ' sản phẩm ):';
-
-var asd = document.querySelectorAll('.cart__productPrice');
-// var qwe = document.querySelectorAll('.number_field');
-// console.log(qwe);
-
-var dsa = Array.from(asd).reduce(function (value, input) {  
-    return value + convert_money(input.innerText);
-}, 0);
-
 var provisional_money = document.querySelector('.price_provisional_money');
-var total_money = document.querySelector('.price_total_money');
-
-// tao attribute gan tong tam vao
-provisional_money.setAttribute("provisional_money", dsa);
-//Lay value cua attribute tong tam
-var prov_money = parseInt(provisional_money.getAttribute("provisional_money")) ;
-
-// tao attribute gan tong tien vao
-total_money.setAttribute('total_money', prov_money);
-//Lay value cua attribute tong tien
-var to_money = parseInt(total_money.getAttribute("total_money")) ;
-
-//In money ra ngoai dang string
-provisional_money.innerText = convert_money(prov_money) + ' đ';
-total_money.innerText = convert_money(to_money) + ' đ';
-
-//last_money
+var price_total_money = document.querySelector('.price_total_money');
 var last_pay_selector = document.querySelector('.last_pay span');
-last_pay_selector.setAttribute('last_money', to_money);
-last_pay_selector.innerText = convert_money(to_money) + ' đ';
+var money_dis = document.querySelector('.money_dis');
+var money_discount_e = document.querySelector('.money_discount');
+var discount_input = document.querySelector('.discount_input');
+var fee_deli_money = document.querySelector('.fee_deli_money');
+var last_pay_money = document.querySelector('.last_pay_money');
+var asd = document.querySelectorAll('.cart__productPrice');
+
+//check event money_dis change
+
+money_dis.onchange = () => {
+    console.log('a');
+};
+
+// tinh tong
+function total_money_handle() {
+    let dsa = Array.from(asd).reduce(function (value, input) {  
+        let tr = getParent(input, 'tr');
+        let number_field = tr.querySelector('.number_field');
+        let quantity = number_field.value;
+        return value + (convert_money(input.innerText) * quantity);
+    }, 0);
+
+    //! tong tien tam
+
+    // tao attribute gan tong tam vao
+    provisional_money.setAttribute("provisional_money", dsa);
+    //Lay value cua attribute tong tam
+    let prov_money = parseInt(provisional_money.getAttribute("provisional_money")) ;
+    //in ra text tong tien tam
+    provisional_money.innerText = convert_money(prov_money) + ' đ';
+
+    //! - money discount
+
+    //lay value cua attribute money_dis
+    let money_dis_value = parseInt(money_dis.getAttribute("money_dis")) ;
+    //Tinh tong tien
+    let total_money = prov_money - money_dis_value;
+    //Set attribute tong tien
+    price_total_money.setAttribute("price_total_money", total_money);
+    //In ra text tong tien
+    price_total_money.innerText = convert_money(total_money) + ' đ';
+
+    //! + fee delivery
+
+    //lay value cua attribute fee_deli_money
+    let fee_deli_money_value = parseInt(fee_deli_money.getAttribute("fee_deli")) ;
+    //Tinh tong tien phai tra
+    let last_total_money = total_money + fee_deli_money_value;
+    //Set attribute tong tien
+    last_pay_money.setAttribute("last_pay_money", last_total_money);
+    //In ra text tong tien
+    last_pay_money.innerText = convert_money(last_total_money) + ' đ';
+
+}
+
+total_money_handle();
+
+// check event when number_field change
+var quantity_btns = document.querySelectorAll('.quantity_btn');
+var number_field = document.querySelectorAll('.number_field');
+
+quantity_btns.forEach(element => {
+    element.onmouseup = () => {
+        setTimeout(() => {
+            total_money_handle();
+        }, 1);
+    };
+});
 
 //! random_discountCode
+
+var applycode__code = document.querySelector('.applycode__code i');
+//random discountCODE
 function makeid(length) {
 var result           = [];
 var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -63,35 +117,39 @@ var charactersLength = characters.length;
     document.querySelector('.applycode__text_input input').value = result.join('');
 }
 
-function money_discount() {
-    input = document.querySelector('.applycode__text_input input');
+// xoa validate khi input
+discount_input.oninput = () =>{
+    if($('.discount_input').hasClass("err")){
+        discount_input.classList.remove("err");
+    }
+};
 
-    if(input.value == ''){
-        input.style.boxShadow = '0 0 5px red';
+applycode__code.onclick = () =>{
+    if($('.discount_input').hasClass("err")){
+        discount_input.classList.remove("err");
+    }
+};
+
+// apply discount when click Ap Dung
+function money_discount() {
+    if(discount_input.value == ''){
+        discount_input.classList.add("err");
     }
     else{
-        money = 200000 + Math.floor(Math.random() * 100000);
+        let prov_money = parseInt(provisional_money.getAttribute("provisional_money"));
+        // random money
+        let money = (prov_money * random_number(5, 20))/100;
 
-        // input.removeAttribute("style");
-        document.querySelector('.discountcode').style.display = 'none';
-        document.querySelector('.money_discount').style.display = 'flex';
-        document.querySelector('.applycode_suc').style.display = 'block';
+        //xoa validate
+        discount_input.classList.remove("err");
+        money_discount_e.style.display = "flex";
 
-        var money_dis = document.querySelector('.money_dis');
         //gan gia tri cua money_discount vao attribute
         money_dis.setAttribute("money_dis", money);
         //In money ra ngoai
         money_dis.innerText = '- ' + convert_money(money) + ' đ';
 
-        //gan lai gia tri cho attribute tong tien sau khi tru money-discount
-        total_money.setAttribute('total_money', prov_money - money);
-        //Get tra tri sau khi da tru
-        to_money = parseInt(total_money.getAttribute("total_money"));
-        //In so tien sau khi da tru ra ngoai
-        total_money.innerHTML = convert_money(to_money) + ' đ';
-
-        //last_money
-        last_pay_selector.innerText = convert_money(to_money) + 'đ';
+        total_money_handle();
     }
 }
 
@@ -105,36 +163,17 @@ function fee_deli() {
     if(document.querySelector('.fee_deli').style.display == 'none'){
         fee_deli_selector.setAttribute('fee_deli', money_deli);
         fee_deli_selector.innerText = convert_money(money_deli) + ' đ';
-
-        //last_money
-        Last_money();
-
+        
         document.querySelector('.fee_deli').style.display = 'flex';
     }else{
         if(document.querySelector('#deli_unit_sl').value == 0){
             document.querySelector('.fee_deli').style.display = 'none';
             fee_deli_selector.setAttribute('fee_deli', 0);
-
-            //last_money
-            Last_money();
         }else{
             fee_deli_selector.setAttribute('fee_deli', money_deli);
             fee_deli_selector.innerText = convert_money(money_deli) + ' đ';
-
-            //last_money
-            Last_money();
         }
     }
-}
-
-function Last_money(){
-    let m_provisional = prov_money;
-    let m_discount = parseInt(document.querySelector('.money_dis').getAttribute('money_dis'));
-    let m_fee_deli = parseInt(document.querySelector('.fee_deli span').getAttribute('fee_deli'));
-    m_last = m_provisional - m_discount + m_fee_deli;
-
-    //last_money
-    last_pay_selector.setAttribute('last_money', m_last);
-    last_pay_selector.innerText = convert_money(m_last) + ' đ';
+    total_money_handle();
 }
 

@@ -1,8 +1,7 @@
-<?php
-?>
 
 <!-- thanh toan -->
 <div class="cart__wrapper wide" style="display: block">
+    <form id="cart__payForm" method="POST" action="">
     <div class="cart__area row">
         <div class="cart__product col l-7">
             <div class="cart__productWrap">
@@ -18,7 +17,7 @@
                             if(isset($_SESSION['cart'])){
                                 foreach ($_SESSION['cart'] as $cart_item) {            
                         ?>
-                            <tr>
+                            <tr class="cart__productItem">
                                 <td>
                                     <div class="cart__productWR">
                                         <div class="cart__productImg">
@@ -41,9 +40,9 @@
                                 <td>
                                     <div class="cart__productWR">
                                         <div class="cart__productAmount">
-                                            <input type="button" value="-" class="minus_btn" onclick="minus_plus(-1)">
-                                            <input type="number" min="1" max="99" step="1" value="1" class="number_field">
-                                            <input type="button" value="+" class="plus_btn" onclick="minus_plus(1)">
+                                            <input type="button" value="-" class="minus_btn quantity_btn">
+                                            <input disabled type="number" min="1" max="<?php echo $cart_item['quantity_max'] ?>" step="" value="<?php echo $cart_item['quantity'] ?>" class="number_field">
+                                            <input type="button" value="+" class="plus_btn quantity_btn">
                                         </div>
                                         <div class="cart__productRemove">
                                             <a href="pages/contents/handle/product_handle.php?delete-to-cart&id=<?php echo $cart_item['id'] ?>">
@@ -70,13 +69,13 @@
         </div>
         <div class="cart__pay col l-5">
             <div class="cart__payWrap">
-                <form id="cart__payForm" method="POST" action="">
+                <!-- <form id="cart__payForm" method="POST" action=""> -->
                     <h4 style="margin-top: 0;" class="cart__payHeader">TẠO PHIẾU THANH TOÁN</h4>
                 
                     <div class="area_total">
                         <div class="discountcode">                               
                             <div class="applycode__text_input">
-                                <input class="input_format" maxlength="20" placeholder="Nhập mã giảm giá">
+                                <input class="discount_input input_format" maxlength="20" placeholder="Nhập mã giảm giá">
                             </div>
                             <div class="applycode__code" onclick="makeid(12)">
                                 <i class="fas fa-sync-alt"></i>
@@ -158,7 +157,7 @@
                             </div>
                             <div class="fee_deli" style="display: none">
                                 <p>Phí giao hàng:</p>
-                                <span fee_deli = "0">0 đ</span>
+                                <span class="fee_deli_money" fee_deli = "0">0 đ</span>
                             </div>
                         </div>
 
@@ -172,12 +171,13 @@
                     <div class="cart_payBtn">
                         <div class="last_pay">
                             <p>Phải trả:</p>
-                            <span></span>
+                            <span class="last_pay_money"></span>
                         </div>
-                        <button class="input_format">ĐẶT HÀNG</button>
+                        <button type="submit" class="input_format">ĐẶT HÀNG</button>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>
+    </form>
 </div>

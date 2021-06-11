@@ -87,12 +87,30 @@ function placeholder() {
 
 placeholder();
 
-//! ADD_to_CART
-var product__textButtons = document.querySelectorAll('.product__textButton');
-var header__cartList = document.querySelector('.header__cartList');
+//! minus, plus btn quantity
+var number_fields = document.querySelectorAll('.number_field');
+var plus_btns = document.querySelectorAll('.plus_btn');
+var minus_btns = document.querySelectorAll('.minus_btn');
 
-product__textButtons.forEach(element => {
-	element.onclick = () => {
-		header__cartList.insertAdjacentHTML("beforeend", "<p>My new paragraph</p>");
-	};
-});
+handle_quantity(plus_btns, 1);
+handle_quantity(minus_btns, -1);
+
+function handle_quantity(selector, n) {
+	selector.forEach(element => {
+		var cart__productAmount = element.parentElement;
+		var number_field = cart__productAmount.querySelector('.number_field');
+		element.onclick = () => {
+			value = parseInt(number_field.value);
+			min = parseInt(number_field.min);
+			max = parseInt(number_field.max);
+	
+			value += n;
+	
+			if(min <= value && value <= max){
+				number_field.value = value;
+			}else{
+				number_field.value = 1;
+			}
+		};
+	});
+}

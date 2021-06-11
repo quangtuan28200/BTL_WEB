@@ -31,6 +31,15 @@
 </head>
 <body>
     <div id="main">
+        <!-- add class error to erorr notify -->
+        <div class="notify_container">
+            <div class="notify_wr">
+                <!-- <i class="fas fa-exclamation-circle"></i> -->
+                <i class="fas fa-check-circle"></i>
+                <span>Thanh cong</span>
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
         <?php
             // import DB
             include('config/connectDB.php');
@@ -41,7 +50,7 @@
         ?>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?v=<?php echo time() ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
     <script src="./assets/JS/base.js?v=<?php echo time() ?>"></script>
     <script src="./assets/JS/main/common.js?v=<?php echo time() ?>"></script>

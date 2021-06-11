@@ -11,22 +11,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
     } ).mount();
 } );
 
-//! minus, plus btn
-function minus_plus(n) {
-    number_field = document.querySelector('.number_field');
-    value = parseInt(number_field.value);
-    min = parseInt(number_field.min);
-    max = parseInt(number_field.max);
-    
-    value += n;
-
-    if(min <= value && value <= max){
-        number_field.value = value;
-    }else{
-        number_field.value = 1;
-    }
-}
-
 //! product__slider
 //lay do dai 1 li
 // li = document.querySelector('.productSame__item');

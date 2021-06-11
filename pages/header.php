@@ -118,7 +118,11 @@
                                                 </div>
                                                 <div class="cartItem__InfoPay">
                                                     <div class="cartItem__Price"><?php echo number_format($cart_item['price'],0,"","."); ?> đ</div>
+                                                    <div style="margin-left: 4px;" class="cartItem__quantity">
+                                                        <span>x <?php echo $cart_item['quantity'] ?></span>
+                                                    </div>
                                                 </div>
+                                                
                                             </div>
                                             <div class="cartItem__Remove">
                                                 <a href="pages/contents/handle/product_handle.php?delete-to-cart&id=<?php echo $cart_item['id'] ?>"><i class="far fa-times-circle"></i></a>          

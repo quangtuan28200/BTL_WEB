@@ -380,7 +380,7 @@
                                                 </div>
                                                 
                                                 <div class="product__textButton">
-                                                    <a href="#">Thêm vào giỏ</a>
+                                                    <a href="pages/contents/handle/product_handle.php?add-to-cart&id=<?php echo $products['id'] ?>">Thêm vào giỏ</a>
                                                 </div>
                                             </div>
                                         </div>                                

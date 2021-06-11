@@ -68,6 +68,8 @@
     padding: 10px;
     margin: 0 10px;
     width: 210px;
+    text-align: center;
+    text-decoration: none;
 }
 
 .buy_btn{
