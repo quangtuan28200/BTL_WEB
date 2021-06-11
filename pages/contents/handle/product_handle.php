@@ -2,10 +2,14 @@
     session_start();
     include('../../../config/connectDB.php');
     // session_destroy();
-    if(isset($_GET['add-to-cart'])){
-        $id = $_GET['id'];
-        if(isset($_GET['quantity'])){
-            $quantity = $_GET['quantity'];
+    if(isset($_GET['add-to-cart']) || isset($_POST['add_cart'])){
+        if(isset($_POST['add_cart'])){
+            $id = $_POST['add_cart'];
+        }else{
+            $id = $_GET['id'];
+        }
+        if(isset($_POST['quantity'])){
+            $quantity = $_POST['quantity'];
         }else{
             $quantity = 1;
         }
@@ -56,16 +60,17 @@
 
     if(isset($_GET['delete-to-cart'])){
         $id = $_GET['id'];
-        // echo '<pre>';
-        // print_r($_SESSION['cart']);
-        // echo '</pre>';
         
-        foreach ($_SESSION['cart'] as $cart_item) {
-            if($cart_item['id'] != $id){
-                $cart_product[] = array('id'=>$cart_item['id'], 'name'=>$cart_item['name'], 'cate_slug'=>$cart_item['cate_slug'], 'brand_slug'=>$cart_item['brand_slug'], 
-                'thumbnail'=>$cart_item['thumbnail'], 'price'=>$cart_item['price'], 'quantity'=>$cart_item['quantity'], 'quantity_max'=>$cart_item['quantity_max']);
+        if(count($_SESSION['cart']) > 1){
+            foreach ($_SESSION['cart'] as $cart_item) {
+                if($cart_item['id'] != $id){
+                    $cart_product[] = array('id'=>$cart_item['id'], 'name'=>$cart_item['name'], 'cate_slug'=>$cart_item['cate_slug'], 'brand_slug'=>$cart_item['brand_slug'], 
+                    'thumbnail'=>$cart_item['thumbnail'], 'price'=>$cart_item['price'], 'quantity'=>$cart_item['quantity'], 'quantity_max'=>$cart_item['quantity_max']);
+                }
+                $_SESSION['cart'] = $cart_product;
             }
-            $_SESSION['cart'] = $cart_product;
+        }else{
+            unset($_SESSION['cart']);
         }
     }
 

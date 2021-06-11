@@ -98,7 +98,13 @@ function validator(options) {
                                 values[input.name] = input.files;
                                 break;                                     
                             default:
+                                //cart_products
+                                values.cart_products = cart_products();
+
+                                // if input type TEXT
                                 values[input.name] = input.value;
+
+                                //if is tag DIV and have attribute
                                 var l = options.tag_not_input.name_value.length;
                                 if(l>0){
                                     var t1 = options.tag_not_input.name_value;
@@ -111,9 +117,13 @@ function validator(options) {
                                 break;
                         }
                         return values;
-                    }, {});
-        
-                    console.log(options.onSubmit(formValues));
+                    }, {});               
+                    // options.onSubmit(formValues);
+                    
+                    //! send cookie
+                    
+                    document.cookie = "cart_products="+ JSON.stringify(formValues) + "; ; path=http://localhost/BTL_WEB/pages/contents/handle/pay_handle.php" ;
+                    formElement.submit();
                 }
             }
         };

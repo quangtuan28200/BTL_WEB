@@ -67,7 +67,7 @@
         }
     ?>
     <!-- <script src="./assets/JS/main/main.js?v=<?php echo time() ?>"></script> -->
-    <script src="./assets/JS/validator.js"></script>
+    <script src="./assets/JS/validator.js?v=<?php echo time() ?>"></script>
     <script>
         validator({
             form: '#cart__payForm',
@@ -93,8 +93,8 @@
             },
             tag_not_input:{
                 name_value: ['money_provisional', 'money_discount', 'money_deliver', 'money_lastPay'],
-                tag_selector: ['.price_provisional_money', '.money_dis', '.fee_deli span', '.last_pay span'],
-                tag_attribute: ["provisional_money", "money_dis", "fee_deli", "last_money"]
+                tag_selector: ['.price_provisional_money', '.money_dis', '.fee_deli span', '.last_pay_money'],
+                tag_attribute: ["provisional_money", "money_dis", "fee_deli", "last_pay_money"]
             }
         });
     </script>

@@ -177,3 +177,17 @@ function fee_deli() {
     total_money_handle();
 }
 
+//! list product_cart
+
+var cart__productItems = document.querySelectorAll('.cart__productItem');
+
+function cart_products() {
+    let i = 0;
+    return Array.from(cart__productItems).reduce(function (values, input) {
+        let id = input.getAttribute('id');
+        let quantity = input.querySelector('.number_field').value;
+        values[i] = {id:id, quantity:quantity};
+        i++;
+        return values;
+    }, []);
+}

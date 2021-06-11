@@ -1,7 +1,7 @@
 
 <!-- thanh toan -->
 <div class="cart__wrapper wide" style="display: block">
-    <form id="cart__payForm" method="POST" action="">
+    <form id="cart__payForm" method="POST" action="pages/contents/handle/pay_handle.php">
     <div class="cart__area row">
         <div class="cart__product col l-7">
             <div class="cart__productWrap">
@@ -17,7 +17,7 @@
                             if(isset($_SESSION['cart'])){
                                 foreach ($_SESSION['cart'] as $cart_item) {            
                         ?>
-                            <tr class="cart__productItem">
+                            <tr id="<?php echo $cart_item['id'] ?>" class="cart__productItem">
                                 <td>
                                     <div class="cart__productWR">
                                         <div class="cart__productImg">
@@ -41,7 +41,7 @@
                                     <div class="cart__productWR">
                                         <div class="cart__productAmount">
                                             <input type="button" value="-" class="minus_btn quantity_btn">
-                                            <input disabled type="number" min="1" max="<?php echo $cart_item['quantity_max'] ?>" step="" value="<?php echo $cart_item['quantity'] ?>" class="number_field">
+                                            <input readonly="readonly" type="number" min="1" max="<?php echo $cart_item['quantity_max'] ?>" step="" value="<?php echo $cart_item['quantity'] ?>" class="number_field">
                                             <input type="button" value="+" class="plus_btn quantity_btn">
                                         </div>
                                         <div class="cart__productRemove">
@@ -97,7 +97,7 @@
                         </div>
                         <div class="money_discount" style="display: none;">
                             <span>Mã giảm giá:</span>                                  
-                            <span name="money_dis" class="money_dis" money_dis = "0" style="color: green"></span>
+                            <span class="money_dis" money_dis = "0" style="color: green"></span>
                         </div>
                         <div class="price_total">
                             <strong class="price_total_label">Tổng tiền:</strong>
@@ -173,7 +173,7 @@
                             <p>Phải trả:</p>
                             <span class="last_pay_money"></span>
                         </div>
-                        <button type="submit" class="input_format">ĐẶT HÀNG</button>
+                        <button value="<?php echo $_GET['id'] ?>"  type="submit" class="input_format">ĐẶT HÀNG</button>
                     </div>
                 <!-- </form> -->
             </div>

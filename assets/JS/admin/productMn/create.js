@@ -62,6 +62,7 @@ document.querySelector('.btn_save button').onclick = function () {
         return values;
     }, {});
     // console.log(form1Values);
+    //! send cookie
     document.cookie = "a="+ JSON.stringify(form1Values) + "; ; path=http://localhost/BTL_WEB/admin/pages/contents/productMn/handle.php" ;
 };
 
