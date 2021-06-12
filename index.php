@@ -25,7 +25,9 @@
         }elseif (isset($_GET['pay'])) {
             echo '<link rel="stylesheet" href="./assets/css/main/cart.css?v='.time().'">';
         }elseif (isset($_GET['invoice'])) {
-            echo '<link rel="stylesheet" href="./assets/css/main/invoice.css?v='.time().'">';
+            echo '<link rel="stylesheet" href="./assets/css/admin/common.css?v='.time().'">';
+            echo '<link rel="stylesheet" href="./assets/css/main/cart.css?v='.time().'">';
+            echo '<link rel="stylesheet" href="./assets/css/admin/payment.css?v='.time().'">';
         }
     ?>
     
@@ -64,11 +66,12 @@
             echo '<script src="./assets/JS/main/product_detail.js?v='.time().'"></script>';
         }elseif (isset($_GET['pay'])) {
             echo '<script src="./assets/JS/main/pay.js?v='.time().'"></script>';
+        }elseif (isset($_GET['invoice'])) {
+            //nothing
         }else{
             echo '<script src="./assets/JS/main/home.js?v='.time().'"></script>';
         }
     ?>
-    <!-- <script src="./assets/JS/main/main.js?v=<?php echo time() ?>"></script> -->
     <script src="./assets/JS/validator.js?v=<?php echo time() ?>"></script>
     <script>
         validator({

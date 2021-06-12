@@ -80,3 +80,17 @@ if (url.includes("product") && localStorage.getItem('value_price_range')) {
 filter__btn.onclick = () =>{
     localStorage.setItem('value_price_range', slider.value);
 };
+
+//! pagination - hieu ung select vao so trang
+var pagination__links = document.querySelectorAll('.pagination__link ');
+
+if(!urlParams.has('page')){
+    pagination__links[0].classList.add('pagination_active');
+}else{
+    pagination__links.forEach(element => {
+        let value_select = element.innerText;
+        if(value_select == urlParams.get('page')){
+            element.classList.add('pagination_active');
+        }
+    });
+}

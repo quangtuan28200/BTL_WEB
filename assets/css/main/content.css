@@ -224,3 +224,11 @@
     color: var(--subTheme_color);
     transform: translateX(10px);
 }
+
+/* pagination */
+.pagination__link.pagination_active{
+    color: white;
+    padding: 2px;
+    background-image: linear-gradient(0, var(--subTheme_color), var(--theme_color));
+    border: none;
+}

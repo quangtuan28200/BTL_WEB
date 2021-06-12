@@ -22,11 +22,12 @@
     if(isset($_GET['brand'])){
         $sql_products = $sql_products.' AND brand_id = brand.id AND brand.slug = "'.$_GET['brand'].'"';
     }
+    
 
     //loc theo moi nhat, gia thap den cao, cao den thap
     if(isset($_POST['filter'])){
         if($_POST['filter'] == 'new'){
-            $sql_products = $sql_products.' ORDER BY product.createdAt ASC';
+            $sql_products = $sql_products.' ORDER BY product.createdAt DESC';
         }else if($_POST['filter'] == 'price_asc'){
             $sql_products = $sql_products.' ORDER BY product.price ASC';
         }else if($_POST['filter'] == 'price_desc'){

@@ -70,3 +70,12 @@ if(cookie_cart_out_range){
 function random_number(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+//!get value params
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+
+// to get value param: urlParams.get('param');
+// check exist pramm: urlParams.has('param');

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include('../../../config/connectDB.php');
     $cart_products = json_decode($_COOKIE["cart_products"]) ;
 
@@ -44,10 +45,9 @@
                 die();
             }
             else{
+                unset($_SESSION['cart']);
                 setcookie("add-success", 'payment', time() + 1, "/");
-                if (isset($_SERVER["HTTP_REFERER"])) {
-                    header("Location: " . $_SERVER["HTTP_REFERER"]);
-                }
+                header("Location:../../../home?invoice&id=".$id_customer);
             } 
         }
     } 
