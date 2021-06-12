@@ -25,10 +25,29 @@ table {
     width: 100%;
 }
 
+.money{
+    font-weight: 500;
+}
+
+.money_wr{
+    background-color: #eee;
+}
+
 td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+}
+
+th{
+    background-color: #eee;
+}
+
+.icon_cart{
+    font-size: 44px;
+    display: block;
+    text-align: center;
+    color: green;
 }
 
 #add_category,

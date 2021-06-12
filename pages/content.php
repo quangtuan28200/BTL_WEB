@@ -17,6 +17,8 @@
                 include('contents/product_detail.php');
             }elseif (isset($_GET['pay'])) {
                 include('contents/pay.php');
+            }elseif (isset($_GET['invoice'])) {
+                include('contents/invoice.php');
             }else {
                 include('contents/home.php');
             }

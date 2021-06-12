@@ -52,8 +52,8 @@
             }
             else{
                 move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
+                header(handleLocation());
             } 
-            header(handleLocation());
         }
         if(isset($_GET['modify'])){
             if($_FILES['imgProduct']['name']!=''){
@@ -80,9 +80,9 @@
                 }
                 else{
                     move_uploaded_file($thumbnail_tmp, '../../../../assets/imgs/admin/upload_img_product/'.$thumbnail);
+                    header(handleLocation());
                 } 
     
-                header(handleLocation());
             }else{
                 $sql_update = 'UPDATE product SET category_id="'.$category.'",
                 brand_id="'.$brand.'",name_prod="'.$name.'",status_prod="1",

@@ -1,6 +1,6 @@
 
 <!-- thanh toan -->
-<div class="cart__wrapper wide" style="display: block">
+<div class="cart__wrapper wide">
     <form id="cart__payForm" method="POST" action="pages/contents/handle/pay_handle.php">
     <div class="cart__area row">
         <div class="cart__product col l-7">

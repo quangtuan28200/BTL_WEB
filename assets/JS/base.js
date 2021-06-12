@@ -36,7 +36,11 @@ var cookie_cart_out_range = readCookie('out-quan-range');
 
 if(cookie_cart_success){
     document.addEventListener('DOMContentLoaded', () => {
-        textNotify.innerText = 'Thêm thành công';
+        if(cookie_cart_success == 'payment'){
+            textNotify.innerText = 'Đặt hàng thành công';
+        }else{
+            textNotify.innerText = 'Thêm thành công';
+        }
         setTimeout(() => {
             notify_container.style.right = "0";
             setTimeout(() => {

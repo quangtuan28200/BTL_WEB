@@ -171,8 +171,4 @@
             <i class="fas fa-chevron-right"></i>
         </a> -->
     </div>
-
-    <div class="slideshow__container productSame__container row">
-
-    </div>
 </div>

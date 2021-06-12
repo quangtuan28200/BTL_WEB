@@ -20,8 +20,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/common/base.css?v=<?php echo time() ?>">
     <link rel="stylesheet" href="../assets/css/common/grid.css">
-    <link rel="stylesheet" href="../assets/css/admin/admin_login.css">
-    <link rel="stylesheet" href="../assets/css/admin/admin.css">
+    <link rel="stylesheet" href="../assets/css/admin/admin.css?v=<?php echo time() ?>">
+
     <?php
         // ../admin/management
         if(isset($_GET['management'])){
@@ -31,6 +31,8 @@
                 if(isset($_GET['create']) || isset($_GET['modify'])){
                     echo'<link rel="stylesheet" href="../assets/css/admin/product.css?v='.time().'">';
                 }
+            } else if(isset($_GET['payment'])){
+                echo'<link rel="stylesheet" href="../assets/css/admin/payment.css?v='.time().'">';
             }
         }
 
@@ -52,7 +54,11 @@
         include('../config/connectDB.php');
         //redirect
         include('./pages/header.php');
-        include('./pages/content.php');
+        if(isset($_GET['management'])){
+            include('./pages/content.php');
+        }else{
+            include('./pages/contents/home.php');
+        }
         include('./pages/footer.php');
 
         // JS
@@ -68,9 +74,10 @@
                 // ../admin/management/category
                 echo'<script src="../assets/JS/admin/categoryMn/category.js?v='.time().'"></script>';
             }elseif (isset($_GET['product'])) {
+                echo'<script src="../assets/JS/admin/productMn/main.js?v='.time().'"></script>';
                 if(isset($_GET['create']) || isset($_GET['modify'])){
                     // ../admin/management/product/create(modify)
-                    echo'<script src="../assets/JS/admin/productMn/create.js ?v='.time().'"></script>';
+                    echo'<script src="../assets/JS/admin/productMn/create.js?v='.time().'"></script>';
                 }
             }
         }

@@ -33,6 +33,11 @@
                         </a>
                     </li>
                     <li class="header__userItem">
+                        <a href="?management&payment" class="userItem__Link">
+                            Payment management
+                        </a>
+                    </li>
+                    <li class="header__userItem">
                         <a href="?logout" class="userItem__Link">
                             Log out
                         </a>

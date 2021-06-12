@@ -24,6 +24,8 @@
             echo '<link rel="stylesheet" href="./assets/css/main/product_detail.css?v='.time().'">';
         }elseif (isset($_GET['pay'])) {
             echo '<link rel="stylesheet" href="./assets/css/main/cart.css?v='.time().'">';
+        }elseif (isset($_GET['invoice'])) {
+            echo '<link rel="stylesheet" href="./assets/css/main/invoice.css?v='.time().'">';
         }
     ?>
     
