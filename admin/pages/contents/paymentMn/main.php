@@ -75,6 +75,7 @@
             <td><?php echo $customers['createdAt'] ?></td>
             <td>
                 <a class='btn_action' style="background-color: #076c9c; width: 100px; margin-bottom: 10px;" href="?management&payment&detail&id=<?php echo $customers['id'] ?>">View detail</a>
+                <a class='paid_btn btn_action' style="background-color: #e40000; width: 100px;" href="pages/contents/paymentMn/handle.php?unpaid&id=<?php echo $customers['id'] ?>">Unpaid</a>
             </td>
         </tr>
     <?php

@@ -123,94 +123,56 @@
 
             <!-- content__product -->
             <div class="content__product row">
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="?product-detail">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="?product-detail">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
+                <div class="splide slideshow__container col l-12">
+                    <div class="splide__arrows">
+                        <button class="splide__arrow splide__arrow--prev prev pro_prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="splide__arrow splide__arrow--next next pro_next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                </div>  
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <?php
+                                $sql_product = 'SELECT product.id, thumbnail, name_prod, price, brand.slug as brand_slug, category.slug as cate_slug 
+                                FROM product, brand, category
+                                WHERE product.category_id = category.id AND product.brand_id = brand.id ORDER BY RAND() LIMIT 15';
+                                $query_product = mysqli_query($mysqli, $sql_product);
+                                // if(!$query_product){
+                                //     echo mysqli_error($mysqli);
+                                //     die();
+                                // }
+                                while ($products = mysqli_fetch_array($query_product)) {
+                            ?>
+                                <li class="splide__slide">
+                                    <div class="product__areaWrapper">
+                                        <div class="product__img">
+                                            <a href="?product-detail=<?php echo $products['cate_slug'] ?>&brand=<?php echo $products['brand_slug'] ?>&id=<?php echo $products['id'] ?>">
+                                                <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img">
+                                            </a>
+                                        </div>
+                                        <div class="product__textArea">
+                                            <div class="product__textHeader">
+                                                <a href="?product-detail=<?php echo $products['cate_slug'] ?>&brand=<?php echo $products['brand_slug'] ?>&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
+                                            </div>
+                                            <div class="product__textPrice">
+                                                <?php echo number_format($products['price'],0,"","."); ?>
+                                                <span>đ</span>
+                                            </div>
+                                            
+                                            <div class="product__textButton">
+                                                <a href="pages/contents/handle/product_handle.php?add-to-cart&id=<?php echo $products['id'] ?>">Thêm vào giỏ</a>
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                </li>
+                            <?php
+                                }
+                            ?>
+                        </ul>
                     </div>
-                </div>
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>        
+                </div>     
             </div>
 
             <!-- Xem Them -->
@@ -233,94 +195,52 @@
 
             <!-- content__product -->
             <div class="content__product row">
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
+                <div class="splide slideshow__container col l-12">
+                    <div class="splide__arrows">
+                        <button class="splide__arrow splide__arrow--prev prev pro_prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="splide__arrow splide__arrow--next next pro_next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                </div>  
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <?php
+                                $sql_product = 'SELECT product.id, thumbnail, name_prod, price, brand.slug as brand_slug, category.slug as cate_slug 
+                                FROM product, brand, category
+                                WHERE product.category_id = category.id AND product.brand_id = brand.id ORDER BY RAND() LIMIT 15';
+                                $query_product = mysqli_query($mysqli, $sql_product);
+                                while ($products = mysqli_fetch_array($query_product)) {
+                            ?>
+                                <li class="splide__slide">
+                                    <div class="product__areaWrapper">
+                                        <div class="product__img">
+                                            <a href="?product-detail=<?php echo $products['cate_slug'] ?>&brand=<?php echo $products['brand_slug'] ?>&id=<?php echo $products['id'] ?>">
+                                                <img src="./assets/imgs/admin/upload_img_product/<?php echo $products['thumbnail'] ?>" alt="img">
+                                            </a>
+                                        </div>
+                                        <div class="product__textArea">
+                                            <div class="product__textHeader">
+                                                <a href="?product-detail=<?php echo $products['cate_slug'] ?>&brand=<?php echo $products['brand_slug'] ?>&id=<?php echo $products['id'] ?>"><?php echo $products['name_prod'] ?></a>
+                                            </div>
+                                            <div class="product__textPrice">
+                                                <?php echo number_format($products['price'],0,"","."); ?>
+                                                <span>đ</span>
+                                            </div>
+                                            
+                                            <div class="product__textButton">
+                                                <a href="pages/contents/handle/product_handle.php?add-to-cart&id=<?php echo $products['id'] ?>">Thêm vào giỏ</a>
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                </li>
+                            <?php
+                                }
+                            ?>
+                        </ul>
                     </div>
-                </div>
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product__area col l-3">
-                    <div class="product__areaWrapper">
-                        <div class="product__img">
-                            <a href="#">
-                                <img src="./assets/imgs/bao-da-deo-da-di-nang-remax-yd-03-21042018092610-300x300.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="product__textArea">
-                            <div class="product__textHeader">
-                                <a href="#">Ô dù trong suốt bền đẹp Remax</a>
-                            </div>
-                            <div class="product__textPrice">
-                                150.000 
-                                <span>đ</span>
-                            </div>
-                            
-                            <div class="product__textButton">
-                                <a href="#">Thêm vào giỏ</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>        
+                </div>   
             </div>
 
             <!-- Xem Them -->
@@ -334,7 +254,7 @@
     <?php
         while ($categories = mysqli_fetch_array($query)) {
     ?>
-    <!-- may tinh -->
+    <!-- product -->
         <div class="content__area">
             <div class="content__areaWrapper">
                 <!-- content__header -->
@@ -359,7 +279,7 @@
                             <ul class="splide__list">
                                 <?php
                                     $sql_product = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, brand 
-                                    WHERE product.brand_id = brand.id AND product.category_id = '.$categories['id'].' ORDER BY RAND() LIMIT 10';
+                                    WHERE product.brand_id = brand.id AND product.category_id = '.$categories['id'].' ORDER BY RAND() LIMIT 15';
                                     $query_product = mysqli_query($mysqli, $sql_product);
                                     while ($products = mysqli_fetch_array($query_product)) {
                                 ?>
@@ -390,8 +310,7 @@
                                 ?>
                             </ul>
                         </div>
-                    </div>
-                    
+                    </div>      
                 </div>
 
                 <!-- Xem Them -->

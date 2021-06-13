@@ -725,6 +725,8 @@
     transition: transform .5s ease;
     padding: 30px 20px 0 20px;
     background-color: white;
+    height: 263px;
+    object-fit: contain;
 }
 
 .product__img:hover img{
@@ -764,6 +766,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-height: 44px;
 }
 
 .product__textHeader:hover a{

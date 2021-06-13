@@ -114,10 +114,8 @@
         //delete in DB
         mysqli_query($mysqli, $sql_delete);
         //quay ve trang main
-        echo '
-        <script>
-            window.history.back();
-        </script>';
-        // header('Location:?management&product');
+        if (isset($_SERVER["HTTP_REFERER"])) {
+            header("Location: " . $_SERVER["HTTP_REFERER"]);
+        }
     }
 ?>

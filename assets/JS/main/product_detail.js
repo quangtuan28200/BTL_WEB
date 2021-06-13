@@ -2,12 +2,12 @@
 //! product_slider
 
 document.addEventListener( 'DOMContentLoaded', function () {
-    // new Splide( '.splide' ).mount();
     new Splide( '.splide', {
         type   : 'loop',
         perPage: 4,
         perMove: 2,
         gap: 20,
+        autoplay: true,
     } ).mount();
 } );
 

@@ -2,13 +2,16 @@
 //! product_slider
 
 document.addEventListener( 'DOMContentLoaded', function () {
-    // new Splide( '.splide' ).mount();
-    new Splide( '.splide', {
-        type   : 'loop',
-        perPage: 4,
-        perMove: 2,
-        gap: 20,
-    } ).mount();
+    var splides = document.querySelectorAll('.splide');
+    splides.forEach(element => {
+        new Splide( element , {
+            type   : 'loop',
+            perPage: 4,
+            perMove: 2,
+            gap: 20,
+            autoplay: true,
+        } ).mount();
+    });
 } );
 
 //! slide_show

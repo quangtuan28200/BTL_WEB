@@ -151,12 +151,12 @@
                     <form action="" method="post">
                         <div class="price_slider_wrapper">
                             <span class="slide_hoder"></span>
-                            <input name="price_range" type="range" class="slide" min="1000000" max="50000000" value="25000000" id="myRange">
+                            <input name="price_range" type="range" class="slide" min="100000" max="50000000" value="25000000" id="myRange">
                             <div class="price_slider_amount">
                                 <button type="submit" class="filter__btn btn">Lọc</button>
                                 <div class="price_label">
                                     <span class="gia">Giá:</span>
-                                    <span class="from">1.000.000 đ</span> 
+                                    <span class="from">100.000 đ</span> 
                                     <span class="gachngang">-</span> 
                                     <span id="price_desc"></span> 
                                     <span class="d"> đ</span>

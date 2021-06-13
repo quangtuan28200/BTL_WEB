@@ -9,10 +9,9 @@
     $category = mysqli_fetch_row($query_category);
 
     //product same
-    $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, brand
-    WHERE product.brand_id = brand.id AND brand.slug = "'.$_GET['brand'].'" AND product.id != "'.$_GET['id'].'"';
+    $sql_products = 'SELECT product.id, thumbnail, name_prod, price, brand.slug FROM product, brand, category
+    WHERE category.id = product.category_id AND category.slug="'.$_GET['product-detail'].'" AND product.brand_id = brand.id AND brand.slug = "'.$_GET['brand'].'" AND product.id != "'.$_GET['id'].'"';
     $query_products = mysqli_query($mysqli, $sql_products);
-    
 ?>
 
 <!-- san pham chi tiet -->
