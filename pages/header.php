@@ -8,6 +8,23 @@
         $sql_cart = 'SELECT * FROM product WHERE id ='.$_GET['id'];
         $query_cart = mysqli_query($mysqli, $sql_cart);
     }
+
+    //search
+    if(isset($_GET['search'])){
+        if($_GET['search'] == ''){
+            $key_word = '#';
+        }else {
+            $key_word = $_GET['search'];
+        }
+
+        $sql_search = 'SELECT product.id, thumbnail, name_prod, price, 
+        category.slug as cate_slug, brand.slug as brand_slug  
+        FROM product, category, brand WHERE product.category_id = category.id AND
+        product.brand_id = brand.id AND name_prod LIKE "%'.$key_word.'%"';
+        $query_search = mysqli_query($mysqli, $sql_search);
+
+        $count = mysqli_num_rows($query_search);
+    }
 ?>
 
 <!-- header -->
@@ -24,15 +41,57 @@
                 </div>
 
                 <!-- search -->
-                <div class="header__search">
-                    <div class="search__input">
-                        <input type="search" >
-                    </div>
-                    <div class="search__buttom">
-                        <button type="submit">
-                            <i class="fas fa-search"></i>
-                            Tìm kiếm
-                        </button>
+                <div class="search_container">
+                    <!-- search form -->
+                    <form class="header__search" action="" method="GET">
+                        <div class="search__input">
+                            <input autocomplete="false" name="search" type="search" >
+                        </div>
+                        <div class="search__buttom">
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- search result -->
+                    <div class="search_result">
+                        <?php
+                            if(isset($_GET['search'])){
+                            if($count > 0){
+                        ?>
+                            <!-- tim thay sp -->
+                            <ul class="result_list">
+                                <?php
+                                    while ($result=mysqli_fetch_array($query_search)) {
+                                ?>
+                                    <li class="result_item">
+                                        <a href="?product-detail=<?php echo $result['cate_slug'] ?>&brand=<?php echo $result['brand_slug'] ?>&id=<?php echo $result['id'] ?>" class="result_link">
+                                            <div class="result_thumbnail">
+                                                <img src="assets/imgs/admin/upload_img_product/<?php echo $result['thumbnail'] ?>" alt="img">
+                                            </div>
+                                            <div class="result_content">
+                                                <h4><?php echo $result['name_prod'] ?></h4>
+                                                <span><?php echo number_format($result['price'],0,"",".").' đ'  ?></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                <?php
+                                    }
+                                ?>
+                            </ul>
+                        <?php
+                            }else{
+                        ?>
+                            <!-- khong tim thay sp -->
+                            <div class="result_null">
+                                <h4>Không tìm thấy sản phẩm</h4>
+                            </div>
+                        <?php
+                            }
+                            }
+                        ?>
                     </div>
                 </div>
 

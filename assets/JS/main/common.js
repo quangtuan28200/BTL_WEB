@@ -114,3 +114,20 @@ function handle_quantity(selector, n) {
 		};
 	});
 }
+
+//! search
+
+var search_result = document.querySelector('.search_result');
+var search__input = document.querySelector('.search__input input');
+
+if(urlParams.has('search')){
+	document.addEventListener('DOMContentLoaded', () => {
+		setTimeout(() => {
+			search_result.style.height = "40vh";
+		}, 2000);
+	});
+
+	document.onclick = () =>{
+		search_result.style.height = "0";
+	};
+}
