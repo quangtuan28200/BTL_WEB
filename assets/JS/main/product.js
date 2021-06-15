@@ -1,3 +1,4 @@
+
 //!itemNav--active
 var Category__links = document.querySelectorAll('.Category__link');
 var product_slug = /product=([^&]+)/.exec(url)[1];
@@ -94,3 +95,4 @@ if(!urlParams.has('page')){
         }
     });
 }
+

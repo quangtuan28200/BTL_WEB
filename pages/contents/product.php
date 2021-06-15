@@ -36,28 +36,28 @@
             unset($_POST['filter']); 
         }
     }else{
-        echo '
-            <script>
-                document.addEventListener("DOMContentLoaded", (event) => {
-                    document.querySelector("#filter_select").options[0].selected = true;
-                });
-            </script>
-        ';
+        // echo '
+        //     <script>
+        //         document.addEventListener("DOMContentLoaded", () => {
+        //             document.querySelector("#filter_select").options[0].selected = true;
+        //         });
+        //     </script>
+        // ';
     }
 
     //loc theo gia
     if(isset($_POST['price_range'])){
         $sql_products = $sql_products.' AND price < '.$_POST['price_range'];
     }else{
-        echo '
-            <script>
-                document.addEventListener("DOMContentLoaded", (event) => {
-                    slider.setAttribute("value", 25000000);
-                    slide_hoder.style.width = "50%";
-                    output.innerText = "25000000".replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                });
-            </script>
-        ';
+        // echo '
+        //     <script>
+        //         document.addEventListener("DOMContentLoaded", () => {
+        //             slider.setAttribute("value", 25000000);
+        //             slide_hoder.style.width = "50%";
+        //             output.innerText = "25000000".replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        //         });
+        //     </script>
+        // ';
     }
 
     //limit for pagination
@@ -244,3 +244,27 @@
     </div>
 
 </div>
+
+<?php
+    if(!isset($_POST['filter'])){
+        echo '
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.querySelector("#filter_select").options[0].selected = true;
+                });
+            </script>
+        ';
+    }
+
+    if(!isset($_POST['price_range'])){
+        echo '
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    slider.setAttribute("value", 25000000);
+                    slide_hoder.style.width = "50%";
+                    output.innerText = "25000000".replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                });
+            </script>
+        ';
+    }
+?>
