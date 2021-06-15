@@ -92,7 +92,7 @@
         <div class="content__headingText col l-3">
             <a href="home">TRANG CHỦ</a>
             <span>/</span>
-            <h4><?php echo mb_strtoupper($category[0], 'UTF-8') ;  ?></h4>
+            <!-- <h4><?php echo mb_strtoupper($category[0], 'UTF-8') ;  ?></h4> -->
         </div>
 
         <div class="headingFilter__container col l-9">
