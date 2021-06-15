@@ -43,17 +43,17 @@
                 <!-- search -->
                 <div class="search_container">
                     <!-- search form -->
-                    <form class="header__search" action="" method="GET">
+                    <div class="header__search">
                         <div class="search__input">
-                            <input autocomplete="false" name="search" type="search" >
+                            <input type="search" >
                         </div>
                         <div class="search__buttom">
-                            <button type="submit">
+                            <button>
                                 <i class="fas fa-search"></i>
                                 Tìm kiếm
                             </button>
                         </div>
-                    </form>
+                    </div>
 
                     <!-- search result -->
                     <div class="search_result">

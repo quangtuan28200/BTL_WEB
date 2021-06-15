@@ -76,7 +76,7 @@ function printLetter(string, el) {
 		}
 	// use random speed to simulate
 	// 'human' typing
-	}, 40);
+	}, 30);
 }  
 
 // function to init animation
@@ -130,4 +130,35 @@ if(urlParams.has('search')){
 	document.onclick = () =>{
 		search_result.style.height = "0";
 	};
+}
+
+//! redirect page when search
+
+var search__buttom = document.querySelector('.search__buttom button');
+
+search__buttom.onclick = () =>{
+	href_search_handle();
+};
+
+search__input.onkeyup = (event) => {
+	if (event.keyCode === 13) {
+		href_search_handle();
+	}
+};
+
+function href_search_handle() {
+	let current_url = window.location.href;
+	let params = `?search=${search__input.value}`;
+	if(!current_url.includes('search')){
+		if(current_url.includes('?')){
+			params = `&search=${search__input.value}`;
+		}
+		window.location.href = current_url + params;
+	}else{
+		let url = removeParam("search", current_url);
+		if(url.includes('?')){
+			params = `&search=${search__input.value}`;
+		}
+		window.location.href = url + params;
+	}
 }

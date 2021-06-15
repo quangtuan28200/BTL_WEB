@@ -148,6 +148,7 @@
 
 .result_content span{
     color: var(--red);
+    font-weight: 500;
 }
 
 /* header__acc */
