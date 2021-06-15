@@ -124,7 +124,7 @@ if(urlParams.has('search')){
 	document.addEventListener('DOMContentLoaded', () => {
 		setTimeout(() => {
 			search_result.style.height = "40vh";
-		}, 2000);
+		}, 1500);
 	});
 
 	document.onclick = () =>{

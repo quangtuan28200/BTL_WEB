@@ -104,14 +104,14 @@
 .result_list{
     margin: 0;
     padding: 0;
-    max-height: 50vh;
+    max-height: 40vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .result_item{
     list-style: none;
-    padding: 10px;
+    padding: 10px 20px;
     border-bottom: 1px solid #ddd;
 }
 
