@@ -9,7 +9,7 @@
     </div>
 
     <!-- CONTENT_LOADED -->
-    <div class="content_loaded" style="display: block">
+    <div class="content_loaded" style="display: none">
         <?php
             if(isset($_GET['product'])){
                 include('contents/product.php');
