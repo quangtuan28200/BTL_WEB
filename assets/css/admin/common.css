@@ -81,6 +81,8 @@ th{
     background-color: #f7e3e3;
 }
 
+/* modal */
+
 .modal{
     display: none;
     position: fixed;
